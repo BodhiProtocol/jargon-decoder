@@ -220,7 +220,7 @@ footer .meta a:hover{color:var(--gold)}
 
 <section class="hero wrap">
   <h1>Jargon is a wall.<br><em>This is a door.</em></h1>
-  <p>89 capital markets terms, decoded into plain language. Search, browse by category, or test yourself with flashcards.</p>
+  <p>99+ capital markets terms, decoded into plain language. Search, browse by category, or test yourself with flashcards.</p>
 </section>
 
 <div class="modes wrap">
@@ -265,7 +265,7 @@ footer .meta a:hover{color:var(--gold)}
 </footer>
 
 <script>
-const CATS = ["Lifecycle","Clearing & Settlement","Instruments","Risk & Compliance","Market Structure","Technology"];
+const CATS = ["Lifecycle","Clearing & Settlement","Instruments","Risk & Compliance","Market Structure","Technology","Investment Banking"];
 
 /* ---------- mini diagram library ---------- */
 /* Each returns an SVG string sized for a card (~320px wide). Colors via CSS classes. */
@@ -469,6 +469,10 @@ const TERMS = [
 {t:"P/E Ratio",c:2,p:"How many years of current earnings it would take to pay back today's share price.",m:"Price divided by earnings per share. A high P/E means the market is pricing in growth — or overpaying for it."},
 {t:"Index Fund",c:2,p:"A fund that doesn't try to beat the market — it just buys the market, in the same proportions as the index.",m:"Lower fees than an actively managed fund, because there's no manager trying to pick winners. Track the Nifty 50, and that's exactly what you get."},
 {t:"Debenture",c:2,p:"A bond by another name — a company's promise to repay a loan, usually unsecured against any specific asset.",m:"In India, 'debenture' and 'corporate bond' are used almost interchangeably. Convertible debentures can later turn into shares."},
+{t:"Maturity",c:2,p:"The date a bond's life ends — the issuer repays the face value and the debt is closed.",m:"Short-term, medium-term, long-term — maturity length shapes both the risk and the yield an investor demands."},
+{t:"Zero-Coupon Bond",c:2,p:"A bond that pays no interest along the way — you just buy it cheap and collect full face value at maturity.",m:"The discount to face value is the entire return, paid out as one lump sum at maturity instead of periodic coupons."},
+{t:"Callable Bond",c:2,p:"A bond the issuer can repay early, on their terms, not yours.",m:"Usually called back when interest rates fall — the issuer refinances cheaper, and you're left reinvesting at a worse rate."},
+{t:"Credit Rating",c:2,p:"A letter grade — AAA down to junk — telling you how likely the issuer is to actually pay you back.",m:"Assigned by agencies like CRISIL or Moody's. Higher rating, lower yield — safety and return trade off against each other."},
 {t:"KYC",c:3,p:"Know Your Customer — proving people are who they claim before they touch the market.",m:"Identity, address, and risk profile, verified. The first gate every investor passes through."},
 {t:"AML",c:3,p:"Anti-Money Laundering — making sure the market isn't a washing machine for dirty money.",m:"Systems watch for suspicious patterns and report them. A pillar of every fraud programme."},
 {t:"Surveillance",c:3,p:"Watching every trade for patterns that shouldn't exist.",m:"Spoofing, layering, pump-and-dump — algorithms hunt algorithms. Alerts land on human desks for judgment."},
@@ -507,7 +511,28 @@ const TERMS = [
 {t:"Reference Data",c:5,p:"The quiet facts everything depends on: security details, calendars, counterparty records.",m:"Wrong reference data breaks trades silently, everywhere, at once. Unglamorous and mission-critical."},
 {t:"Golden Source",c:5,p:"The one system officially trusted as the truth for a piece of data.",m:"When five systems disagree on a price, the golden source wins. Deciding which one — that's a BA workshop."},
 {t:"Audit Trail",c:5,p:"The unforgeable diary: who did what, when, and from where.",m:"Regulators demand it, investigations depend on it, and good systems write it automatically."},
-{t:"API",c:5,p:"A doorway systems use to talk to each other, with rules about what can be asked.",m:"Modern market infrastructure is APIs all the way down. BAs write the requirements for what flows through them."}
+{t:"API",c:5,p:"A doorway systems use to talk to each other, with rules about what can be asked.",m:"Modern market infrastructure is APIs all the way down. BAs write the requirements for what flows through them."},
+{t:"IBD",c:6,p:"The division that advises companies on mergers, and helps them raise money by issuing stocks or bonds.",m:"Short for Investment Banking Division — it houses M&A advisory, ECM, and DCM under one roof."},
+{t:"M&A",c:6,p:"One company buying another, or two companies combining — advised, negotiated, and priced by bankers on both sides.",m:"The advisory fees are earned whether the deal creates value or destroys it. Getting it done is the job; getting it right is the reputation."},
+{t:"ECM",c:6,p:"The desk that takes companies to the stock market — IPOs, follow-on offerings, everything equity-related.",m:"Equity Capital Markets — works hand in hand with Sales & Trading to gauge investor appetite before pricing a deal."},
+{t:"DCM",c:6,p:"The desk that helps companies and governments borrow money by issuing bonds instead of taking a bank loan.",m:"Debt Capital Markets — structures the bond, prices it, and lines up the investors who'll buy it."},
+{t:"Sales & Trading",c:6,p:"The desk that sells securities to big institutional clients, and trades some of it on the bank's own account too.",m:"Often grouped by asset class — equities, or FICC (fixed income, currencies, commodities). The bridge between the bank's clients and the market."},
+{t:"Research",c:6,p:"Analysts studying companies and markets, then publishing an opinion on what to buy, hold, or sell.",m:"Feeds both external clients and the bank's own trading desks — though a wall is supposed to separate research opinions from trading decisions."},
+{t:"Risk Management",c:6,p:"The team whose job is to know exactly how much the bank could lose, before it happens.",m:"Market risk, credit risk, liquidity risk — modelled, limited, and reported daily, so no single trader's bet can sink the firm."},
+{t:"Compliance",c:6,p:"The team making sure the bank actually follows the rules regulators set — not just the ones that are convenient.",m:"KYC, AML, market abuse surveillance — compliance signs off before the business can move forward."},
+{t:"IPO",c:6,p:"A company selling shares to the public for the very first time.",m:"Initial Public Offering — turns a private company into one anyone can own a piece of, usually via ECM bankers and a roadshow."},
+{t:"Pitch Book",c:6,p:"The polished deck a bank builds to convince a client to hire them for a deal.",m:"Part sales pitch, part strategic analysis — the document that opens the door to an M&A or capital markets mandate."},
+{t:"Underwriting",c:6,p:"The bank guaranteeing to buy an entire securities offering, then reselling it to investors — taking the risk off the issuer's hands.",m:"If investors don't buy enough, the underwriter is stuck holding what's left. That risk is exactly why underwriting fees exist."},
+{t:"LBO",c:6,p:"Buying a company using mostly borrowed money, with the target's own future cash flows expected to pay it off.",m:"Leveraged Buyout — private equity's signature move. More debt means more risk, but also more potential return."},
+{t:"FICC",c:6,p:"Fixed Income, Currencies & Commodities — one of the two big trading floors, the other being equities.",m:"Bonds, currency pairs, oil, gold — anything that isn't a stock usually trades through a FICC desk."},
+{t:"Hedge",c:6,p:"Taking a second position specifically to cancel out the risk of the first one.",m:"You don't hedge to make money — you hedge so a bad move somewhere else doesn't wipe you out."},
+{t:"Long / Short",c:6,p:"Long means you profit if the price rises. Short means you profit if it falls.",m:"Shorting usually means borrowing the asset to sell it now, planning to buy it back cheaper later and return it."},
+{t:"Repo",c:6,p:"A short-term loan where securities are handed over as collateral, with a promise to buy them back later at a slightly higher price.",m:"Repurchase Agreement — the overnight plumbing that keeps trading desks and banks funded day to day."},
+{t:"Trading Book",c:6,p:"The running list of everything a trader currently holds — their actual positions, not the exchange's public one.",m:"Distinct from the Order Book: that's the market's queue of orders, this is one trader's or one desk's live exposure."},
+{t:"P&L",c:6,p:"Profit & Loss — the number that says whether a trading desk made or lost money today.",m:"Marked to market every day. In trading, your P&L is the only opinion that counts by the end of the session."},
+{t:"Market Colour",c:6,p:"The informal, off-the-record read a trader gives a client — not just the price, but what's actually happening beneath it.",m:"Often shared over chat or phone: who's buying, who's nervous, where the flow is heading. Judgment, not data."},
+{t:"Axe",c:6,p:"A trader's not-so-secret bias — what they're actually keen to buy or sell right now.",m:"\"What's your axe on this bond?\" is trading-floor shorthand for: what position are you trying to get out of, or into?"},
+{t:"Block Trade",c:6,p:"A large trade negotiated privately between two parties, away from the public order book, then reported afterward.",m:"Done this way so a big order doesn't move the price against itself before it's even filled."}
 ];
 
 /* ---------- decode mode ---------- */
