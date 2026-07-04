@@ -592,6 +592,18 @@ mTest.addEventListener("click",()=>{
 });
 
 render();
+
+/* ---------- deep link: ?term=Novation ---------- */
+const linkedTerm = new URLSearchParams(window.location.search).get("term");
+if (linkedTerm) {
+  const match = TERMS.find(x => x.t.toLowerCase() === linkedTerm.toLowerCase());
+  if (match) {
+    q.value = match.t;
+    render();
+    const card = grid.querySelector(`.card[data-term="${CSS.escape(match.t)}"]`);
+    if (card && card.classList.contains("has-viz")) card.classList.add("open");
+  }
+}
 </script>
 </body>
 </html>
