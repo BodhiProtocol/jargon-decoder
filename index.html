@@ -220,7 +220,7 @@ footer .meta a:hover{color:var(--gold)}
 
 <section class="hero wrap">
   <h1>Jargon is a wall.<br><em>This is a door.</em></h1>
-  <p>70+ capital markets terms, decoded into plain language. Search, browse by category, or test yourself with flashcards.</p>
+  <p>80+ capital markets terms, decoded into plain language. Search, browse by category, or test yourself with flashcards.</p>
 </section>
 
 <div class="modes wrap">
@@ -460,6 +460,11 @@ const TERMS = [
 {t:"ETF",c:2,p:"A fund that trades like a stock — one purchase, an entire basket.",m:"Buy the whole Nifty in a single click. Low cost, live pricing, instant diversification."},
 {t:"NAV",c:2,p:"Net Asset Value — what one unit of a mutual fund is truly worth today.",m:"Total assets minus liabilities, divided by units. Calculated daily after markets close."},
 {t:"Face Value",c:2,p:"The nominal value printed on a security — the number promises are measured against.",m:"A bond repays face value at maturity. A stock split changes face value, not your wealth."},
+{t:"Mutual Fund",c:2,p:"A basket of investments professionally managed, bought with one lump sum or a monthly SIP.",m:"You own units, not the underlying stocks directly. The fund manager decides what's inside; NAV decides what your slice is worth."},
+{t:"Preference Shares",c:2,p:"Shares that are paid before equity holders, but usually can't vote on how the company is run.",m:"A hybrid: fixed-ish dividends like a bond, ownership like a stock, but without a say in the boardroom."},
+{t:"Convertible Bond",c:2,p:"A bond that can turn into shares later, if the stock price makes that worthwhile.",m:"Investors get a bond's safety now and an option on equity upside later — the issuer borrows cheaper because of that option."},
+{t:"REIT",c:2,p:"A fund that lets you own a slice of rent-generating real estate without ever owning a building.",m:"Real Estate Investment Trust — trades like a stock, and pays out most of its rental income as dividends by law."},
+{t:"ADR/GDR",c:2,p:"How a company from one country lists its shares for investors in another, without a second IPO.",m:"American Depositary Receipts trade in the US, Global Depositary Receipts trade internationally — both represent shares held in trust back home."},
 {t:"KYC",c:3,p:"Know Your Customer — proving people are who they claim before they touch the market.",m:"Identity, address, and risk profile, verified. The first gate every investor passes through."},
 {t:"AML",c:3,p:"Anti-Money Laundering — making sure the market isn't a washing machine for dirty money.",m:"Systems watch for suspicious patterns and report them. A pillar of every fraud programme."},
 {t:"Surveillance",c:3,p:"Watching every trade for patterns that shouldn't exist.",m:"Spoofing, layering, pump-and-dump — algorithms hunt algorithms. Alerts land on human desks for judgment."},
@@ -481,6 +486,11 @@ const TERMS = [
 {t:"Exchange",c:4,p:"The regulated arena where orders meet, prices form, and everyone sees the same numbers.",m:"NSE and BSE in India. Transparency, rules, and a matching engine at the core."},
 {t:"Prime Broker",c:4,p:"A one-stop bank for hedge funds: custody, lending, leverage, and settlement under one roof.",m:"The fund trades everywhere but clears through its prime. Convenience, concentrated."},
 {t:"Regulator",c:4,p:"The referee. Writes the rules, watches the game, and penalises the fouls.",m:"SEBI for Indian securities markets, RBI for banking and currency. Their circulars become your requirements."},
+{t:"Dark Pool",c:4,p:"A private venue where big trades happen away from the public order book, so the price doesn't move before the trade completes.",m:"Institutions use them to avoid tipping their hand — buy a large stake openly and the price runs away from you before you're done."},
+{t:"Algorithmic Trading",c:4,p:"Letting code decide when, how, and how fast to buy or sell — no finger on the button.",m:"From simple rules to complex models, algos now execute the majority of volume on most major exchanges."},
+{t:"HFT",c:4,p:"Algorithmic trading turned up to the extreme — positions held for fractions of a second, profit measured in fractions of a cent.",m:"High-Frequency Trading — wins are made in microseconds and enormous volume, not conviction. Speed itself is the edge."},
+{t:"Depository Participant",c:4,p:"Your actual point of contact for holding shares electronically — usually your broker or bank, acting as an agent of the depository.",m:"NSDL and CDSL are the depositories; your DP is the retail-facing counter that opens and manages your demat account."},
+{t:"Foreign Portfolio Investor",c:4,p:"An overseas investor who buys into Indian markets without taking a controlling stake in any company.",m:"Registered and regulated by SEBI as an FPI; their custodian handles settlement since they don't hold assets directly."},
 {t:"FIX Protocol",c:5,p:"The common language trading systems speak to each other. Since 1992.",m:"Orders, executions, cancellations — all standardised messages. Tag 35=D means \"new order\". Every OMS speaks it."},
 {t:"OMS",c:5,p:"Order Management System — where orders are born, validated, tracked, and audited.",m:"The buy-side's book of record for every order's life. The BA's most-visited system."},
 {t:"EMS",c:5,p:"Execution Management System — the trader's cockpit for working orders in the market.",m:"Real-time data, algos, smart routing. The OMS decides what; the EMS decides how."},
