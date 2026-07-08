@@ -488,14 +488,15 @@ const DIAG = {
 <text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">One straight pipe. No human hands. No errors introduced.</text>
 </svg>`,
 
-"Failed Trade":`<svg viewBox="0 0 320 140" aria-label="Settlement day arrives but nothing moves">
+"Failed Trade":`<svg viewBox="0 0 320 148" aria-label="Settlement day arrives but nothing moves">
 <rect x="30" y="46" width="100" height="32" rx="7" fill="${P2}" stroke="${L}"/>
 <text class="vs" x="80" y="66" text-anchor="middle">Settlement day</text>
 <line x1="132" y1="62" x2="188" y2="62" stroke="${MU}" stroke-width="1.4" stroke-dasharray="4 3"/>
 <text class="vs" x="160" y="52" text-anchor="middle" fill="${MU}">expected: shares ↔ cash</text>
 <rect x="190" y="46" width="100" height="32" rx="7" class="vg"/>
 <text class="vgt" x="240" y="66" text-anchor="middle" style="font-size:10px">Nothing arrives</text>
-<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">A broken promise with a penalty attached — and a possible forced buy-in.</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">A broken promise with a penalty —</text>
+<text class="vs" x="160" y="122" text-anchor="middle" fill="${MU}">and a possible forced buy-in.</text>
 </svg>`,
 
 "Margin":`<svg viewBox="0 0 320 150" aria-label="Margin as a cushion against loss">
@@ -751,7 +752,7 @@ const DIAG = {
 <text class="vs" x="160" y="112" text-anchor="middle" fill="${MU}">Match means proceed. Mismatch becomes a break.</text>
 </svg>`,
 
-"Trade Enrichment":`<svg viewBox="0 0 320 140" aria-label="A raw trade gets enriched with additional data">
+"Trade Enrichment":`<svg viewBox="0 0 320 148" aria-label="A raw trade gets enriched with additional data">
 <rect x="30" y="50" width="90" height="30" rx="7" fill="${P2}" stroke="${L}"/>
 <text class="vs" x="75" y="69" text-anchor="middle" style="font-size:9px">Price, qty, side</text>
 <line x1="122" y1="65" x2="188" y2="65" stroke="${LO}" stroke-width="1.6"/>
@@ -759,7 +760,8 @@ const DIAG = {
 <text class="vgt" x="240" y="50" text-anchor="middle" style="font-size:9px">+ fees</text>
 <text class="vgt" x="240" y="64" text-anchor="middle" style="font-size:9px">+ taxes</text>
 <text class="vgt" x="240" y="78" text-anchor="middle" style="font-size:9px">+ settlement inst.</text>
-<text class="vs" x="160" y="120" text-anchor="middle" fill="${MU}">The matching engine records the bare minimum; downstream needs the full story.</text>
+<text class="vs" x="160" y="118" text-anchor="middle" fill="${MU}">The matching engine records the bare minimum;</text>
+<text class="vs" x="160" y="134" text-anchor="middle" fill="${MU}">downstream needs the full story.</text>
 </svg>`,
 
 "Reconciliation":`<svg viewBox="0 0 320 130" aria-label="Checking two records agree">
@@ -885,13 +887,14 @@ const DIAG = {
 <text class="vgt" x="240" y="64" text-anchor="middle">Issuer</text>
 </svg>`,
 
-"Coupon":`<svg viewBox="0 0 320 130" aria-label="A coupon is the periodic interest a bond pays">
+"Coupon":`<svg viewBox="0 0 320 138" aria-label="A coupon is the periodic interest a bond pays">
 <line x1="30" y1="70" x2="290" y2="70" stroke="${L}" stroke-width="1.2"/>
 <circle cx="90" cy="70" r="5" class="vg"/><circle cx="160" cy="70" r="5" class="vg"/><circle cx="230" cy="70" r="5" class="vg"/>
 <text class="vs" x="90" y="52" text-anchor="middle" style="font-size:9px">Year 1</text>
 <text class="vs" x="160" y="52" text-anchor="middle" style="font-size:9px">Year 2</text>
 <text class="vs" x="230" y="52" text-anchor="middle" style="font-size:9px">Year 3</text>
-<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Same interest, paid on schedule — named after paper coupons once clipped.</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Same interest, paid on schedule —</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">named after paper coupons once clipped.</text>
 </svg>`,
 
 "Derivative":`<svg viewBox="0 0 320 120" aria-label="A derivative borrows its value from something else">
@@ -1597,6 +1600,549 @@ const DIAG = {
 <rect x="205" y="84" width="70" height="26" rx="6" fill="${P2}" stroke="${L}"/>
 <text class="vs" x="240" y="101" text-anchor="middle" style="font-size:8px">Forward</text>
 <text class="vs" x="160" y="124" text-anchor="middle" fill="${MU}">Signed once, covers everything after.</text>
+</svg>`,
+
+"Hedge Fund":`<svg viewBox="0 0 320 120" aria-label="A hedge fund pools capital and uses flexible strategies unlike a mutual fund">
+<rect x="90" y="30" width="140" height="40" rx="8" class="vg"/>
+<text class="vgt" x="160" y="54" text-anchor="middle">Hedge Fund</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Shorting, leverage, derivatives —</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">tools mutual funds can't touch.</text>
+</svg>`,
+
+"Green Bonds":`<svg viewBox="0 0 320 120" aria-label="Green bonds fund environmental projects with normal bond mechanics">
+<rect x="60" y="30" width="90" height="36" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="105" y="52" text-anchor="middle" style="font-size:9px">Bond</text>
+<text class="vt" x="170" y="53" text-anchor="middle" fill="${G}" style="font-size:14px">+</text>
+<rect x="190" y="30" width="90" height="36" rx="7" class="vg"/>
+<text class="vgt" x="235" y="52" text-anchor="middle" style="font-size:9px">Green use</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Same coupon and maturity —</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">proceeds tied to a purpose.</text>
+</svg>`,
+
+"Bloomberg Terminal":`<svg viewBox="0 0 320 120" aria-label="Bloomberg Terminal is the industry standard data terminal">
+<rect x="70" y="26" width="180" height="50" rx="6" fill="${P2}" stroke="${G}" stroke-width="1.4"/>
+<text class="vgt" x="160" y="48" text-anchor="middle" fill="${G}" style="font-size:9px">Real-time data + news + chat</text>
+<text class="vs" x="160" y="64" text-anchor="middle" style="font-size:8px" fill="${MU}">~$27,000 / year</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">The orange-on-black screen</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">on every trading floor.</text>
+</svg>`,
+
+"Capital IQ":`<svg viewBox="0 0 320 110" aria-label="Capital IQ is a web-based platform for M&A screening and clean financial data">
+<rect x="80" y="26" width="160" height="36" rx="7" class="vg"/>
+<text class="vgt" x="160" y="48" text-anchor="middle" style="font-size:9px">Comps + M&amp;A screening</text>
+<text class="vs" x="160" y="82" text-anchor="middle" fill="${MU}">Browser-based — no install.</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">The banker's go-to.</text>
+</svg>`,
+
+"FactSet":`<svg viewBox="0 0 320 110" aria-label="FactSet is known for its Excel and PowerPoint plugin used to build pitchbooks">
+<rect x="60" y="26" width="90" height="34" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="105" y="47" text-anchor="middle" style="font-size:8px">Raw data</text>
+<line x1="152" y1="43" x2="188" y2="43" stroke="${G}" stroke-width="1.4"/>
+<rect x="190" y="26" width="90" height="34" rx="6" class="vg"/>
+<text class="vgt" x="235" y="47" text-anchor="middle" style="font-size:8px">Pitchbook slide</text>
+<text class="vs" x="160" y="86" text-anchor="middle" fill="${MU}">Excel + PowerPoint plugins</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="${MU}">built for speed.</text>
+</svg>`,
+
+"Refinitiv Eikon":`<svg viewBox="0 0 320 110" aria-label="Refinitiv Eikon is Bloomberg's most direct lower-cost competitor">
+<rect x="70" y="26" width="80" height="34" rx="6" class="vg"/>
+<text class="vgt" x="110" y="47" text-anchor="middle" style="font-size:8px">Bloomberg</text>
+<text class="vt" x="160" y="48" text-anchor="middle" fill="${MU}" style="font-size:12px">vs</text>
+<rect x="170" y="26" width="80" height="34" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="210" y="47" text-anchor="middle" style="font-size:8px">Eikon</text>
+<text class="vs" x="160" y="86" text-anchor="middle" fill="${MU}">Similar data, lower price —</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="${MU}">now rebranded LSEG Workspace.</text>
+</svg>`,
+
+"Stock Buyback":`<svg viewBox="0 0 320 120" aria-label="A stock buyback reduces shares outstanding, increasing each remaining share's slice">
+<text class="vs" x="80" y="24" text-anchor="middle" fill="${MU}">Before</text>
+<rect x="30" y="34" width="16" height="30" fill="${P2}" stroke="${L}"/>
+<rect x="50" y="34" width="16" height="30" fill="${P2}" stroke="${L}"/>
+<rect x="70" y="34" width="16" height="30" fill="${P2}" stroke="${L}"/>
+<rect x="90" y="34" width="16" height="30" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="240" y="24" text-anchor="middle" fill="${MU}">After buyback</text>
+<rect x="200" y="34" width="20" height="30" class="vg"/>
+<rect x="224" y="34" width="20" height="30" class="vg"/>
+<rect x="248" y="34" width="20" height="30" fill="${P2}" stroke="${L}" opacity=".3" stroke-dasharray="2 2"/>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Fewer shares outstanding —</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">each one owns a bigger slice.</text>
+</svg>`,
+
+"Stock Split":`<svg viewBox="0 0 320 120" aria-label="A stock split divides each share into more, cheaper shares of the same total value">
+<rect x="60" y="30" width="60" height="40" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="90" y="54" text-anchor="middle" style="font-size:9px">1 share</text>
+<line x1="130" y1="50" x2="170" y2="50" stroke="${G}" stroke-width="1.4"/>
+<rect x="180" y="20" width="30" height="24" rx="5" class="vg"/>
+<rect x="216" y="20" width="30" height="24" rx="5" class="vg"/>
+<rect x="180" y="50" width="30" height="24" rx="5" class="vg"/>
+<rect x="216" y="50" width="30" height="24" rx="5" class="vg"/>
+<text class="vs" x="160" y="94" text-anchor="middle" fill="${MU}">More shares, same total value.</text>
+<text class="vs" x="160" y="110" text-anchor="middle" fill="${MU}">Same pie, more slices.</text>
+</svg>`,
+
+"Reverse Stock Split":`<svg viewBox="0 0 320 120" aria-label="A reverse stock split combines several shares into fewer, pricier shares">
+<rect x="60" y="20" width="26" height="22" rx="5" fill="${P2}" stroke="${L}"/>
+<rect x="94" y="20" width="26" height="22" rx="5" fill="${P2}" stroke="${L}"/>
+<rect x="60" y="48" width="26" height="22" rx="5" fill="${P2}" stroke="${L}"/>
+<rect x="94" y="48" width="26" height="22" rx="5" fill="${P2}" stroke="${L}"/>
+<line x1="140" y1="50" x2="180" y2="50" stroke="${G}" stroke-width="1.4"/>
+<rect x="190" y="30" width="70" height="40" rx="8" class="vg"/>
+<text class="vgt" x="225" y="54" text-anchor="middle" style="font-size:9px">1 share</text>
+<text class="vs" x="160" y="94" text-anchor="middle" fill="${MU}">Fewer, pricier shares —</text>
+<text class="vs" x="160" y="110" text-anchor="middle" fill="${MU}">often to avoid delisting.</text>
+</svg>`,
+
+"Short Selling":`<svg viewBox="0 0 320 130" aria-label="Short selling profits when a borrowed security falls in price">
+<text class="vs" x="160" y="24" text-anchor="middle" fill="${MU}">Borrow, sell now, buy back later</text>
+<line x1="40" y1="55" x2="280" y2="55" stroke="${L}" stroke-width="1.4"/>
+<circle cx="70" cy="55" r="6" fill="${LO}"/>
+<text class="vt" x="70" y="42" text-anchor="middle" style="font-size:9px">Sell ₹100</text>
+<circle cx="250" cy="55" r="6" fill="${G}"/>
+<text class="vgt" x="250" y="42" text-anchor="middle" style="font-size:9px">Buy back ₹70</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="${MU}">Profit capped at 100%.</text>
+<text class="vs" x="160" y="116" text-anchor="middle" fill="${MU}">Loss is theoretically unlimited.</text>
+</svg>`,
+
+"Margin Call":`<svg viewBox="0 0 320 120" aria-label="A margin call demands more funds or the broker force-sells your position">
+<rect x="90" y="26" width="140" height="36" rx="7" class="vg"/>
+<text class="vgt" x="160" y="49" text-anchor="middle" style="font-size:9px">Deposit more, now</text>
+<text class="vs" x="160" y="86" text-anchor="middle" fill="${MU}">Ignore it, and the broker</text>
+<text class="vs" x="160" y="102" text-anchor="middle" fill="${MU}">force-sells your position.</text>
+</svg>`,
+
+"Black Swan Event":`<svg viewBox="0 0 320 120" aria-label="A black swan event is a rare unpredictable shock with major market impact">
+<line x1="30" y1="70" x2="290" y2="70" stroke="${L}" stroke-width="1.4"/>
+<circle cx="80" cy="68" r="4" fill="${MU}"/>
+<circle cx="140" cy="66" r="4" fill="${MU}"/>
+<circle cx="200" cy="30" r="7" class="vg"/>
+<text class="vgt" x="200" y="20" text-anchor="middle" style="font-size:8px">?!</text>
+<circle cx="260" cy="72" r="4" fill="${MU}"/>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Unpredictable by definition —</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">you can only prepare, not predict.</text>
+</svg>`,
+
+"Short Squeeze":`<svg viewBox="0 0 320 120" aria-label="A short squeeze forces short-sellers to buy back, pushing the price up further">
+<line x1="30" y1="90" x2="280" y2="20" stroke="${G}" stroke-width="1.8"/>
+<circle cx="80" cy="76" r="5" fill="${MU}"/>
+<text class="vs" x="80" y="102" text-anchor="middle" style="font-size:8px">shorts panic-buy</text>
+<circle cx="220" cy="34" r="5" class="vg"/>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="${MU}">The more it rises, the more</text>
+<text class="vs" x="160" y="116" text-anchor="middle" fill="${MU}">shorts are forced to cover.</text>
+</svg>`,
+
+"Activist Investor":`<svg viewBox="0 0 320 120" aria-label="An activist investor buys a stake specifically to force company change">
+<rect x="30" y="34" width="90" height="36" rx="7" fill="${P2}" stroke="${LO}"/>
+<text class="vs" x="75" y="56" text-anchor="middle" style="font-size:9px">Buys a stake</text>
+<line x1="122" y1="52" x2="188" y2="52" stroke="${G}" stroke-width="1.4"/>
+<rect x="190" y="34" width="100" height="36" rx="7" class="vg"/>
+<text class="vgt" x="240" y="56" text-anchor="middle" style="font-size:9px">Demands change</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Not passive — they show up,</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">make noise, sometimes win board seats.</text>
+</svg>`,
+
+"S&P 500":`<svg viewBox="0 0 320 110" aria-label="The S&P 500 tracks 500 large US companies weighted by market size">
+<rect x="70" y="26" width="180" height="36" rx="7" class="vg"/>
+<text class="vgt" x="160" y="49" text-anchor="middle" style="font-size:9px">500 largest US companies</text>
+<text class="vs" x="160" y="82" text-anchor="middle" fill="${MU}">Weighted by size — the world's</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">most-quoted market benchmark.</text>
+</svg>`,
+
+"Dow Jones":`<svg viewBox="0 0 320 110" aria-label="The Dow Jones tracks 30 major US companies weighted by share price">
+<rect x="80" y="26" width="160" height="36" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="160" y="49" text-anchor="middle" style="font-size:9px">30 companies, price-weighted</text>
+<text class="vs" x="160" y="82" text-anchor="middle" fill="${MU}">Older, simpler than the S&amp;P 500 —</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">but a less accurate gauge.</text>
+</svg>`,
+
+"Comps":`<svg viewBox="0 0 320 120" aria-label="Comps values a company by comparing it to similar publicly traded peers">
+<rect x="20" y="30" width="60" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="50" y="49" text-anchor="middle" style="font-size:8px">8x</text>
+<rect x="90" y="30" width="60" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="120" y="49" text-anchor="middle" style="font-size:8px">8x</text>
+<rect x="160" y="30" width="60" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="190" y="49" text-anchor="middle" style="font-size:8px">8x</text>
+<rect x="230" y="30" width="60" height="30" rx="6" class="vg"/>
+<text class="vgt" x="260" y="49" text-anchor="middle" style="font-size:8px">8x?</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">If three peers trade at 8x,</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">the fourth probably should too.</text>
+</svg>`,
+
+"Non-GAAP":`<svg viewBox="0 0 320 120" aria-label="Non-GAAP earnings strip out items a company considers one-off">
+<rect x="40" y="30" width="100" height="34" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="90" y="52" text-anchor="middle" style="font-size:8.5px">GAAP profit</text>
+<text class="vt" x="170" y="52" text-anchor="middle" fill="${MU}" style="font-size:12px">−</text>
+<rect x="190" y="30" width="100" height="34" rx="7" class="vg"/>
+<text class="vgt" x="240" y="52" text-anchor="middle" style="font-size:8px">"One-offs"</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Sometimes useful, sometimes</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">a way to flatter a bad quarter.</text>
+</svg>`,
+
+"Soft Dollar":`<svg viewBox="0 0 320 120" aria-label="Soft dollar arrangements pay for research using trading commissions instead of cash">
+<rect x="30" y="34" width="100" height="36" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="80" y="56" text-anchor="middle" style="font-size:9px">Trade commission</text>
+<line x1="132" y1="52" x2="188" y2="52" stroke="${G}" stroke-width="1.4"/>
+<rect x="190" y="34" width="100" height="36" rx="7" class="vg"/>
+<text class="vgt" x="240" y="56" text-anchor="middle" style="font-size:9px">Pays for research</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Bundled into every trade —</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">heavily regulated for good reason.</text>
+</svg>`,
+
+"Data Scrubbing":`<svg viewBox="0 0 320 120" aria-label="Data scrubbing standardizes financial statements so companies can be compared fairly">
+<rect x="30" y="34" width="100" height="36" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="80" y="52" text-anchor="middle" style="font-size:8px">Messy financials</text>
+<text class="vs" x="80" y="64" text-anchor="middle" style="font-size:8px">(different formats)</text>
+<line x1="132" y1="52" x2="188" y2="52" stroke="${G}" stroke-width="1.4"/>
+<rect x="190" y="34" width="100" height="36" rx="7" class="vg"/>
+<text class="vgt" x="240" y="56" text-anchor="middle" style="font-size:9px">Comparable data</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Apples to apples, before</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">any real comparison begins.</text>
+</svg>`,
+
+"ROI":`<svg viewBox="0 0 320 110" aria-label="Return on Investment is net profit divided by cost">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:15px">Net Profit</text>
+<line x1="100" y1="52" x2="220" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:15px" fill="${MU}">Cost</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">What you got back vs. what you put in.</text>
+</svg>`,
+
+"ROE":`<svg viewBox="0 0 320 110" aria-label="Return on Equity is net income divided by shareholder equity">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Net Income</text>
+<line x1="90" y1="52" x2="230" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Shareholder Equity</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Watch for debt inflating this number.</text>
+</svg>`,
+
+"ROA":`<svg viewBox="0 0 320 110" aria-label="Return on Assets is net income divided by total assets">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Net Income</text>
+<line x1="90" y1="52" x2="230" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Total Assets</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Can't be flattered just by borrowing more.</text>
+</svg>`,
+
+"ROIC":`<svg viewBox="0 0 320 110" aria-label="Return on Invested Capital is profit divided by debt plus equity capital">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Operating Profit</text>
+<line x1="80" y1="52" x2="240" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:13px" fill="${MU}">Debt + Equity Capital</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Value investors trust this over ROE.</text>
+</svg>`,
+
+"CAGR":`<svg viewBox="0 0 320 118" aria-label="CAGR smooths a bumpy growth path into one steady annual growth rate">
+<path d="M30,80 Q100,30 170,60 T290,15" fill="none" stroke="${MU}" stroke-width="1.4" stroke-dasharray="3 3"/>
+<line x1="30" y1="80" x2="290" y2="15" stroke="${G}" stroke-width="1.8"/>
+<text class="vs" x="60" y="96" style="font-size:8px" fill="${MU}">bumpy reality</text>
+<text class="vgt" x="245" y="10" style="font-size:8px">smoothed CAGR</text>
+<text class="vs" x="160" y="112" text-anchor="middle" fill="${MU}">One steady rate standing in for the mess.</text>
+</svg>`,
+
+"DCF":`<svg viewBox="0 0 320 130" aria-label="DCF values something today based on discounted future cash flows">
+<circle cx="80" cy="50" r="14" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="80" y="53" text-anchor="middle" style="font-size:7px">Yr 1</text>
+<circle cx="150" cy="50" r="14" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="150" y="53" text-anchor="middle" style="font-size:7px">Yr 2</text>
+<circle cx="220" cy="50" r="14" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="220" y="53" text-anchor="middle" style="font-size:7px">Yr 3</text>
+<line x1="80" y1="66" x2="270" y2="90" stroke="${G}" stroke-width="1.4" stroke-dasharray="3 3"/>
+<rect x="255" y="80" width="55" height="26" rx="6" class="vg"/>
+<text class="vgt" x="282" y="97" text-anchor="middle" style="font-size:8px">Value today</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">Every future rupee, discounted</text>
+<text class="vs" x="160" y="128" text-anchor="middle" fill="${MU}">back to what it's worth now.</text>
+</svg>`,
+
+"Economic Moat":`<svg viewBox="0 0 320 120" aria-label="An economic moat protects a company from competitors">
+<circle cx="160" cy="55" r="34" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="160" y="59" text-anchor="middle" style="font-size:9px">Company</text>
+<circle cx="160" cy="55" r="50" fill="none" stroke="${G}" stroke-width="2" stroke-dasharray="5 4"/>
+<text class="vgt" x="160" y="10" text-anchor="middle" style="font-size:8px">brand · patents · scale</text>
+<text class="vs" x="160" y="110" text-anchor="middle" fill="${MU}">The moat keeps competitors out.</text>
+</svg>`,
+
+"Earnings Yield":`<svg viewBox="0 0 320 110" aria-label="Earnings Yield is earnings per share divided by share price, the inverse of P/E">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">EPS</text>
+<line x1="120" y1="52" x2="200" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Share Price</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">P/E flipped upside down.</text>
+</svg>`,
+
+"Capital Gains Yield":`<svg viewBox="0 0 320 110" aria-label="Capital Gains Yield measures price appreciation alone, ignoring dividends">
+<line x1="30" y1="70" x2="290" y2="30" stroke="${G}" stroke-width="1.8"/>
+<circle cx="30" cy="70" r="5" fill="${MU}"/>
+<circle cx="290" cy="30" r="5" class="vg"/>
+<text class="vs" x="160" y="88" text-anchor="middle" fill="${MU}">Price movement only —</text>
+<text class="vs" x="160" y="104" text-anchor="middle" fill="${MU}">dividends are separate.</text>
+</svg>`,
+
+"EVA":`<svg viewBox="0 0 320 110" aria-label="Economic Value Added is profit minus the cost of the capital used to earn it">
+<text class="vt" x="160" y="45" text-anchor="middle" style="font-size:14px">Profit − Cost of Capital</text>
+<text class="vs" x="160" y="80" text-anchor="middle" fill="${MU}">If it doesn't beat the cost of capital,</text>
+<text class="vs" x="160" y="96" text-anchor="middle" fill="${MU}">value was destroyed, not created.</text>
+</svg>`,
+
+"EPV":`<svg viewBox="0 0 320 110" aria-label="Earnings Power Value estimates worth from current earnings, assuming zero growth">
+<rect x="90" y="26" width="140" height="36" rx="7" class="vg"/>
+<text class="vgt" x="160" y="49" text-anchor="middle" style="font-size:9px">Current earnings, no growth</text>
+<text class="vs" x="160" y="86" text-anchor="middle" fill="${MU}">Deliberately conservative — the</text>
+<text class="vs" x="160" y="102" text-anchor="middle" fill="${MU}">value of the business as it stands.</text>
+</svg>`,
+
+"ROCE":`<svg viewBox="0 0 320 110" aria-label="Return on Capital Employed is operating profit divided by capital employed">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Operating Profit</text>
+<line x1="80" y1="52" x2="240" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:13px" fill="${MU}">Capital Employed</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">A favourite for capital-heavy businesses.</text>
+</svg>`,
+
+"Operating Ratio":`<svg viewBox="0 0 320 110" aria-label="Operating Ratio is operating costs divided by sales">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Operating Costs</text>
+<line x1="85" y1="52" x2="235" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Sales</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Lower means more revenue survives.</text>
+</svg>`,
+
+"Beta":`<svg viewBox="0 0 320 110" aria-label="Beta measures how much a stock moves relative to the overall market">
+<line x1="30" y1="80" x2="290" y2="20" stroke="${L}" stroke-width="1.4" stroke-dasharray="3 3"/>
+<text class="vs" x="270" y="14" style="font-size:8px" fill="${MU}">market</text>
+<line x1="30" y1="90" x2="290" y2="10" stroke="${G}" stroke-width="1.8"/>
+<text class="vgt" x="250" y="30" style="font-size:8px">beta 1.5 stock</text>
+<text class="vs" x="160" y="102" text-anchor="middle" fill="${MU}">Above 1 = more volatile than the market.</text>
+</svg>`,
+
+"Sharpe Ratio":`<svg viewBox="0 0 320 110" aria-label="Sharpe Ratio is excess return divided by volatility">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Excess Return</text>
+<line x1="90" y1="52" x2="230" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Volatility</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Good returns, or just good luck?</text>
+</svg>`,
+
+"Sortino Ratio":`<svg viewBox="0 0 320 110" aria-label="Sortino Ratio only punishes downside volatility, unlike the Sharpe Ratio">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Excess Return</text>
+<line x1="90" y1="52" x2="230" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:13px" fill="${MU}">Downside Volatility</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Upside swings don't count against you.</text>
+</svg>`,
+
+"Information Ratio":`<svg viewBox="0 0 320 110" aria-label="Information Ratio measures consistency of beating a benchmark">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:13px">Return vs. Benchmark</text>
+<line x1="80" y1="52" x2="240" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:13px" fill="${MU}">Consistency of that Edge</text>
+<text class="vs" x="160" y="92" text-anchor="middle" fill="${MU}">One lucky year scores lower</text>
+<text class="vs" x="160" y="108" text-anchor="middle" fill="${MU}">than steady, repeatable skill.</text>
+</svg>`,
+
+"Treynor Ratio":`<svg viewBox="0 0 320 110" aria-label="Treynor Ratio is excess return divided by beta, market risk only">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Excess Return</text>
+<line x1="100" y1="52" x2="220" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Beta</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Only the risk you can't diversify away.</text>
+</svg>`,
+
+"Maximum Drawdown":`<svg viewBox="0 0 320 120" aria-label="Maximum Drawdown is the worst peak-to-trough loss an investment has suffered">
+<path d="M30,40 L110,25 L170,95 L250,35 L290,50" fill="none" stroke="${MU}" stroke-width="1.4"/>
+<circle cx="110" cy="25" r="4" fill="${MU}"/>
+<circle cx="170" cy="95" r="4" class="vg"/>
+<line x1="110" y1="25" x2="170" y2="95" stroke="${G}" stroke-width="1.4" stroke-dasharray="3 3"/>
+<text class="vgt" x="190" y="65" style="font-size:8px">max drawdown</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="${MU}">The worst drop, peak to trough.</text>
+</svg>`,
+
+"YoY":`<svg viewBox="0 0 320 110" aria-label="Year over Year compares this year's number to the same period last year">
+<rect x="60" y="30" width="80" height="34" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="100" y="52" text-anchor="middle" style="font-size:8px">Dec last year</text>
+<text class="vt" x="160" y="52" text-anchor="middle" fill="${MU}" style="font-size:12px">vs</text>
+<rect x="180" y="30" width="80" height="34" rx="7" class="vg"/>
+<text class="vgt" x="220" y="52" text-anchor="middle" style="font-size:8px">Dec this year</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Same period, strips out seasonality.</text>
+</svg>`,
+
+"MoM":`<svg viewBox="0 0 320 110" aria-label="Month over Month compares this month's number to last month's">
+<rect x="70" y="30" width="70" height="34" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="105" y="52" text-anchor="middle" style="font-size:8px">Last month</text>
+<text class="vt" x="160" y="52" text-anchor="middle" fill="${MU}" style="font-size:12px">vs</text>
+<rect x="180" y="30" width="70" height="34" rx="7" class="vg"/>
+<text class="vgt" x="215" y="52" text-anchor="middle" style="font-size:8px">This month</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Faster signal, noisier reading.</text>
+</svg>`,
+
+"EPS Growth":`<svg viewBox="0 0 320 118" aria-label="EPS Growth measures how fast earnings per share are increasing period over period">
+<line x1="30" y1="70" x2="290" y2="20" stroke="${G}" stroke-width="1.8"/>
+<circle cx="30" cy="70" r="5" fill="${MU}"/>
+<text class="vs" x="30" y="88" text-anchor="middle" style="font-size:8px">EPS then</text>
+<circle cx="290" cy="20" r="5" class="vg"/>
+<text class="vgt" x="260" y="14" text-anchor="middle" style="font-size:8px">EPS now</text>
+<text class="vs" x="160" y="102" text-anchor="middle" fill="${MU}">The number that moves prices</text>
+<text class="vs" x="160" y="116" text-anchor="middle" fill="${MU}">most reliably.</text>
+</svg>`,
+
+"Cash Conversion Ratio":`<svg viewBox="0 0 320 110" aria-label="Cash Conversion Ratio shows how much accounting profit becomes real cash">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:13px">Operating Cash Flow</text>
+<line x1="75" y1="52" x2="245" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Net Income</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">High profit, low cash? Red flag.</text>
+</svg>`,
+
+"Cash Coverage Ratio":`<svg viewBox="0 0 320 110" aria-label="Cash Coverage Ratio is EBITDA divided by cash interest expense">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:15px">EBITDA</text>
+<line x1="90" y1="52" x2="230" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:12px" fill="${MU}">Cash Interest Expense</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">A thin cushion means trouble is close.</text>
+</svg>`,
+
+"Dividend Coverage Ratio":`<svg viewBox="0 0 320 110" aria-label="Dividend Coverage Ratio is earnings divided by dividends paid">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:14px">Earnings</text>
+<line x1="100" y1="52" x2="220" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:14px" fill="${MU}">Dividends Paid</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Near 1 means no room for a bad year.</text>
+</svg>`,
+
+"Accounts Receivable Turnover":`<svg viewBox="0 0 320 110" aria-label="Accounts Receivable Turnover shows how often a company collects money it is owed">
+<circle cx="70" cy="50" r="24" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="70" y="54" text-anchor="middle" style="font-size:8px">Invoice</text>
+<line x1="98" y1="50" x2="212" y2="50" stroke="${G}" stroke-width="1.6" stroke-dasharray="4 3"/>
+<circle cx="240" cy="50" r="24" class="vg"/>
+<text class="vgt" x="240" y="54" text-anchor="middle" style="font-size:8px">Collected</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">How fast customers actually pay up.</text>
+</svg>`,
+
+"Fixed Cost":`<svg viewBox="0 0 320 110" aria-label="Fixed costs stay the same regardless of production volume">
+<line x1="30" y1="50" x2="290" y2="50" stroke="${G}" stroke-width="1.8"/>
+<text class="vs" x="60" y="30" style="font-size:8px" fill="${MU}">0 units</text>
+<text class="vs" x="250" y="30" style="font-size:8px" fill="${MU}">1000 units</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Rent, salaries — the same bill either way.</text>
+</svg>`,
+
+"Variable Cost":`<svg viewBox="0 0 320 122" aria-label="Variable costs rise and fall directly with production volume">
+<line x1="30" y1="80" x2="290" y2="20" stroke="${G}" stroke-width="1.8"/>
+<text class="vs" x="60" y="98" style="font-size:8px" fill="${MU}">0 units</text>
+<text class="vs" x="250" y="14" style="font-size:8px" fill="${MU}">1000 units</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">Make zero, spend zero.</text>
+<text class="vs" x="160" y="120" text-anchor="middle" fill="${MU}">Make more, spend more.</text>
+</svg>`,
+
+"Marginal Cost":`<svg viewBox="0 0 320 110" aria-label="Marginal cost is the cost of producing just one more unit">
+<rect x="60" y="30" width="180" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="150" y="49" text-anchor="middle" style="font-size:8px">999 units already made</text>
+<rect x="245" y="30" width="35" height="30" rx="6" class="vg"/>
+<text class="vgt" x="262" y="49" text-anchor="middle" style="font-size:8px">+1</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">The cost of that one extra unit only.</text>
+</svg>`,
+
+"Operating Leverage":`<svg viewBox="0 0 320 110" aria-label="Operating leverage means profit swings more when fixed costs are high">
+<text class="vs" x="90" y="24" text-anchor="middle" fill="${MU}">Small sales change</text>
+<line x1="40" y1="55" x2="140" y2="45" stroke="${MU}" stroke-width="1.4"/>
+<text class="vt" x="160" y="52" text-anchor="middle" fill="${G}" style="font-size:14px">→</text>
+<text class="vs" x="240" y="24" text-anchor="middle" fill="${MU}">Big profit swing</text>
+<line x1="180" y1="60" x2="280" y2="20" stroke="${G}" stroke-width="1.8"/>
+<text class="vs" x="160" y="94" text-anchor="middle" fill="${MU}">High fixed costs amplify every move.</text>
+</svg>`,
+
+"Incremental Margin":`<svg viewBox="0 0 320 110" aria-label="Incremental margin is how much of each additional rupee of revenue becomes profit">
+<text class="vt" x="160" y="42" text-anchor="middle" style="font-size:13px">Δ Profit</text>
+<line x1="120" y1="52" x2="200" y2="52" stroke="${G}" stroke-width="1.6"/>
+<text class="vt" x="160" y="72" text-anchor="middle" style="font-size:13px" fill="${MU}">Δ Revenue</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="${MU}">Growth can look great and still cost more.</text>
+</svg>`,
+
+"Long-Short Equity":`<svg viewBox="0 0 320 110" aria-label="Long-short equity buys expected winners and shorts expected losers at once">
+<rect x="30" y="30" width="110" height="34" rx="7" class="vg"/>
+<text class="vgt" x="85" y="52" text-anchor="middle" style="font-size:9px">Long: expected to rise</text>
+<rect x="180" y="30" width="110" height="34" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="235" y="52" text-anchor="middle" style="font-size:9px">Short: expected to fall</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Profit from being right on both sides.</text>
+</svg>`,
+
+"Market Neutral Strategy":`<svg viewBox="0 0 320 110" aria-label="A market neutral strategy balances longs and shorts so the portfolio ignores market direction">
+<rect x="40" y="30" width="90" height="30" rx="6" class="vg"/>
+<text class="vgt" x="85" y="49" text-anchor="middle" style="font-size:8px">Longs</text>
+<text class="vt" x="160" y="50" text-anchor="middle" fill="${MU}" style="font-size:13px">≈</text>
+<rect x="190" y="30" width="90" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="235" y="49" text-anchor="middle" style="font-size:8px">Shorts</text>
+<text class="vs" x="160" y="88" text-anchor="middle" fill="${MU}">Barely moves with the market at all.</text>
+</svg>`,
+
+"Event-Driven Investing":`<svg viewBox="0 0 320 110" aria-label="Event-driven investing trades around specific corporate events like mergers">
+<rect x="90" y="26" width="140" height="34" rx="7" class="vg"/>
+<text class="vgt" x="160" y="48" text-anchor="middle" style="font-size:9px">Merger · bankruptcy · spin-off</text>
+<text class="vs" x="160" y="84" text-anchor="middle" fill="${MU}">Betting on the event's outcome,</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="${MU}">not the market's general direction.</text>
+</svg>`,
+
+"Active vs Passive Investing":`<svg viewBox="0 0 320 110" aria-label="Active investing tries to beat the market, passive investing simply owns it">
+<rect x="30" y="30" width="110" height="34" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="85" y="52" text-anchor="middle" style="font-size:9px">Active: pick winners</text>
+<rect x="180" y="30" width="110" height="34" rx="7" class="vg"/>
+<text class="vgt" x="235" y="52" text-anchor="middle" style="font-size:9px">Passive: own it all</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Passive usually wins once fees count.</text>
+</svg>`,
+
+"Dollar Cost Averaging":`<svg viewBox="0 0 320 110" aria-label="Dollar cost averaging invests a fixed amount on a regular schedule regardless of price">
+<line x1="30" y1="60" x2="290" y2="60" stroke="${L}" stroke-width="1.2"/>
+<circle cx="70" cy="60" r="5" fill="${LO}"/>
+<circle cx="140" cy="60" r="5" fill="${LO}"/>
+<circle cx="210" cy="60" r="5" fill="${LO}"/>
+<circle cx="280" cy="60" r="5" fill="${LO}"/>
+<text class="vs" x="160" y="34" text-anchor="middle" fill="${MU}">Same amount, every time</text>
+<text class="vs" x="160" y="84" text-anchor="middle" fill="${MU}">More units when cheap,</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="${MU}">fewer units when pricey.</text>
+</svg>`,
+
+"Pricing Power":`<svg viewBox="0 0 320 110" aria-label="Pricing power is a company's ability to raise prices without losing customers">
+<rect x="90" y="26" width="140" height="34" rx="7" class="vg"/>
+<text class="vgt" x="160" y="48" text-anchor="middle" style="font-size:9px">Raise price → customers stay</text>
+<text class="vs" x="160" y="86" text-anchor="middle" fill="${MU}">The clearest sign of a strong moat.</text>
+</svg>`,
+
+"Market Share":`<svg viewBox="0 0 320 110" aria-label="Market share is the slice of total industry sales belonging to one company">
+<rect x="40" y="30" width="240" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<rect x="40" y="30" width="70" height="30" rx="6" class="vg"/>
+<text class="vgt" x="75" y="49" text-anchor="middle" style="font-size:8px">You</text>
+<text class="vs" x="195" y="49" text-anchor="middle" style="font-size:8px">Everyone else</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">Your slice of total industry sales.</text>
+</svg>`,
+
+"Bottom-Up Forecasting":`<svg viewBox="0 0 320 132" aria-label="Bottom-up forecasting builds a sales forecast from individual units up">
+<rect x="30" y="70" width="50" height="24" rx="5" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="55" y="86" text-anchor="middle" style="font-size:7px">Unit</text>
+<rect x="90" y="70" width="50" height="24" rx="5" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="115" y="86" text-anchor="middle" style="font-size:7px">Customer</text>
+<rect x="150" y="70" width="60" height="24" rx="5" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="180" y="86" text-anchor="middle" style="font-size:7px">Product</text>
+<line x1="130" y1="66" x2="180" y2="40" stroke="${G}" stroke-width="1.2"/>
+<rect x="150" y="20" width="80" height="26" rx="6" class="vg"/>
+<text class="vgt" x="190" y="38" text-anchor="middle" style="font-size:8px">Total forecast</text>
+<text class="vs" x="160" y="108" text-anchor="middle" fill="${MU}">Slower to build, harder to</text>
+<text class="vs" x="160" y="124" text-anchor="middle" fill="${MU}">fool yourself with.</text>
+</svg>`,
+
+"Top-Down Forecasting":`<svg viewBox="0 0 320 122" aria-label="Top-down forecasting starts from total market size and estimates a company's slice">
+<rect x="90" y="20" width="140" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="160" y="39" text-anchor="middle" style="font-size:8px">Total market size</text>
+<line x1="160" y1="52" x2="160" y2="66" stroke="${G}" stroke-width="1.2"/>
+<rect x="120" y="68" width="80" height="26" rx="6" class="vg"/>
+<text class="vgt" x="160" y="85" text-anchor="middle" style="font-size:8px">Your slice</text>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="${MU}">Fast and rough — a sanity</text>
+<text class="vs" x="160" y="120" text-anchor="middle" fill="${MU}">check, not gospel.</text>
+</svg>`,
+
+"Horizontal Analysis":`<svg viewBox="0 0 320 110" aria-label="Horizontal analysis compares financial statements across several years side by side">
+<rect x="30" y="30" width="60" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="60" y="49" text-anchor="middle" style="font-size:8px">Yr 1</text>
+<rect x="100" y="30" width="60" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="130" y="49" text-anchor="middle" style="font-size:8px">Yr 2</text>
+<rect x="170" y="30" width="60" height="30" rx="6" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="200" y="49" text-anchor="middle" style="font-size:8px">Yr 3</text>
+<rect x="240" y="30" width="60" height="30" rx="6" class="vg"/>
+<text class="vgt" x="270" y="49" text-anchor="middle" style="font-size:8px">Yr 4</text>
+<text class="vs" x="160" y="84" text-anchor="middle" fill="${MU}">Line them up, watch</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="${MU}">what actually changes.</text>
+</svg>`,
+
+"Reverse DCF":`<svg viewBox="0 0 320 110" aria-label="Reverse DCF works backward from price to find implied growth assumptions">
+<rect x="30" y="30" width="90" height="34" rx="7" class="vg"/>
+<text class="vgt" x="75" y="52" text-anchor="middle" style="font-size:8.5px">Current price</text>
+<line x1="122" y1="47" x2="188" y2="47" stroke="${MU}" stroke-width="1.2"/>
+<text class="vs" x="155" y="40" text-anchor="middle" style="font-size:8px" fill="${MU}">works backward</text>
+<rect x="190" y="30" width="100" height="34" rx="7" fill="${P2}" stroke="${L}"/>
+<text class="vs" x="240" y="52" text-anchor="middle" style="font-size:8px">Implied growth</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="${MU}">What would have to be true?</text>
 </svg>`
 };
 
