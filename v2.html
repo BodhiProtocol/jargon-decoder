@@ -94,7 +94,8 @@ input{font-family:inherit}
 .view.off{display:none}
 
 /* ---------- hero ---------- */
-.hero{background:linear-gradient(120deg,var(--accent-soft) 0%,#fff 65%);border:1px solid var(--border);border-radius:var(--radius);padding:38px 40px;box-shadow:var(--shadow)}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:28px;background:linear-gradient(120deg,var(--accent-soft) 0%,#fff 65%);border:1px solid var(--border);border-radius:var(--radius);padding:38px 40px;box-shadow:var(--shadow)}
+.hero-text{flex:1;min-width:0}
 .hero h1{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;line-height:1.15;margin:0 0 10px;letter-spacing:-.01em}
 .hero h1 .accent{color:var(--accent)}
 .hero p{color:var(--muted);font-size:.95rem;max-width:520px;margin:0 0 22px}
@@ -104,8 +105,10 @@ input{font-family:inherit}
 .hero-search button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-weight:600;font-size:.84rem;cursor:pointer}
 .hero-search button:hover{background:#3E4BE0}
 .hero-pills{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px;font-size:.78rem;color:var(--muted)}
-.hero-pill{background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.78rem;color:var(--ink);cursor:pointer}
+.hero-pill{background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.78rem;font-family:inherit;color:var(--ink);cursor:pointer}
 .hero-pill:hover{border-color:var(--accent);color:var(--accent)}
+.hero-illustration{width:140px;flex-shrink:0}
+.hero-illustration svg{width:100%;height:auto;display:block}
 
 .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .section-head h2{font-size:1.08rem;font-weight:700;margin:0}
@@ -116,7 +119,7 @@ input{font-family:inherit}
 /* ---------- learning paths ---------- */
 .path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .path-grid.wide{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
-.path-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;transition:box-shadow .15s ease,border-color .15s ease;box-shadow:var(--shadow)}
+.path-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;transition:box-shadow .15s ease,border-color .15s ease;box-shadow:var(--shadow);font:inherit;color:inherit;text-align:left;width:100%;display:block}
 .path-card:hover{border-color:var(--accent)}
 .path-card .picon{width:36px;height:36px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:12px}
 .path-card .pname{font-weight:700;font-size:.92rem;margin-bottom:2px}
@@ -128,7 +131,7 @@ input{font-family:inherit}
 
 /* ---------- popular concepts ---------- */
 .popular-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.pop-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;cursor:pointer;box-shadow:var(--shadow)}
+.pop-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;cursor:pointer;box-shadow:var(--shadow);font:inherit;color:inherit;text-align:left;width:100%;display:block}
 .pop-card:hover{border-color:var(--accent)}
 .pop-card .picon{width:32px;height:32px;border-radius:9px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:10px}
 .pop-card .pname{font-weight:700;font-size:.85rem;margin-bottom:3px}
@@ -136,7 +139,7 @@ input{font-family:inherit}
 
 /* ---------- quick access ---------- */
 .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.quick-tile{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;cursor:pointer;box-shadow:var(--shadow)}
+.quick-tile{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;cursor:pointer;box-shadow:var(--shadow);font:inherit;color:inherit;width:100%}
 .quick-tile:hover{border-color:var(--accent)}
 .quick-tile .qicon{font-size:1.3rem}
 .quick-tile .qlabel{font-size:.78rem;font-weight:600;color:var(--ink)}
@@ -177,10 +180,11 @@ input{font-family:inherit}
 
 /* ---------- visual library ---------- */
 .visual-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.visual-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;box-shadow:var(--shadow)}
+.visual-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;box-shadow:var(--shadow);font:inherit;color:inherit;text-align:left;width:100%;display:block}
 .visual-card:hover{border-color:var(--accent)}
 .visual-card .vterm{font-weight:700;font-size:.84rem;margin-bottom:8px}
 .visual-card .viz{max-width:none}
+.visual-card .viz[data-lazy]{min-height:110px}
 
 /* ---------- flashcards ---------- */
 .flashcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);max-width:540px;margin:0 auto;padding:42px 38px;text-align:center;box-shadow:var(--shadow)}
@@ -219,7 +223,8 @@ input{font-family:inherit}
 .stat-v{font-weight:800;font-size:.95rem;color:var(--ink)}
 .stat-l{font-size:.66rem;color:var(--muted-2);text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
 
-.continue-card{margin-top:10px;background:var(--panel-2);border-radius:var(--radius-sm);padding:12px;cursor:pointer}
+.continue-card{margin-top:10px;background:var(--panel-2);border:none;border-radius:var(--radius-sm);padding:12px;cursor:pointer;font:inherit;color:inherit;text-align:left;width:100%;display:block}
+.continue-card:disabled{cursor:default}
 .continue-card .ct-icon{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:8px}
 .continue-card .ct-name{font-weight:700;font-size:.86rem;color:var(--ink)}
 .continue-card .ct-meta{font-size:.72rem;color:var(--muted);margin-top:6px}
@@ -246,19 +251,38 @@ input{font-family:inherit}
 .foot-meta a{color:var(--accent)}
 
 @media (max-width:1180px){
-  .right-col{display:none}
+  .workspace{flex-direction:column}
+  .right-col{width:100%;flex-direction:row;flex-wrap:wrap}
+  .right-col .panel{flex:1 1 240px}
   .path-grid,.popular-grid{grid-template-columns:repeat(2,1fr)}
   .quick-grid{grid-template-columns:repeat(2,1fr)}
 }
+@media (max-width:900px){
+  .hero-illustration{display:none}
+}
 @media (max-width:760px){
-  .sidebar{position:static;height:auto;width:100%;flex-direction:row;flex-wrap:wrap;align-items:center}
+  .sidebar{position:static;height:auto;width:100%;flex-direction:row;flex-wrap:nowrap;align-items:center;overflow-x:auto;gap:10px;padding:12px 14px;-webkit-overflow-scrolling:touch}
+  .sidebar .brand{flex-shrink:0}
+  .sidebar .nav{flex-direction:row;flex-shrink:0;gap:4px}
+  .sidebar .nav-item{flex-shrink:0;white-space:nowrap}
   .sidebar-section{display:none}
   .shell{flex-direction:column}
   .workspace{padding:18px 16px}
+  .topbar{padding:0 16px}
   .entry-row{grid-template-columns:1fr auto}
   .entry-plain,.entry-tag{display:none}
   .entry-body-content{padding-left:16px}
-  .hero{padding:26px}
+  .hero{padding:24px;flex-direction:column;align-items:flex-start}
+  .hero-search{flex-wrap:wrap}
+  .hero-search input{flex:1 1 160px}
+  .hero-search button{flex:1 1 100%}
+}
+@media (max-width:480px){
+  .path-grid,.popular-grid,.quick-grid{grid-template-columns:1fr}
+  .right-col{flex-direction:column}
+  .right-col .panel{flex:1 1 auto}
+  .streak-label{display:none}
+  .topbar{gap:10px}
 }
 </style>
 </head>
@@ -268,12 +292,12 @@ input{font-family:inherit}
   <aside class="sidebar">
     <div class="brand"><span class="brand-mark"></span>Bodhi<b>Protocol</b></div>
     <nav class="nav" id="mainNav">
-      <button class="nav-item active" data-view="home" type="button"><span class="ic">🏠</span>Home</button>
-      <button class="nav-item" data-view="explore" type="button"><span class="ic">🔎</span>Explore Concepts</button>
-      <button class="nav-item" data-view="paths" type="button"><span class="ic">🧭</span>Learning Paths</button>
-      <button class="nav-item" data-view="flash" type="button"><span class="ic">🃏</span>Flashcards</button>
-      <button class="nav-item" data-view="visual" type="button"><span class="ic">🖼️</span>Visual Library</button>
-      <button class="nav-item" data-view="bookmarks" type="button"><span class="ic">🔖</span>Bookmarks</button>
+      <button class="nav-item active" data-view="home" type="button" aria-current="page"><span class="ic" aria-hidden="true">🏠</span>Home</button>
+      <button class="nav-item" data-view="explore" type="button"><span class="ic" aria-hidden="true">🔎</span>Explore Concepts</button>
+      <button class="nav-item" data-view="paths" type="button"><span class="ic" aria-hidden="true">🧭</span>Learning Paths</button>
+      <button class="nav-item" data-view="flash" type="button"><span class="ic" aria-hidden="true">🃏</span>Flashcards</button>
+      <button class="nav-item" data-view="visual" type="button"><span class="ic" aria-hidden="true">🖼️</span>Visual Library</button>
+      <button class="nav-item" data-view="bookmarks" type="button"><span class="ic" aria-hidden="true">🔖</span>Bookmarks</button>
     </nav>
     <div class="sidebar-section">
       <div class="sidebar-section-title">Categories</div>
@@ -288,7 +312,7 @@ input{font-family:inherit}
         <input id="topSearch" type="text" placeholder="Search any concept… (e.g. Repo, DvP, Settlement)" aria-label="Search jargon terms" autocomplete="off">
       </div>
       <div class="topbar-right">
-        <div class="streak-badge">🔥 <span id="streakCount">0</span> Day Streak</div>
+        <div class="streak-badge">🔥 <span id="streakCount">0</span> <span class="streak-label">Day Streak</span></div>
       </div>
     </header>
 
@@ -306,6 +330,16 @@ input{font-family:inherit}
                 <button id="heroSearchBtn" type="button">Search</button>
               </div>
               <div class="hero-pills" id="heroPills">Popular:</div>
+            </div>
+            <div class="hero-illustration">
+              <svg viewBox="0 0 220 240" aria-hidden="true" focusable="false">
+                <path d="M40 232 V96 A70 70 0 0 1 180 96 V232" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="8" stroke-linejoin="round"/>
+                <line x1="30" y1="232" x2="190" y2="232" stroke="var(--accent)" stroke-width="8" stroke-linecap="round"/>
+                <rect x="78" y="176" width="16" height="40" rx="3" fill="var(--gold)"/>
+                <rect x="102" y="150" width="16" height="66" rx="3" fill="var(--accent)"/>
+                <rect x="126" y="126" width="16" height="90" rx="3" fill="var(--green)"/>
+                <circle cx="110" cy="66" r="14" fill="var(--gold)" opacity=".85"/>
+              </svg>
             </div>
           </div>
 
@@ -381,7 +415,7 @@ input{font-family:inherit}
 
         <div class="panel">
           <div class="panel-head">Continue Learning</div>
-          <div class="continue-card" id="continueCard"></div>
+          <button class="continue-card" id="continueCard" type="button"></button>
         </div>
 
         <div class="panel">
@@ -3043,7 +3077,11 @@ const VIEW_IDS = ['home','explore','paths','flash','visual','bookmarks'];
 function switchView(name){
   currentView = name;
   VIEW_IDS.forEach(v=>{ document.getElementById('view-'+v).classList.toggle('off', v!==name); });
-  document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===name));
+  document.querySelectorAll('.nav-item').forEach(b=>{
+    const isActive = b.dataset.view===name;
+    b.classList.toggle('active', isActive);
+    if(isActive){ b.setAttribute('aria-current','page'); } else { b.removeAttribute('aria-current'); }
+  });
   if(name==='explore') renderExplore();
   if(name==='flash') startFlashDeck();
   if(name==='visual') renderVisualLibrary();
@@ -3063,14 +3101,16 @@ function buildCatList(){
   const allBtn = document.createElement('button');
   allBtn.className = 'cat-item' + (activeCat==='all' ? ' active' : '');
   allBtn.type = 'button';
-  allBtn.innerHTML = `<span class="ic">${ALL_ICON}</span><span class="cname">All terms</span><span class="n">${TERMS2.length}</span>`;
+  allBtn.setAttribute('aria-pressed', activeCat==='all' ? 'true' : 'false');
+  allBtn.innerHTML = `<span class="ic" aria-hidden="true">${ALL_ICON}</span><span class="cname">All terms</span><span class="n">${TERMS2.length}</span>`;
   allBtn.addEventListener('click', ()=>{ activeCat='all'; buildCatList(); switchView('explore'); });
   catListEl.appendChild(allBtn);
   NEW_CATS.forEach((name,i)=>{
     const b = document.createElement('button');
     b.className = 'cat-item' + (activeCat===i ? ' active' : '');
     b.type = 'button';
-    b.innerHTML = `<span class="ic">${CAT_ICONS[i]}</span><span class="cname">${esc(name)}</span><span class="n">${catCounts[i]}</span>`;
+    b.setAttribute('aria-pressed', activeCat===i ? 'true' : 'false');
+    b.innerHTML = `<span class="ic" aria-hidden="true">${CAT_ICONS[i]}</span><span class="cname">${esc(name)}</span><span class="n">${catCounts[i]}</span>`;
     b.addEventListener('click', ()=>{ activeCat=i; buildCatList(); switchView('explore'); });
     catListEl.appendChild(b);
   });
@@ -3096,17 +3136,17 @@ function entryCardHTML(t){
   const hasViz = !!DIAG[t.t];
   const isBookmarked = state.bookmarks.includes(t.t);
   return `<div class="entry-card" data-term="${esc(t.t)}">
-    <button class="entry-row" type="button">
+    <button class="entry-row" type="button" aria-expanded="false">
       <span class="entry-term">${esc(t.t)}</span>
       <span class="entry-plain">${esc(t.p)}</span>
       <span class="entry-tag">${esc(NEW_CATS[t.nc])}</span>
-      <span class="entry-chev">›</span>
+      <span class="entry-chev" aria-hidden="true">›</span>
     </button>
     <div class="entry-body"><div class="entry-body-inner"><div class="entry-body-content">
       <p>${esc(t.m)}</p>
       ${hasViz ? `<div class="viz">${DIAG[t.t]}</div>` : ''}
       <div class="entry-actions">
-        <button class="bookmark-btn ${isBookmarked?'active':''}" data-term="${esc(t.t)}" type="button">${isBookmarked?'★ Bookmarked':'☆ Bookmark'}</button>
+        <button class="bookmark-btn ${isBookmarked?'active':''}" data-term="${esc(t.t)}" type="button" aria-pressed="${isBookmarked}">${isBookmarked?'★ Bookmarked':'☆ Bookmark'}</button>
       </div>
     </div></div></div>
   </div>`;
@@ -3117,6 +3157,7 @@ function attachEntryBehavior(root){
       const card = btn.closest('.entry-card');
       const wasOpen = card.classList.contains('open');
       card.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(!wasOpen));
       if(!wasOpen){
         const t = termByName[card.dataset.term];
         if(t) markViewed(t);
@@ -3128,8 +3169,8 @@ function attachEntryBehavior(root){
       e.stopPropagation();
       const name = btn.dataset.term;
       const idx = state.bookmarks.indexOf(name);
-      if(idx===-1){ state.bookmarks.push(name); btn.classList.add('active'); btn.textContent='★ Bookmarked'; }
-      else{ state.bookmarks.splice(idx,1); btn.classList.remove('active'); btn.textContent='☆ Bookmark'; }
+      if(idx===-1){ state.bookmarks.push(name); btn.classList.add('active'); btn.textContent='★ Bookmarked'; btn.setAttribute('aria-pressed','true'); }
+      else{ state.bookmarks.splice(idx,1); btn.classList.remove('active'); btn.textContent='☆ Bookmark'; btn.setAttribute('aria-pressed','false'); }
       save();
       if(currentView==='bookmarks') renderBookmarks();
     });
@@ -3220,16 +3261,34 @@ function renderVisualLibrary(){
   const grid = document.getElementById('visualGrid');
   const terms = TERMS2.filter(t=>DIAG[t.t]);
   document.getElementById('visualCount').textContent = terms.length + ' diagrams';
-  grid.innerHTML = terms.map(t=>`<div class="visual-card" data-term="${esc(t.t)}">
+  grid.innerHTML = terms.map(t=>`<button class="visual-card" type="button" data-term="${esc(t.t)}" aria-label="View ${esc(t.t)} diagram, open in Explore Concepts">
     <div class="vterm">${esc(t.t)}</div>
-    <div class="viz">${DIAG[t.t]}</div>
-  </div>`).join('');
+    <div class="viz" data-lazy="1"></div>
+  </button>`).join('');
   grid.querySelectorAll('.visual-card').forEach(card=>{
     card.addEventListener('click', ()=>{
       const t = termByName[card.dataset.term];
       if(t) openTermInExplore(t);
     });
   });
+  const lazyVizEls = grid.querySelectorAll('.viz[data-lazy]');
+  const loadViz = (vizEl)=>{
+    const term = vizEl.closest('.visual-card').dataset.term;
+    vizEl.innerHTML = DIAG[term];
+    vizEl.removeAttribute('data-lazy');
+  };
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        loadViz(entry.target);
+        io.unobserve(entry.target);
+      });
+    }, {rootMargin:'300px 0px'});
+    lazyVizEls.forEach(v=>io.observe(v));
+  } else {
+    lazyVizEls.forEach(loadViz);
+  }
 }
 
 /* ---------- Learning Paths ---------- */
@@ -3244,13 +3303,13 @@ function pathCardHTML(path){
   const terms = pathTerms(path);
   const learned = terms.filter(t=>state.viewed.includes(t.t)).length;
   const pct = terms.length ? Math.round(learned/terms.length*100) : 0;
-  return `<div class="path-card" data-path="${path.key}">
-    <div class="picon">${path.icon}</div>
+  return `<button class="path-card" type="button" data-path="${path.key}" aria-label="${esc(path.name)} learning path, ${pct}% complete, ${terms.length} lessons">
+    <div class="picon" aria-hidden="true">${path.icon}</div>
     <div class="pname">${esc(path.name)}</div>
     <div class="pdesc">${esc(path.desc)}</div>
     <div class="pmeta"><span>${terms.length} Lessons</span><b>${pct}%</b></div>
     <div class="path-bar"><div class="path-bar-fill" style="width:${pct}%"></div></div>
-  </div>`;
+  </button>`;
 }
 function renderPathGrid(container){
   container.innerHTML = LEARNING_PATHS.map(pathCardHTML).join('');
@@ -3283,11 +3342,11 @@ function renderPopular(){
   grid.innerHTML = terms.map(t=>{
     const views = state.viewCounts[t.t]||0;
     const icon = POPULAR_ICONS[t.t] || CAT_ICONS[t.nc];
-    return `<div class="pop-card" data-term="${esc(t.t)}">
-      <div class="picon">${icon}</div>
+    return `<button class="pop-card" type="button" data-term="${esc(t.t)}" aria-label="${esc(t.t)}, ${views} view${views===1?'':'s'}">
+      <div class="picon" aria-hidden="true">${icon}</div>
       <div class="pname">${esc(t.t)}</div>
       <div class="pviews">${views} view${views===1?'':'s'}</div>
-    </div>`;
+    </button>`;
   }).join('');
   grid.querySelectorAll('.pop-card').forEach(card=>{
     card.addEventListener('click', ()=>{
@@ -3306,9 +3365,9 @@ const QUICK_TILES = [
 ];
 function renderQuickGrid(){
   const grid = document.getElementById('quickGrid');
-  grid.innerHTML = QUICK_TILES.map(q=>`<div class="quick-tile" data-view="${q.view}">
-    <span class="qicon">${q.icon}</span><span class="qlabel">${esc(q.label)}</span>
-  </div>`).join('');
+  grid.innerHTML = QUICK_TILES.map(q=>`<button class="quick-tile" type="button" data-view="${q.view}">
+    <span class="qicon" aria-hidden="true">${q.icon}</span><span class="qlabel">${esc(q.label)}</span>
+  </button>`).join('');
   grid.querySelectorAll('.quick-tile').forEach(t=>{
     t.addEventListener('click', ()=>switchView(t.dataset.view));
   });
@@ -3319,7 +3378,7 @@ function renderHero(){
   document.getElementById('heroSub').textContent = `${TERMS2.length}+ concepts. Clear explanations. Learn, practice and master at your own pace.`;
   const pillsEl = document.getElementById('heroPills');
   const pills = POPULAR_SEED.filter(n=>termByName[n]);
-  pillsEl.innerHTML = 'Popular:' + pills.map(n=>`<span class="hero-pill" data-term="${esc(n)}">${esc(n)}</span>`).join('');
+  pillsEl.innerHTML = 'Popular:' + pills.map(n=>`<button class="hero-pill" type="button" data-term="${esc(n)}">${esc(n)}</button>`).join('');
   pillsEl.querySelectorAll('.hero-pill').forEach(p=>{
     p.addEventListener('click', ()=>{
       const t = termByName[p.dataset.term];
@@ -3387,9 +3446,11 @@ function renderRightPanel(){
   const contEl = document.getElementById('continueCard');
   const lastTerm = state.lastViewed ? termByName[state.lastViewed] : null;
   if(lastTerm){
-    contEl.innerHTML = `<div class="ct-icon">${CAT_ICONS[lastTerm.nc]}</div><div class="ct-name">${esc(lastTerm.t)}</div><div class="ct-meta">Last studied · ${esc(NEW_CATS[lastTerm.nc])}</div>`;
+    contEl.disabled = false;
+    contEl.innerHTML = `<div class="ct-icon" aria-hidden="true">${CAT_ICONS[lastTerm.nc]}</div><div class="ct-name">${esc(lastTerm.t)}</div><div class="ct-meta">Last studied · ${esc(NEW_CATS[lastTerm.nc])}</div>`;
     contEl.onclick = ()=>openTermInExplore(lastTerm);
   } else {
+    contEl.disabled = true;
     contEl.innerHTML = `<div class="ct-meta">Open any concept to start tracking your progress.</div>`;
     contEl.onclick = null;
   }
