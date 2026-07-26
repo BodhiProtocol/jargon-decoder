@@ -280,7 +280,7 @@ button{font-family:inherit}
 
 <script>
 /* ===================== DATA ===================== */
-const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}};
+const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}};
 
 const CORE = {
   "Order Book": {p:"The exchange's live list of everyone waiting to buy or sell, and at what price.", m:"Buy orders (bids) on one side, sell orders (asks) on the other. Where they meet, trades happen.", c:"Lifecycle"},
@@ -311,7 +311,38 @@ const CORE = {
   "Depository": {p:"The vault where all demat securities in a market actually live, as electronic records.", m:"NSDL and CDSL in India. Your broker shows you the balance; the depository is the truth.", c:"Clearing & Settlement"},
   "Haircut": {p:"The discount applied to collateral value, just in case its price falls.", m:"Pledge ₹100 of shares, get credit for ₹80. The 20% haircut is the lender's cushion.", c:"Clearing & Settlement"},
   "Buy-in": {p:"You failed to deliver, so the system buys the shares elsewhere — and hands you the bill.", m:"The market's enforcement mechanism. Failure has a price, and it's yours.", c:"Clearing & Settlement"},
-  "Bilateral": {p:"A trade or agreement made directly between two counterparties, with no clearing house standing in between.", m:"The opposite of a novated, CCP-cleared trade — more flexible, but you're carrying the counterparty risk yourself.", c:"Clearing & Settlement"}
+  "Bilateral": {p:"A trade or agreement made directly between two counterparties, with no clearing house standing in between.", m:"The opposite of a novated, CCP-cleared trade — more flexible, but you're carrying the counterparty risk yourself.", c:"Clearing & Settlement"},
+  "Equity": {p:"A slice of ownership in a company, with a claim on its future.", m:"Shareholders are paid last but own the upside. Voting rights, dividends, and volatility included.", c:"Instruments"},
+  "Bond": {p:"A loan you give, packaged as a security. The issuer promises interest and repayment.", m:"Governments and companies borrow this way. Safer than equity, usually — but a promise, not a guarantee.", c:"Instruments"},
+  "Coupon": {p:"The interest a bond pays, named for the paper coupons investors once clipped.", m:"A 7% coupon on ₹1,000 face value pays ₹70 a year, rain or shine, until maturity.", c:"Instruments"},
+  "Yield": {p:"What a bond actually earns you at today's price — not the coupon printed on it.", m:"Prices fall, yields rise. The seesaw at the heart of every fixed income market.", c:"Instruments"},
+  "Derivative": {p:"A contract whose value is borrowed from something else — a stock, an index, a commodity.", m:"Futures and options are the famous ones. Tools for hedging risk, or for taking it.", c:"Instruments"},
+  "Future": {p:"A binding promise to buy or sell something at a set price on a set date.", m:"Both sides are locked in. Standardised, exchange-traded, margined daily.", c:"Instruments"},
+  "Option": {p:"The right — but not the obligation — to buy or sell at a set price.", m:"Calls to buy, puts to sell. You pay a premium for the privilege of walking away.", c:"Instruments"},
+  "Strike Price": {p:"The pre-agreed price at which an option lets you buy or sell.", m:"Where the strike sits relative to the market price decides whether your option is worth anything.", c:"Instruments"},
+  "Premium": {p:"The price of an option — what you pay for the right to choose later.", m:"The seller keeps it no matter what. Time and volatility make it bigger; expiry makes it zero.", c:"Instruments"},
+  "Underlying": {p:"The real thing a derivative's value hangs from.", m:"For a Nifty future, the Nifty 50 index. No underlying, no derivative.", c:"Instruments"},
+  "ETF": {p:"A fund that trades like a stock — one purchase, an entire basket.", m:"Buy the whole Nifty in a single click. Low cost, live pricing, instant diversification.", c:"Instruments"},
+  "NAV": {p:"Net Asset Value — what one unit of a mutual fund is truly worth today.", m:"Total assets minus liabilities, divided by units. Calculated daily after markets close.", c:"Instruments"},
+  "Face Value": {p:"The nominal value printed on a security — the number promises are measured against.", m:"A bond repays face value at maturity. A stock split changes face value, not your wealth.", c:"Instruments"},
+  "Mutual Fund": {p:"A basket of investments professionally managed, bought with one lump sum or a monthly SIP.", m:"You own units, not the underlying stocks directly. The fund manager decides what's inside; NAV decides what your slice is worth.", c:"Instruments"},
+  "Preference Shares": {p:"Shares that are paid before equity holders, but usually can't vote on how the company is run.", m:"A hybrid: fixed-ish dividends like a bond, ownership like a stock, but without a say in the boardroom.", c:"Instruments"},
+  "Convertible Bond": {p:"A bond that can turn into shares later, if the stock price makes that worthwhile.", m:"Investors get a bond's safety now and an option on equity upside later — the issuer borrows cheaper because of that option.", c:"Instruments"},
+  "REIT": {p:"A fund that lets you own a slice of rent-generating real estate without ever owning a building.", m:"Real Estate Investment Trust — trades like a stock, and pays out most of its rental income as dividends by law.", c:"Instruments"},
+  "ADR/GDR": {p:"How a company from one country lists its shares for investors in another, without a second IPO.", m:"American Depositary Receipts trade in the US, Global Depositary Receipts trade internationally — both represent shares held in trust back home.", c:"Instruments"},
+  "Market Capitalization": {p:"The total value of a company's shares — share price multiplied by shares outstanding.", m:"Used to bucket companies as large-cap, mid-cap, or small-cap. It's the market's opinion of size, not a balance sheet fact.", c:"Instruments"},
+  "P/E Ratio": {p:"How many years of current earnings it would take to pay back today's share price.", m:"Price divided by earnings per share. A high P/E means the market is pricing in growth — or overpaying for it.", c:"Instruments"},
+  "Index Fund": {p:"A fund that doesn't try to beat the market — it just buys the market, in the same proportions as the index.", m:"Lower fees than an actively managed fund, because there's no manager trying to pick winners. Track the Nifty 50, and that's exactly what you get.", c:"Instruments"},
+  "Debenture": {p:"A bond by another name — a company's promise to repay a loan, usually unsecured against any specific asset.", m:"In India, 'debenture' and 'corporate bond' are used almost interchangeably. Convertible debentures can later turn into shares.", c:"Instruments"},
+  "Maturity": {p:"The date a bond's life ends — the issuer repays the face value and the debt is closed.", m:"Short-term, medium-term, long-term — maturity length shapes both the risk and the yield an investor demands.", c:"Instruments"},
+  "Zero-Coupon Bond": {p:"A bond that pays no interest along the way — you just buy it cheap and collect full face value at maturity.", m:"The discount to face value is the entire return, paid out as one lump sum at maturity instead of periodic coupons.", c:"Instruments"},
+  "Callable Bond": {p:"A bond the issuer can repay early, on their terms, not yours.", m:"Usually called back when interest rates fall — the issuer refinances cheaper, and you're left reinvesting at a worse rate.", c:"Instruments"},
+  "Credit Rating": {p:"A letter grade — AAA down to junk — telling you how likely the issuer is to actually pay you back.", m:"Assigned by agencies like CRISIL or Moody's. Higher rating, lower yield — safety and return trade off against each other.", c:"Instruments"},
+  "Hedge Fund": {p:"A pooled investment fund for wealthy or institutional investors, free to use strategies mutual funds usually can't.", m:"Shorting, leverage, derivatives, concentrated bets — less regulated, higher fees, and a much wider range of outcomes.", c:"Instruments"},
+  "Green Bonds": {p:"Bonds where the money raised is earmarked specifically for environmental or sustainability projects.", m:"Same mechanics as any bond — coupon, maturity, credit rating — just with a legally tied purpose for the proceeds.", c:"Instruments"},
+  "Stock Buyback": {p:"A company using its own cash to repurchase its own shares from the market.", m:"Fewer shares outstanding means each remaining share owns a bigger slice of the company — a direct alternative to paying dividends.", c:"Instruments"},
+  "Stock Split": {p:"A company divides each existing share into several, cheaper ones — your total holding's value doesn't change.", m:"Own 1 share worth ₹1,000? After a 5-for-1 split, you own 5 shares worth ₹200 each. Same pie, more slices.", c:"Instruments"},
+  "Reverse Stock Split": {p:"The opposite of a split — several existing shares get combined into fewer, pricier ones.", m:"Often done to avoid an embarrassingly low share price, or to stay listed above an exchange's minimum price rule.", c:"Instruments"}
 };
 
 const CONTENT = {
@@ -691,6 +722,409 @@ const CONTENT = {
   ],
   related:["Novation","CCP","DvP","Custodian"],
   quiz:{q:"What's the key difference between a bilateral trade and a CCP-cleared one?", options:["Bilateral trades are always illegal","In a bilateral trade, each party carries direct counterparty risk to the other, with no CCP absorbing it","Bilateral trades settle faster","There's no difference, just terminology"], correct:1, explain:"Without novation to a CCP, each side in a bilateral trade is directly exposed to the other's potential default."}
+},
+"Equity": {
+  analogyHead:"A slice of the pie, not an IOU.",
+  analogy:"Like owning a slice of a restaurant instead of holding an IOU for its profits — if the restaurant does brilliantly, your slice is worth a lot; if it shuts down, you're paid only after every supplier and lender has already been paid.",
+  example:["Priya buys 100 shares of a company at ₹500 each — ₹50,000 total.","She now owns a tiny slice of that company, proportional to her shares versus the total shares outstanding.","The company's profits double over two years; the share price rises to ₹900.","Her ₹50,000 stake is now worth ₹90,000 — but if the company had failed instead, she could have lost it all."],
+  exampleHead:"Buying into a growing company.",
+  exampleCallout:"₹50,000 → ₹90,000, no guarantee either way",
+  mistakes:[
+    {think:"Owning equity guarantees a share of profits every year.", reality:"Dividends are optional, decided by the board — you're guaranteed ownership, not a payout. Many growth companies pay no dividend at all."},
+    {think:"Shareholders get paid before lenders if a company goes bankrupt.", reality:"It's the reverse — equity holders are paid last, after every creditor and bondholder. That's exactly why equity carries more risk, and more upside."}
+  ],
+  related:["Bond","Market Capitalization","Stock Split","P/E Ratio"],
+  quiz:{q:"If a company goes bankrupt, in what order are equity holders typically paid relative to bondholders?", options:["Equity holders are paid first","Both are paid at exactly the same time","Equity holders are paid last, after all creditors and bondholders","Equity holders are guaranteed full repayment by law"], correct:2, explain:"Equity sits at the bottom of the repayment order — bondholders and other creditors are repaid first, which is exactly why equity is riskier and offers more upside."}
+},
+"Bond": {
+  analogyHead:"Being the bank, not the shopper.",
+  analogy:"Like being the bank that lends a friend money for a car, with a signed promise of fixed interest and full repayment by a set date — you don't own any part of the car, you're only ever owed money.",
+  example:["The Government of India issues a 10-year bond with a face value of ₹1,000 and a 7% coupon.","Rohan buys one bond for ₹1,000.","Every year for 10 years, he receives ₹70 in interest, regardless of how markets move.","At the end of year 10, he gets his original ₹1,000 back, and the bond closes."],
+  exampleHead:"Lending the government money for 10 years.",
+  exampleCallout:"₹70/year for 10 years, then ₹1,000 back",
+  mistakes:[
+    {think:"A bond is basically the same thing as a stock, just safer.", reality:"A bond is a loan, not ownership — you have no equity stake and no upside beyond the fixed interest, but you're generally repaid before any stockholder in a default."},
+    {think:"Bonds are risk-free.", reality:"Only some are, in practice — corporate bonds carry real default risk, and even government bonds carry interest-rate risk if you need to sell before maturity."}
+  ],
+  related:["Coupon","Yield","Maturity","Credit Rating"],
+  quiz:{q:"What does buying a bond actually make you, relative to the company or government that issued it?", options:["A part-owner","A lender","An employee","A board member"], correct:1, explain:"A bond is a loan you're making to the issuer — you're a creditor, not an owner, entitled to fixed interest and repayment, not a share of profits."}
+},
+"Coupon": {
+  analogyHead:"A subscription that pays you, not the other way round.",
+  analogy:"Like a magazine subscription that mails you a fixed check every quarter instead of a magazine — the amount and the schedule never change, no matter what's happening in the world outside.",
+  example:["A company issues a bond with a face value of ₹1,000 and a 6% annual coupon.","That locks in a payment of ₹60 every year, for as long as the bond exists.","Interest rates in the broader market later rise to 9% — the coupon on this bond still stays at ₹60.","The bond's price in the market falls to compensate, but the ₹60 coupon itself never changes."],
+  exampleHead:"A bond's coupon is fixed at issuance.",
+  exampleCallout:"₹60 a year, locked in from day one",
+  mistakes:[
+    {think:"A bond's coupon rate changes if market interest rates move.", reality:"The coupon rate is fixed at issuance and never changes for that bond's life — it's the bond's price that moves instead, to reflect current market rates."},
+    {think:"A higher coupon always means a better investment.", reality:"A higher coupon often signals higher risk — issuers with weaker credit have to offer a richer coupon to attract lenders at all."}
+  ],
+  related:["Bond","Yield","Zero-Coupon Bond","Face Value"],
+  quiz:{q:"If market interest rates rise after a bond is issued, what happens to that bond's coupon payment?", options:["It rises to match the market","It falls","It stays exactly the same","It's paid twice as often"], correct:2, explain:"The coupon is fixed at issuance — it's the bond's market price that adjusts to reflect new interest rates, not the coupon payment itself."}
+},
+"Yield": {
+  analogyHead:"What you actually earn, not what's printed on the label.",
+  analogy:"Like buying a used rental property — the fixed rent quoted at listing doesn't change, but your real return depends entirely on what you actually paid to get in.",
+  example:["A bond has a face value of ₹1,000 and a 7% coupon — ₹70 a year.","Bought at issuance for ₹1,000, its yield is exactly 7% (₹70 ÷ ₹1,000).","A year later, the same bond trades in the market for only ₹900, as rates rise.","A new buyer at ₹900 still gets the same ₹70 a year — but that's now a yield of about 7.8%, since they paid less to get the same payout."],
+  exampleHead:"Same coupon, different price, different yield.",
+  exampleCallout:"₹70 on ₹900 paid = ~7.8% yield, not 7%",
+  mistakes:[
+    {think:"A bond's yield and its coupon rate are the same thing.", reality:"They're only equal at the moment of issuance, when price equals face value. Once the bond trades in the market, price moves and yield moves opposite to it — coupon never does."},
+    {think:"A rising yield is always good news for existing bondholders.", reality:"A rising yield on a bond you already hold usually means its price just fell — good for new buyers, not for you if you need to sell before maturity."}
+  ],
+  related:["Coupon","Bond","Maturity","Credit Rating"],
+  quiz:{q:"A bond's price falls while its coupon payment stays fixed. What happens to its yield?", options:["Yield falls too","Yield stays exactly the same","Yield rises","Yield becomes negative"], correct:2, explain:"Yield and price move in opposite directions — the same fixed coupon paid on a lower price works out to a higher percentage return, i.e. a higher yield."}
+},
+"Derivative": {
+  analogyHead:"Betting on the match without owning the team.",
+  analogy:"Like betting on the outcome of a cricket match without ever owning a team, a bat, or a stadium seat — your contract's entire value is borrowed from something happening somewhere else.",
+  example:["Rohan doesn't want to buy 1,000kg of an actual commodity.","Instead, he buys a futures contract whose value is tied to that commodity's price.","The commodity's price rises 10% over the month.","Rohan's derivative contract gains value by roughly the same 10% — without him ever touching the physical commodity."],
+  exampleHead:"Gaining exposure without owning the real thing.",
+  exampleCallout:"Price moves 10%, the contract follows — no warehouse needed",
+  mistakes:[
+    {think:"A derivative is just a fancy name for a risky stock.", reality:"It's a completely different kind of instrument — its value is derived from something else entirely (a stock, index, commodity, or rate), and it can be used to reduce risk just as easily as to add it."},
+    {think:"All derivatives are used for speculation.", reality:"A huge share of derivatives trading is hedging — companies and investors using them specifically to protect against price moves they don't want exposure to."}
+  ],
+  related:["Future","Option","Underlying","Hedge Fund"],
+  quiz:{q:"What ultimately determines the value of a derivative contract?", options:["The derivative sets its own independent price","The value of some other underlying asset, index, or rate","Government-fixed pricing","Whichever party has more money"], correct:1, explain:"A derivative's value is always borrowed from — derived from — an underlying asset or rate. No underlying, no derivative."}
+},
+"Future": {
+  analogyHead:"A fare locked in, whatever traffic does later.",
+  analogy:"Like pre-booking an airport cab three weeks out at a fixed fare — both sides are locked in, no matter what fuel prices or traffic conditions do between now and pickup day.",
+  example:["Priya agrees today to buy 100 barrels of a commodity in 3 months, at a locked-in price of ₹6,000/barrel.","This is a binding futures contract — both she and the seller are obligated to go through with it.","In 3 months, the market price has risen to ₹6,500/barrel.","Priya still buys at her locked-in ₹6,000 — a built-in gain versus buying at the new market price."],
+  exampleHead:"Locking in a price today for delivery later.",
+  exampleCallout:"Locked at ₹6,000, market moves to ₹6,500 — she still pays ₹6,000",
+  mistakes:[
+    {think:"A futures contract is optional, like an option.", reality:"A future is a binding obligation for both sides — unlike an option, you can't simply walk away and forfeit a fee. Both parties must perform."},
+    {think:"Futures only matter to people who want the physical commodity delivered.", reality:"Most futures traders close their position before expiry and never take physical delivery at all — they're using the contract purely for price exposure."}
+  ],
+  related:["Derivative","Option","Underlying","Margin"],
+  quiz:{q:"What's the key difference between a future and an option?", options:["A future is optional, an option is binding","Both sides in a futures contract are obligated to complete the trade; an option holder can choose to walk away","Futures never expire","Options are always cheaper than futures"], correct:1, explain:"A futures contract binds both sides to complete the deal. An option gives its buyer the right, but not the obligation, to do so."}
+},
+"Option": {
+  analogyHead:"A booking fee that buys you the right to decide later.",
+  analogy:"Like paying a small, non-refundable booking fee to hold a flat at today's price for 30 days — you can walk away and lose only the fee, or exercise your right to buy at that locked-in price, whichever way the market moves.",
+  example:["Rohan pays a ₹20 premium for the right to buy a stock at ₹500 (the strike) anytime in the next month.","The stock rises to ₹550. He exercises his option, buying at ₹500 and immediately worth ₹550 — a ₹30 net gain after the premium.","Alternatively, if the stock had fallen to ₹450, he simply lets the option expire.","His maximum loss in that case is only the ₹20 premium he already paid — never more."],
+  exampleHead:"Buying the right, not the obligation.",
+  exampleCallout:"Upside uncapped, downside capped at the ₹20 premium",
+  mistakes:[
+    {think:"Buying an option obligates you to go through with the trade.", reality:"It gives you the right, not the obligation — you can simply let it expire worthless if the market doesn't move your way, losing only the premium."},
+    {think:"Options are always cheap ways to make a lot of money.", reality:"Most options expire worthless — time and the odds are stacked against the buyer, which is exactly why option sellers collect the premium in the first place."}
+  ],
+  related:["Strike Price","Premium","Derivative","Future"],
+  quiz:{q:"What is the maximum a buyer of an option can lose, if the trade goes completely against them?", options:["Unlimited losses, same as owning the stock","The premium they paid, and nothing more","Double the premium","They can never lose money on an option"], correct:1, explain:"An option buyer's downside is capped at the premium paid — if it expires worthless, that premium is the entire loss."}
+},
+"Strike Price": {
+  analogyHead:"The number printed inside the coupon.",
+  analogy:"Like a store issuing a coupon that's only worth something if the shelf price ever climbs above the number printed on it — that printed number is the strike.",
+  example:["An option on a stock has a strike price of ₹500.","The stock is currently trading at ₹480 — below the strike, so the call option isn't worth exercising yet.","A month later, the stock rises to ₹520.","Now the option is worth exercising: buy at the ₹500 strike, worth ₹520 in the market — an instant ₹20 gain, before the premium paid."],
+  exampleHead:"Where the strike sits decides everything.",
+  exampleCallout:"Below strike: worthless to exercise. Above strike: instant value.",
+  mistakes:[
+    {think:"The strike price is what you pay to buy the option itself.", reality:"That's the premium. The strike price is the pre-agreed price at which you can buy or sell the underlying, if you choose to exercise."},
+    {think:"A strike price changes as the market moves.", reality:"It's fixed for the life of that specific option contract — what changes is how valuable that fixed strike becomes relative to the moving market price."}
+  ],
+  related:["Option","Premium","Underlying","Derivative"],
+  quiz:{q:"A call option has a strike price of ₹500. The stock is trading at ₹520. What does this mean for the option?", options:["It's worthless, since the strike is below market","It's now worth exercising, since you can buy at ₹500 something worth ₹520","The strike price automatically adjusts to ₹520","The option is cancelled"], correct:1, explain:"A call option lets you buy at the strike price — if the market price is above the strike, exercising it captures the difference."}
+},
+"Premium": {
+  analogyHead:"The cover charge you never get back.",
+  analogy:"Like the cover charge at a club — you pay it just to have the choice to walk in tonight, and you don't get it back whether you go in or not.",
+  example:["Priya pays a ₹15 premium for an option to buy a stock at ₹500.","The stock stays below ₹500 for the entire month.","She lets the option expire, never exercising it.","Her ₹15 premium is gone either way — that was the full and only cost of holding the choice."],
+  exampleHead:"The price of having a choice, spent whether or not you use it.",
+  exampleCallout:"₹15 spent, choice never exercised — still gone",
+  mistakes:[
+    {think:"The premium is refunded if you don't exercise the option.", reality:"It's never refunded — the seller keeps it regardless of what happens, since they were the one carrying the risk the whole time."},
+    {think:"A higher premium always means a better option.", reality:"A higher premium usually just reflects more time value or more volatility priced in — it doesn't make the option a better bet on its own."}
+  ],
+  related:["Option","Strike Price","Derivative","Underlying"],
+  quiz:{q:"If an option expires without being exercised, what happens to the premium the buyer paid?", options:["It's refunded in full","It's kept by the seller — it was never refundable","It's split 50/50 between buyer and seller","It rolls over to the next contract"], correct:1, explain:"The premium is the price of holding the choice — the seller keeps it whether or not the buyer ever exercises the option."}
+},
+"Underlying": {
+  analogyHead:"The puppet's strings, not the puppet.",
+  analogy:"Like watching a puppet show — the derivative is the puppet you're looking at, but every twitch is actually driven by strings attached to something else entirely.",
+  example:["A Nifty futures contract has no independent value of its own.","Its price is entirely derived from the Nifty 50 index — its underlying.","The Nifty 50 index rises 2% in a session.","The futures contract's price moves by roughly the same 2%, since it's just tracking its underlying."],
+  exampleHead:"A derivative with nothing to derive from is nothing.",
+  exampleCallout:"Index moves 2%, the future follows — same string, same puppet",
+  mistakes:[
+    {think:"A derivative can move independently of its underlying.", reality:"It's tightly tied to the underlying's price by design — meaningful divergence usually signals a pricing inefficiency, not real independence."},
+    {think:"Only stocks and indices can be underlyings.", reality:"Commodities, currencies, interest rates, even other derivatives can all serve as an underlying — anything with a measurable, moving price."}
+  ],
+  related:["Derivative","Future","Option","Strike Price"],
+  quiz:{q:"Why does a Nifty futures contract's price move when the Nifty 50 index moves?", options:["Coincidence — they're unrelated","The futures contract's entire value is derived from its underlying, the index","The exchange manually resets the futures price daily","Futures prices are fixed and never move"], correct:1, explain:"A derivative has no value of its own — it's a contract whose price is derived entirely from its underlying asset."}
+},
+"ETF": {
+  analogyHead:"One basket instead of forty separate trips.",
+  analogy:"Like buying one pre-packed grocery basket containing a little of everything, instead of making forty separate trips to buy each item individually — one purchase, instant variety.",
+  example:["Rohan wants exposure to all 50 companies in the Nifty 50 index.","Buying each of the 50 stocks individually would mean 50 separate trades and fees.","Instead, he buys one unit of a Nifty 50 ETF in a single trade.","That single unit gives him proportional exposure to all 50 underlying companies at once."],
+  exampleHead:"One trade, an entire index.",
+  exampleCallout:"50 stocks, 1 trade",
+  mistakes:[
+    {think:"An ETF and a mutual fund are exactly the same thing.", reality:"They're close cousins, but an ETF trades live on an exchange all day like a stock, while a traditional mutual fund is only priced and traded once a day, after markets close."},
+    {think:"Every ETF is low-risk just because it's diversified.", reality:"Diversification reduces single-stock risk, but an ETF tracking a volatile sector or a single country's market can still swing sharply."}
+  ],
+  related:["Mutual Fund","Index Fund","NAV","Market Capitalization"],
+  quiz:{q:"What's the key practical difference between an ETF and a traditional mutual fund?", options:["ETFs can only hold bonds","An ETF trades live on an exchange all day, like a stock; a mutual fund is priced once daily","Mutual funds are always cheaper","There is no real difference"], correct:1, explain:"ETFs trade continuously on an exchange with live pricing, while mutual fund units are bought and sold at one NAV calculated after markets close."}
+},
+"NAV": {
+  analogyHead:"What's left in tonight's shared kitty.",
+  analogy:"Like a group trip's shared kitty — NAV is simply what's left in the pot, divided by however many people chipped in, recalculated fresh every single day.",
+  example:["A mutual fund holds ₹100 crore in assets and has zero liabilities.","10 crore units of the fund exist, held by all its investors combined.","NAV per unit = ₹100 crore ÷ 10 crore units = ₹10 per unit.","The next day, the fund's holdings rise in value to ₹105 crore — NAV recalculates to ₹10.50 per unit."],
+  exampleHead:"What one unit of a fund is actually worth today.",
+  exampleCallout:"₹100cr ÷ 10cr units = ₹10 NAV per unit",
+  mistakes:[
+    {think:"A fund's NAV is like a stock price that moves live all day.", reality:"NAV for a traditional mutual fund is calculated only once, after markets close each day — you can't watch it tick in real time like a stock or ETF."},
+    {think:"A lower NAV means a mutual fund is cheaper or better value.", reality:"NAV is just total assets divided by units outstanding — it says nothing about performance. A fund with NAV ₹10 isn't inherently 'cheaper' than one with NAV ₹500."}
+  ],
+  related:["Mutual Fund","ETF","Face Value","Index Fund"],
+  quiz:{q:"How often is a traditional mutual fund's NAV typically calculated?", options:["Continuously, all day, like a stock price","Once, after markets close each day","Once a month","Only when an investor requests it"], correct:1, explain:"NAV for a standard mutual fund is calculated once daily after markets close, based on the closing value of everything the fund holds."}
+},
+"Face Value": {
+  analogyHead:"The number printed on the ticket, not what a scalper charges.",
+  analogy:"Like the price printed on a concert ticket — what changes hands on the resale market can be higher or lower, but the number printed on the ticket itself never moves.",
+  example:["A bond is issued with a face value of ₹1,000.","Interest rates rise, and the bond starts trading in the market for only ₹950.","Despite that, its face value — the amount the issuer promises to repay at maturity — stays exactly ₹1,000.","At maturity, whoever holds the bond receives the full ₹1,000 face value, regardless of what they paid for it."],
+  exampleHead:"What a bond promises to repay, unchanged by market price.",
+  exampleCallout:"Traded at ₹950, still repays ₹1,000 at maturity",
+  mistakes:[
+    {think:"Face value and market price are the same thing.", reality:"Face value is a fixed number set at issuance; market price is whatever the security is actually trading for today, and the two can diverge substantially."},
+    {think:"Face value only applies to bonds.", reality:"Stocks can carry a nominal face value too (often ₹1, ₹2, or ₹10 in India) — it's largely a legacy accounting figure for equity, with far less practical relevance than a bond's face value."}
+  ],
+  related:["Bond","Coupon","Maturity","NAV"],
+  quiz:{q:"A bond with a face value of ₹1,000 is currently trading at ₹950. What will the holder receive at maturity?", options:["₹950, the current market price","₹1,000, the face value","₹1,050, with a markup","Whatever the market price is on that exact day"], correct:1, explain:"Face value is what the issuer promises to repay at maturity — it's fixed at issuance and unaffected by how the bond trades in the meantime."}
+},
+"Mutual Fund": {
+  analogyHead:"A shared kitchen, a hired chef.",
+  analogy:"Like a group of friends pooling money and hiring a professional chef to shop and cook for all of them — you don't pick the ingredients yourself, you just own a slice of whatever the chef decides to make.",
+  example:["Priya invests ₹10,000 into a mutual fund via a monthly SIP.","The fund manager pools her money with thousands of other investors' contributions.","The manager decides which stocks and bonds to buy on behalf of everyone.","Priya owns units of the fund, worth whatever the fund's NAV says today — not any specific stock directly."],
+  exampleHead:"Investing through a professional, not picking stocks yourself.",
+  exampleCallout:"₹10,000 in, units out — the manager decides the rest",
+  mistakes:[
+    {think:"When you invest in a mutual fund, you directly own the underlying stocks.", reality:"You own units of the fund itself — the fund is the one that legally owns the underlying stocks and bonds on your behalf."},
+    {think:"All mutual funds are actively trying to beat the market.", reality:"Some are actively managed, trying to outperform; others (index funds) are passively managed, simply tracking a benchmark instead."}
+  ],
+  related:["NAV","ETF","Index Fund","Hedge Fund"],
+  quiz:{q:"When you buy into a mutual fund, what do you actually own?", options:["A direct stake in each underlying stock the fund holds","Units of the fund itself, which in turn owns the underlying assets","A loan to the fund manager","Nothing until the fund is sold"], correct:1, explain:"You hold units of the fund — the fund itself is the legal owner of the underlying stocks and bonds, managed on behalf of all its unit holders."}
+},
+"Preference Shares": {
+  analogyHead:"First in line to be paid, last to be asked.",
+  analogy:"Like a silent business partner who's guaranteed to be paid before anyone else, but never gets invited to the meeting where decisions are actually made.",
+  example:["A company issues preference shares promising a fixed 8% dividend.","In a good year, both preference and equity shareholders could be paid — but preference holders are paid first, and at a fixed rate.","In a lean year, the company pays only the preference dividend, and equity holders get nothing.","At no point do preference shareholders get a vote on how the company is run."],
+  exampleHead:"Paid first, fixed amount, no say in the room.",
+  exampleCallout:"8% fixed, paid ahead of equity, zero votes",
+  mistakes:[
+    {think:"Preference shares are basically the same as equity shares.", reality:"They're a hybrid — fixed-ish payouts like a bond, and ownership-like standing, but usually without equity's voting rights or its unlimited upside."},
+    {think:"Preference shareholders always get paid no matter what.", reality:"The dividend is usually fixed if paid, but it can still be skipped in a bad year — some preference shares carry 'cumulative' terms guaranteeing missed dividends are paid later, others don't."}
+  ],
+  related:["Equity","Bond","Convertible Bond","Debenture"],
+  quiz:{q:"What do preference shareholders typically give up, compared to equity shareholders?", options:["Any claim on the company's profits","Voting rights on how the company is run","Priority in being paid","Their entire investment"], correct:1, explain:"Preference shares typically trade voting rights for priority — paid before equity holders, but usually without a say in company decisions."}
+},
+"Convertible Bond": {
+  analogyHead:"A guaranteed seat, with an upgrade voucher stapled on.",
+  analogy:"Like buying a standard train ticket that comes with a stapled voucher to upgrade to first class later, only if it turns out to be worth it — you keep the guaranteed seat either way.",
+  example:["A company issues a convertible bond: ₹1,000 face value, 5% coupon, convertible into 20 shares.","For two years, the investor simply collects the fixed 5% coupon, like any bond.","The company's stock price then rises sharply — 20 shares are now worth far more than the ₹1,000 bond.","The investor converts, trading the bond for 20 shares and capturing the equity upside."],
+  exampleHead:"A bond that can become shares, if it's worth it.",
+  exampleCallout:"Bond safety first, equity upside optional",
+  mistakes:[
+    {think:"A convertible bond forces you to eventually take shares.", reality:"Conversion is the investor's choice — if the stock never rises enough to make it worthwhile, they simply keep collecting coupons and get repaid face value at maturity, like any bond."},
+    {think:"Convertible bonds pay the same coupon as an ordinary bond from the same issuer.", reality:"They usually pay less, since the conversion option itself has value — investors accept a lower guaranteed coupon in exchange for that equity upside potential."}
+  ],
+  related:["Bond","Equity","Preference Shares","Option"],
+  quiz:{q:"What does a convertible bond give its holder that an ordinary bond doesn't?", options:["A higher guaranteed coupon","The option to convert the bond into a fixed number of shares later","Voting rights immediately","Priority over all other creditors"], correct:1, explain:"A convertible bond bundles ordinary bond mechanics with the option to convert into shares later — the investor chooses whether to exercise that option."}
+},
+"REIT": {
+  analogyHead:"Renting out an office building without ever holding the keys.",
+  analogy:"Like owning a slice of a shopping mall's monthly rent collections without ever holding a key, doing repairs, or dealing with a single tenant yourself.",
+  example:["A REIT owns a portfolio of commercial office buildings across a city.","Tenants pay rent to the REIT every month, across all its properties.","Priya buys units of the REIT on the stock exchange, just like buying shares.","By law, the REIT distributes most of that rental income to unit holders like her as regular payouts."],
+  exampleHead:"Owning rental income, not bricks and mortar.",
+  exampleCallout:"Rent flows in, distributed out — no landlord duties required",
+  mistakes:[
+    {think:"Buying a REIT means you own a specific building.", reality:"You own units of the trust, which in turn owns a diversified portfolio of properties — you have no direct claim on any single building."},
+    {think:"REITs are exactly as liquid as owning physical real estate.", reality:"Listed REIT units trade on an exchange just like a stock — far more liquid than trying to sell an actual building, which is one of the main reasons REITs exist."}
+  ],
+  related:["Equity","Mutual Fund","ETF","NAV"],
+  quiz:{q:"What are REITs required by law to do with most of their rental income?", options:["Reinvest all of it into new buildings","Distribute most of it to unit holders as payouts","Donate it to charity","Hold it as cash reserves"], correct:1, explain:"REITs are structured to pass most of their rental income through to unit holders as regular distributions, rather than retaining it."}
+},
+"ADR/GDR": {
+  analogyHead:"A local receipt for a stake held abroad.",
+  analogy:"Like a local certificate proving you own a stake in a restaurant chain based in another country — you never have to open a foreign bank account just to hold the receipt.",
+  example:["An Indian company's shares trade only on Indian exchanges.","To reach US investors, it arranges for a US bank to hold a block of its real shares in trust in India.","The bank then issues ADRs on a US exchange, each representing a claim on those underlying shares.","A US investor buys the ADR in dollars, on a US exchange, without ever touching an Indian brokerage account."],
+  exampleHead:"Reaching foreign investors without a second listing.",
+  exampleCallout:"One set of real shares, held in trust, traded abroad via receipts",
+  mistakes:[
+    {think:"An ADR is a completely separate security from the underlying share.", reality:"It's a receipt representing real shares held in trust — its value tracks the underlying share (adjusted for currency), it isn't an independent instrument."},
+    {think:"ADR and GDR mean the same thing everywhere.", reality:"ADRs specifically trade in the US; GDRs are the broader international version, often listed in markets like London or Luxembourg — same underlying idea, different venues."}
+  ],
+  related:["Equity","Custodian","Depository","Market Capitalization"],
+  quiz:{q:"What does an ADR actually represent?", options:["A completely independent security unrelated to the foreign company","A receipt for real shares of a foreign company, held in trust by a bank","A loan made to a foreign company","A currency futures contract"], correct:1, explain:"An ADR is a receipt issued by a bank against real shares it holds in trust — its value is tied directly to the underlying foreign shares."}
+},
+"Market Capitalization": {
+  analogyHead:"The stadium's total worth, seat price times every seat.",
+  analogy:"Like judging a stadium's total worth by its ticket price multiplied by every seat in the house — one clean number, but it's an opinion of value, not an appraisal of the concrete and steel.",
+  example:["A company's share price is ₹500.","It has 10 crore shares outstanding.","Market capitalization = ₹500 × 10 crore = ₹5,000 crore.","The next day the share price falls to ₹450 with no other change — market cap instantly falls to ₹4,500 crore, even though nothing about the actual business changed overnight."],
+  exampleHead:"Share price times shares outstanding, nothing more.",
+  exampleCallout:"₹500 × 10cr shares = ₹5,000cr market cap",
+  mistakes:[
+    {think:"Market capitalization tells you what a company would actually sell for.", reality:"It's the market's real-time opinion based on the last traded price — buying every single share at once would almost certainly move the price, making it inaccurate as an actual acquisition cost."},
+    {think:"A higher market cap always means a healthier or more profitable company.", reality:"Market cap only measures size as priced by the market — a large, richly-valued company can still be less profitable than a smaller one with a lower market cap."}
+  ],
+  related:["Equity","P/E Ratio","Index Fund","Stock Split"],
+  quiz:{q:"How is a company's market capitalization calculated?", options:["Total revenue minus total expenses","Share price multiplied by total shares outstanding","Total assets minus total liabilities","The company's most recent IPO price"], correct:1, explain:"Market cap is simply current share price times the number of shares outstanding — it moves every time the share price does."}
+},
+"P/E Ratio": {
+  analogyHead:"Years of rent to pay off buying the flat outright.",
+  analogy:"Like judging a rental flat by how many years of its current rent it would take to pay back the purchase price — a quick, blunt way to size up whether something looks expensive.",
+  example:["A company's share trades at ₹500.","Its earnings per share over the last year were ₹25.","P/E ratio = ₹500 ÷ ₹25 = 20.","That means the market is effectively paying 20 years' worth of current earnings for one share — a signal it's pricing in meaningful future growth."],
+  exampleHead:"Price divided by earnings, nothing more exotic.",
+  exampleCallout:"₹500 ÷ ₹25 EPS = P/E of 20",
+  mistakes:[
+    {think:"A low P/E always means a stock is undervalued and a bargain.", reality:"A low P/E can just as easily mean the market expects declining or troubled earnings ahead — it needs context (industry, growth rate) to mean anything on its own."},
+    {think:"P/E ratios are directly comparable across every industry.", reality:"'Normal' P/E ranges vary hugely by sector — a fast-growing tech company and a mature utility company simply live at very different typical P/E levels."}
+  ],
+  related:["Equity","Market Capitalization","Yield","Index Fund"],
+  quiz:{q:"A company's P/E ratio is 20. What does that actually tell you, on its own?", options:["The stock will definitely rise 20% next year","The market is paying about 20 times the company's current annual earnings for one share","The company has 20 years of debt remaining","The stock pays a 20% dividend"], correct:1, explain:"P/E is simply price divided by earnings per share — a P/E of 20 means investors are paying roughly 20x current annual earnings for the stock."}
+},
+"Index Fund": {
+  analogyHead:"Photocopying the leaderboard instead of guessing it.",
+  analogy:"Like photocopying an entire class's exact seating chart instead of trying to guess who'll sit where — no guesswork, no manager picking winners, just a perfect copy of the whole group.",
+  example:["The Nifty 50 index holds 50 companies in specific weighted proportions.","An index fund buys those same 50 companies in those same exact proportions.","When the index's composition changes (a company drops out, another joins), the fund mechanically rebalances to match.","There's no manager deciding which stocks to favor — the fund simply mirrors the index, always."],
+  exampleHead:"Buying the whole market, exactly as weighted.",
+  exampleCallout:"50 companies in, 50 companies mirrored — no manager picks",
+  mistakes:[
+    {think:"An index fund is riskier because nobody is actively managing it.", reality:"It carries the market's own risk (it will fall when the market falls), but it removes manager-specific risk — the risk of a human picking badly. Historically, most actively managed funds fail to beat their benchmark index anyway."},
+    {think:"Index funds have no fees at all.", reality:"They charge a small fee too — just a much lower one than actively managed funds, since there's no research team trying to pick winners."}
+  ],
+  related:["ETF","Mutual Fund","Market Capitalization","P/E Ratio"],
+  quiz:{q:"What does an index fund's manager actually do, day to day?", options:["Actively pick which stocks will outperform","Mechanically hold the same stocks, in the same proportions, as a chosen index","Trade aggressively based on economic forecasts","Guarantee a fixed annual return"], correct:1, explain:"An index fund simply mirrors its benchmark index's holdings and weights — there's no active stock-picking involved, which is exactly why its fees run lower."}
+},
+"Debenture": {
+  analogyHead:"A loan on nothing but a company's word.",
+  analogy:"Like an unsecured personal loan you give a company on nothing but its word and its reputation — no specific building or machine backs the promise, just the company's name.",
+  example:["A company needs ₹50 crore and issues debentures instead of taking a bank loan.","Investors buy the debentures, effectively lending the company money directly.","No specific company asset is pledged as collateral against this debt.","If the company runs into trouble, debenture holders are creditors — ahead of shareholders, but generally behind any secured lenders who do hold specific collateral."],
+  exampleHead:"Raising debt without pledging a specific asset.",
+  exampleCallout:"₹50cr raised, backed by reputation, not a specific asset",
+  mistakes:[
+    {think:"Debenture and bond mean something meaningfully different.", reality:"In India, the two terms are used almost interchangeably in everyday practice — both represent an issuer's promise to repay borrowed money with interest."},
+    {think:"All debentures are unsecured.", reality:"Most are, by the strict definition, but some issuers do offer secured debentures backed by specific assets — always worth checking, since it changes your standing if the issuer defaults."}
+  ],
+  related:["Bond","Credit Rating","Convertible Bond","Maturity"],
+  quiz:{q:"What typically backs a standard (unsecured) debenture, as opposed to a secured loan?", options:["A specific pledged asset, like property or machinery","Nothing but the issuing company's overall creditworthiness and promise to repay","A government guarantee","The company's entire cash reserves, held in escrow"], correct:1, explain:"A standard debenture is unsecured — it relies on the issuer's general creditworthiness and promise to repay, not any specific pledged asset."}
+},
+"Maturity": {
+  analogyHead:"The day the fixed deposit finally closes.",
+  analogy:"Like the day a fixed deposit finally matures at the bank — until that date, your money is locked in earning interest; on that date, it's returned in full and the account closes.",
+  example:["Priya buys a bond with a 5-year maturity and a ₹1,000 face value.","For 5 years, she collects the fixed coupon each year, exactly as promised.","On the maturity date, the issuer repays the full ₹1,000 face value.","The bond is now closed — there's nothing left to hold or collect."],
+  exampleHead:"The finish line for a bond's life.",
+  exampleCallout:"5 years of coupons, then ₹1,000 back, then done",
+  mistakes:[
+    {think:"You can always get your money back early, penalty-free, before maturity.", reality:"Selling before maturity means selling in the open market at whatever price it's currently trading — which could be above or below what you paid, unlike the guaranteed face value repayment at maturity itself."},
+    {think:"Longer maturity bonds are always safer since you know exactly when you'll be repaid.", reality:"Longer maturities generally carry more interest-rate risk — their prices swing more sharply when rates move, since there's more time for rates to change before repayment."}
+  ],
+  related:["Bond","Face Value","Zero-Coupon Bond","Callable Bond"],
+  quiz:{q:"What happens on a bond's maturity date?", options:["The coupon rate doubles","The issuer repays the bond's face value and the bond closes","The bond automatically converts to shares","Nothing — maturity is just a suggested date"], correct:1, explain:"Maturity is the bond's finish line — the issuer repays the face value in full, and the bond ceases to exist."}
+},
+"Zero-Coupon Bond": {
+  analogyHead:"A gift card bought cheap, worth full value later.",
+  analogy:"Like buying a prepaid gift card for ₹800 that's worth exactly ₹1,000 the day it's redeemable — no cash trickles in along the way, the entire gain shows up at the very end.",
+  example:["A zero-coupon bond has a face value of ₹1,000 and 5 years to maturity.","Instead of paying ₹1,000 and collecting yearly coupons, an investor buys it today for a discounted ₹750.","No interest payments arrive during those 5 years — none at all.","At maturity, the investor receives the full ₹1,000 — the ₹250 discount was the entire return, all at once."],
+  exampleHead:"Buy at a discount, collect the difference at the end.",
+  exampleCallout:"₹750 in today, ₹1,000 out in 5 years — no payments between",
+  mistakes:[
+    {think:"A zero-coupon bond pays no return at all.", reality:"It pays a return, just not periodically — the entire gain (the discount to face value) is realized as one lump sum at maturity instead of yearly coupons."},
+    {think:"Zero-coupon bonds are less sensitive to interest-rate changes than regular bonds.", reality:"They're actually typically more sensitive — with no coupons arriving along the way to cushion things, their price swings more sharply as rates move."}
+  ],
+  related:["Bond","Coupon","Face Value","Maturity"],
+  quiz:{q:"How does an investor in a zero-coupon bond actually earn a return?", options:["Through periodic coupon payments, like a normal bond","By buying it at a discount to face value and collecting the full face value at maturity","Through dividends","They don't — it's purely a safekeeping instrument"], correct:1, explain:"A zero-coupon bond pays no periodic interest — the entire return is the gap between the discounted purchase price and the full face value paid at maturity."}
+},
+"Callable Bond": {
+  analogyHead:"A lease the landlord can end early.",
+  analogy:"Like a landlord who can end your lease early and hand back your deposit the moment a better-paying tenant comes along — convenient for the landlord, inconvenient for you.",
+  example:["A company issues a callable bond with a 9% coupon and a 10-year maturity.","Interest rates in the broader market fall to 5% after 3 years.","The issuer exercises its call option, repaying investors early instead of continuing to pay the now-expensive 9% coupon.","Investors get their principal back — but now have to reinvest it at the new, lower 5% rates available in the market."],
+  exampleHead:"The issuer's option to repay early, on their terms.",
+  exampleCallout:"9% coupon called away just as rates fall to 5%",
+  mistakes:[
+    {think:"A callable bond gives the investor the choice to be repaid early.", reality:"It's the opposite — the issuer holds the call option, and exercises it when it benefits them, typically leaving the investor to reinvest at less attractive rates."},
+    {think:"Callable bonds offer the same yield as an otherwise identical non-callable bond.", reality:"Callable bonds typically offer a slightly higher coupon to compensate investors for taking on this early-repayment risk in the first place."}
+  ],
+  related:["Bond","Maturity","Coupon","Credit Rating"],
+  quiz:{q:"Who holds the option to repay a callable bond early — the issuer or the investor?", options:["The investor","The issuer","Both, jointly","Neither — it's decided by the exchange"], correct:1, explain:"A callable bond gives the issuer, not the investor, the option to repay early — typically exercised when it benefits the issuer, such as when interest rates fall."}
+},
+"Credit Rating": {
+  analogyHead:"A credit score, but for a company or a country.",
+  analogy:"Like a personal credit score, but for a company or a government instead of a person — a quick letter grade that other lenders lean on instead of doing all the homework themselves.",
+  example:["A company applies to a rating agency like CRISIL for a credit rating on its planned bond issue.","The agency examines its financials, debt levels, and business outlook.","It assigns a rating of AA — strong, but not the very top AAA tier.","Because of that solid-but-not-perfect rating, the company can borrow at a reasonable rate, but slightly higher than an AAA-rated peer would pay."],
+  exampleHead:"A letter grade that decides borrowing costs.",
+  exampleCallout:"AA rating → good access to credit, at a moderate rate",
+  mistakes:[
+    {think:"A credit rating measures whether a company's stock is a good investment.", reality:"It measures the likelihood of the issuer repaying its debt — it says nothing about equity value or stock performance, which are entirely separate questions."},
+    {think:"Credit ratings are permanent once assigned.", reality:"Agencies regularly review and can upgrade or downgrade ratings as an issuer's financial position changes — a rating is a snapshot, not a fixed label."}
+  ],
+  related:["Bond","Debenture","Maturity","Callable Bond"],
+  quiz:{q:"What does a company's credit rating primarily assess?", options:["How likely its stock price is to rise","How likely it is to repay its debt obligations","Its total market capitalization","Its annual revenue growth rate"], correct:1, explain:"A credit rating is specifically an assessment of creditworthiness — the likelihood an issuer will meet its debt obligations, not a judgment on its stock."}
+},
+"Hedge Fund": {
+  analogyHead:"A private members' club with a looser rulebook.",
+  analogy:"Like a private members' club that plays by a looser rulebook than the public gym next door — open only to those who can afford the buy-in, and free to try riskier moves the public gym wouldn't allow.",
+  example:["A hedge fund raises ₹500 crore from wealthy individuals and institutions only.","It uses strategies unavailable to typical mutual funds: shorting stocks, heavy leverage, complex derivatives.","In a falling market, its short positions actually gain value, offsetting losses elsewhere.","Investors pay steep fees for this flexibility — commonly a management fee plus a cut of any profits."],
+  exampleHead:"Strategies a typical mutual fund isn't allowed to use.",
+  exampleCallout:"₹500cr, unconventional bets, and a much wider range of outcomes",
+  mistakes:[
+    {think:"Hedge funds are open to any investor with some savings.", reality:"They're typically restricted to wealthy individuals and institutions who meet regulatory net-worth or income thresholds — not available to the general retail public."},
+    {think:"'Hedge' fund means the fund is always protected from losses.", reality:"The name is historical — some do hedge to reduce risk, but many take on substantial, sometimes leveraged, risk in pursuit of higher returns."}
+  ],
+  related:["Mutual Fund","Derivative","Margin","Equity"],
+  quiz:{q:"Who is typically allowed to invest in a hedge fund?", options:["Any retail investor with a savings account","Wealthy individuals and institutions meeting regulatory eligibility thresholds","Only the fund's own employees","Anyone under 30 years old"], correct:1, explain:"Hedge funds are generally restricted to accredited or institutional investors who meet specific net-worth or income requirements — not open to the general public."}
+},
+"Green Bonds": {
+  analogyHead:"A loan with a locked-in purpose.",
+  analogy:"Like lending money to a friend who's contractually promised to spend it only on solar panels for their house — same loan mechanics, just a locked-in purpose for the cash.",
+  example:["A company issues a green bond to raise ₹200 crore.","The bond's terms legally earmark that money specifically for a solar power project.","Investors receive the same fixed coupon and repayment structure as any ordinary bond.","The company must report back on how the funds were actually used, to prove the green earmark was honored."],
+  exampleHead:"Same loan, same coupon, one condition attached.",
+  exampleCallout:"₹200cr raised, legally tied to a solar project",
+  mistakes:[
+    {think:"A green bond automatically pays a lower or different interest rate.", reality:"Mechanically, it works just like any other bond — coupon, maturity, credit rating all apply the same way. The only real difference is the legally earmarked use of proceeds."},
+    {think:"There's no way to check whether the money was actually used for the stated green purpose.", reality:"Reputable green bond frameworks require issuers to report on fund usage and impact, and third parties often verify those claims — though standards do vary by market."}
+  ],
+  related:["Bond","Coupon","Debenture","Credit Rating"],
+  quiz:{q:"What actually distinguishes a green bond from an ordinary bond, in terms of mechanics?", options:["It pays no coupon at all","Nothing — the coupon, maturity, and repayment work identically; the difference is that proceeds are earmarked for environmental projects","It automatically converts into equity","It can never be rated by a credit agency"], correct:1, explain:"A green bond works exactly like a standard bond mechanically — the defining feature is a legal commitment that the money raised funds environmental or sustainability projects specifically."}
+},
+"Stock Buyback": {
+  analogyHead:"Eating your own slice to grow everyone else's.",
+  analogy:"Like a group splitting a pizza, and one person buys back their own slice from the box — there's less pizza left overall, but everyone remaining now owns a bigger share of what's there.",
+  example:["A company has 10 crore shares outstanding, each worth ₹500.","It announces a buyback, repurchasing 1 crore of its own shares from the market using its cash.","Shares outstanding fall to 9 crore.","The company's total profit is now divided among fewer shares — each remaining share's claim on earnings just got proportionally bigger."],
+  exampleHead:"Fewer shares, bigger slice for everyone left.",
+  exampleCallout:"10cr shares → 9cr shares, same profit split fewer ways",
+  mistakes:[
+    {think:"A buyback and a dividend are functionally identical for shareholders.", reality:"A dividend pays cash directly to all shareholders; a buyback instead reduces the share count, which can raise per-share metrics like EPS without paying anyone cash directly."},
+    {think:"A buyback always signals a company is doing well.", reality:"It can also signal a company has run out of better growth investments to make with its cash, or in some cases, that management is prioritizing share-price optics."}
+  ],
+  related:["Equity","Market Capitalization","P/E Ratio","Stock Split"],
+  quiz:{q:"What direct effect does a stock buyback have on the number of shares outstanding?", options:["It increases shares outstanding","It has no effect on shares outstanding","It reduces shares outstanding","It converts shares into bonds"], correct:2, explain:"A buyback means the company repurchases and typically retires its own shares, directly reducing the total number of shares outstanding."}
+},
+"Stock Split": {
+  analogyHead:"Cutting one cake into smaller identical slices.",
+  analogy:"Like cutting one large cake into five smaller, identical slices at a party — you don't get more cake, you just get more, smaller pieces of the exact same total amount.",
+  example:["Rohan owns 1 share of a company worth ₹1,000, ahead of a 5-for-1 stock split.","The company executes the split.","Rohan now owns 5 shares, each worth ₹200.","His total holding is still worth exactly ₹1,000 — the split only changed the packaging, not the value."],
+  exampleHead:"More shares, same total value.",
+  exampleCallout:"1 share @ ₹1,000 → 5 shares @ ₹200 — same ₹1,000 total",
+  mistakes:[
+    {think:"A stock split makes existing shareholders' holdings more valuable.", reality:"It doesn't change total value at all — it just divides the same value into more, cheaper-looking shares, often to make the stock more accessible to smaller investors."},
+    {think:"A stock split is a signal that the company's fundamentals just improved.", reality:"A split by itself changes nothing about earnings, assets, or business performance — any market reaction to a split announcement is more about sentiment and accessibility than fundamentals."}
+  ],
+  related:["Equity","Face Value","Market Capitalization","Reverse Stock Split"],
+  quiz:{q:"After a 5-for-1 stock split, what happens to the total value of an existing shareholder's holding?", options:["It increases 5-fold","It stays exactly the same, just spread across more shares","It's cut to one-fifth","It becomes zero"], correct:1, explain:"A split only changes how many shares represent the same total value — an existing holder's total investment value is unchanged immediately after the split."}
+},
+"Reverse Stock Split": {
+  analogyHead:"Gluing thin slices back into one thick one.",
+  analogy:"Like gluing five small, thin slices of cake back into one thicker slice — same total cake, just presented as fewer, pricier-looking pieces.",
+  example:["A company's shares have fallen to ₹10 each, and it wants to avoid an embarrassingly low share price.","It announces a 1-for-10 reverse split.","Priya's 100 shares at ₹10 each become 10 shares at ₹100 each.","Her total holding is still worth exactly ₹1,000 — unchanged, just repackaged into fewer, higher-priced shares."],
+  exampleHead:"Fewer shares, same total value, higher price tag.",
+  exampleCallout:"100 shares @ ₹10 → 10 shares @ ₹100 — same ₹1,000 total",
+  mistakes:[
+    {think:"A reverse split increases the total value of an investor's holding.", reality:"Like a regular split, it changes nothing about total value — only the number of shares and the per-share price, in the opposite direction of a normal split."},
+    {think:"A reverse split is always a red flag for a struggling company.", reality:"It's often used defensively (to meet an exchange's minimum listing price rule) and can carry that stigma, but it's a cosmetic action — it says nothing directly about the underlying business."}
+  ],
+  related:["Stock Split","Equity","Market Capitalization","Face Value"],
+  quiz:{q:"A company executes a 1-for-10 reverse stock split. An investor who held 100 shares worth ₹10 each now holds:", options:["1,000 shares worth ₹1 each","10 shares worth ₹100 each","100 shares worth ₹100 each","No shares at all"], correct:1, explain:"A reverse split combines shares — 100 shares become 10, and since total value (₹1,000) is unchanged, each of those 10 shares is now worth ₹100."}
 }
 };
 
@@ -863,7 +1297,7 @@ const DIAG = {
 </svg>`
 };
 
-const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral"];
+const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split"];
 
 /* Order Book's bespoke illustrated analogy scene (kept special — the flagship example) */
 const ORDER_BOOK_ILLO = `<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
