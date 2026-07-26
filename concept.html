@@ -280,7 +280,7 @@ button{font-family:inherit}
 
 <script>
 /* ===================== DATA ===================== */
-const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}};
+const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}};
 
 const CORE = {
   "Order Book": {p:"The exchange's live list of everyone waiting to buy or sell, and at what price.", m:"Buy orders (bids) on one side, sell orders (asks) on the other. Where they meet, trades happen.", c:"Lifecycle"},
@@ -298,7 +298,20 @@ const CORE = {
   "Record Date": {p:"The day the company checks its shareholder list to decide who gets the dividend.", m:"Own it on record date, you're paid. The ex-date, just before, is when the stock trades without that right.", c:"Lifecycle"},
   "Ex-Date": {p:"Buy on or after this date, and the upcoming dividend is not yours.", m:"The price usually drops by roughly the dividend amount that morning. No free lunch.", c:"Lifecycle"},
   "ISIN": {p:"A security's passport number — a 12-character code identifying it globally.", m:"INE002A01018 is Reliance Industries. Every system, everywhere, agrees on it.", c:"Lifecycle"},
-  "Demat": {p:"Your shares as electronic entries instead of paper certificates.", m:"Held at a depository (NSDL or CDSL in India) via your demat account. No paper, no forgery, no loss.", c:"Lifecycle"}
+  "Demat": {p:"Your shares as electronic entries instead of paper certificates.", m:"Held at a depository (NSDL or CDSL in India) via your demat account. No paper, no forgery, no loss.", c:"Lifecycle"},
+  "Novation": {p:"The clearing house steps into the middle: it becomes the buyer to every seller and the seller to every buyer.", m:"You no longer face the stranger you traded with — you face the CCP. Counterparty risk, absorbed.", c:"Clearing & Settlement"},
+  "CCP": {p:"Central Counterparty — the institution that guarantees both sides of every trade.", m:"NSE Clearing in India. If a member defaults, the CCP still delivers. Margins and default funds make that promise real.", c:"Clearing & Settlement"},
+  "Netting": {p:"Cancelling offsetting obligations so only the difference moves.", m:"Bought 500, sold 300 of the same stock the same day? Settle 200. Less movement, less risk, less cost.", c:"Clearing & Settlement"},
+  "Margin": {p:"A good-faith deposit the clearing house holds in case you can't pay up.", m:"Collected upfront and adjusted daily as prices move. The market's way of saying: trust, but collateralise.", c:"Clearing & Settlement"},
+  "Mark-to-Market": {p:"Revaluing your positions at today's price, not the price you paid.", m:"Gains and losses are recognised daily, and margin calls follow the losses. Reality, applied every evening.", c:"Clearing & Settlement"},
+  "DvP": {p:"Delivery versus Payment — shares move if and only if money moves. Simultaneously.", m:"Neither side can be left holding nothing. The single most important safeguard in settlement.", c:"Clearing & Settlement"},
+  "T+1": {p:"Trade today, settle tomorrow. T is trade date; +1 is one business day.", m:"India runs T+1 for equities — among the fastest settlement cycles in the world. The US followed in 2024.", c:"Clearing & Settlement"},
+  "Settlement": {p:"The finale: securities land in the buyer's account, money lands in the seller's.", m:"Until settlement, a trade is a promise. After it, an immutable fact.", c:"Clearing & Settlement"},
+  "Custodian": {p:"A bank that safekeeps securities for institutions and handles the plumbing of settlement.", m:"Foreign investors in India can't hold assets directly — their custodian does, and settles on their behalf.", c:"Clearing & Settlement"},
+  "Depository": {p:"The vault where all demat securities in a market actually live, as electronic records.", m:"NSDL and CDSL in India. Your broker shows you the balance; the depository is the truth.", c:"Clearing & Settlement"},
+  "Haircut": {p:"The discount applied to collateral value, just in case its price falls.", m:"Pledge ₹100 of shares, get credit for ₹80. The 20% haircut is the lender's cushion.", c:"Clearing & Settlement"},
+  "Buy-in": {p:"You failed to deliver, so the system buys the shares elsewhere — and hands you the bill.", m:"The market's enforcement mechanism. Failure has a price, and it's yours.", c:"Clearing & Settlement"},
+  "Bilateral": {p:"A trade or agreement made directly between two counterparties, with no clearing house standing in between.", m:"The opposite of a novated, CCP-cleared trade — more flexible, but you're carrying the counterparty risk yourself.", c:"Clearing & Settlement"}
 };
 
 const CONTENT = {
@@ -509,6 +522,175 @@ const CONTENT = {
   ],
   related:["ISIN","Corporate Action","Confirmation","Record Date"],
   quiz:{q:"What does \"demat\" mean for how you actually hold your shares?", options:["A paper certificate mailed to you","An electronic entry at a depository, not a physical document","A locker at your bank","A printed passbook"], correct:1, explain:"Dematerialized shares exist purely as electronic records at a depository (NSDL/CDSL) — no paper certificate involved."}
+},
+"Novation": {
+  analogyHead:"Trading with a stranger becomes trading with a bank.",
+  analogy:"Like paying through an escrow service instead of directly to a seller — you hand your money to the escrow, the seller hands goods to the escrow, and from that point on you're only ever dealing with the escrow, not each other. If the seller vanishes, the escrow still delivers.",
+  example:["HDFC Mutual Fund agrees to buy 10,000 shares of Infosys from ICICI Mutual Fund, at the price matched on the exchange.","The instant that trade is confirmed, the clearing corporation (NSE Clearing) legally substitutes itself into the contract.","HDFC MF now owes the shares to, and is owed money by, NSE Clearing — not ICICI MF. Same for ICICI MF's side.","If ICICI MF defaulted overnight, HDFC MF still gets its shares — NSE Clearing absorbed that risk the moment novation happened."],
+  exampleHead:"Two mutual funds trade through the exchange.",
+  exampleCallout:"Two contracts, one clearing house standing in the middle",
+  mistakes:[
+    {think:"Novation is just a fancy word for the trade itself.", reality:"It's a separate legal step after the trade — the substitution of counterparties. The trade already happened; novation changes who's legally on the hook for it."},
+    {think:"You still have some relationship with the original counterparty after novation.", reality:"None at all, legally. Once novated, your only counterparty is the CCP — the original party disappears from your contract entirely."}
+  ],
+  related:["CCP","Bilateral","DvP","Settlement"],
+  quiz:{q:"After novation, who is a fund legally facing for a trade executed on the exchange?", options:["The original counterparty it traded with","The exchange's CEO","The clearing house (CCP)","Nobody — the trade is unenforceable"], correct:2, explain:"Novation substitutes the CCP as the legal counterparty to both sides — that's the entire point of the process."}
+},
+"CCP": {
+  analogyHead:"The guarantor everyone secretly trusts more than each other.",
+  analogy:"Like a marketplace that promises every buyer their goods and every seller their money — even if the other party turns out to be unreliable. You stop vetting strangers because the platform itself stands behind every deal.",
+  example:["A trading member owes deliveries and payments across dozens of open trades when it suddenly defaults.","Because every one of those trades was already novated, every counterparty is facing NSE Clearing, not the defaulting broker.","NSE Clearing uses the defaulting member's margin, then its own default fund, to make every counterparty whole.","Trades settle on time. Nobody outside the clearing corporation even needs to know a default happened."],
+  exampleHead:"A broker at NSE defaults mid-session.",
+  exampleCallout:"Margins + default fund absorb the shock",
+  mistakes:[
+    {think:"A CCP eliminates counterparty risk entirely.", reality:"It concentrates and manages it, backed by margin and a default fund — it doesn't make risk vanish, it makes one well-capitalised entity responsible for absorbing it."},
+    {think:"Only the two original trading parties matter to a CCP-cleared trade.", reality:"Once novated, the CCP itself is a party to both legs — its own solvency now matters to everyone in the market."}
+  ],
+  related:["Novation","Margin","DvP","Netting"],
+  quiz:{q:"What actually protects the market if a trading member defaults on a CCP-cleared trade?", options:["The other party's goodwill","The CCP's margin and default fund","A government bailout","Nothing — the trade is simply cancelled"], correct:1, explain:"The CCP draws first on the defaulting member's own margin, then its mutualised default fund, to guarantee every trade still settles."}
+},
+"Netting": {
+  analogyHead:"One final bill, not ten separate ones.",
+  analogy:"Like a group of friends who buy each other rounds all night — instead of separate cash handoffs after every round, at the end someone just works out who owes whom overall, and only that one net amount changes hands.",
+  example:["9:30am: buys 500 shares of Infosys.","1:00pm: sells 300 shares of the same Infosys position.","Both trades are legally separate and already confirmed — nothing about them changes.","At settlement, netting combines them into one obligation: a net buy of 200 shares. Only that quantity actually moves."],
+  exampleHead:"A trader buys and sells Infosys twice in one day.",
+  exampleCallout:"500 bought − 300 sold = 200 shares net",
+  mistakes:[
+    {think:"Netting means some trades don't count.", reality:"Every trade still counts and is still legally binding — netting only changes how many separate movements of shares and cash are needed to settle them."},
+    {think:"Netting only ever applies within the same stock.", reality:"Depending on the system, netting can apply per-security (most common for equities) or across a portfolio for other products — always check what's actually being netted."}
+  ],
+  related:["Settlement","CCP","Margin","Mark-to-Market"],
+  quiz:{q:"A trader buys 500 shares of a stock in the morning and sells 300 of the same stock later that day. After netting, what settles?", options:["500 shares bought and 300 sold, separately","800 shares total","A net buy of 200 shares","Nothing, since it cancels out"], correct:2, explain:"Netting collapses offsetting trades in the same security into one obligation — buy 500 minus sell 300 leaves a net buy of 200."}
+},
+"Margin": {
+  analogyHead:"A security deposit, recalculated daily.",
+  analogy:"Like a landlord holding a security deposit that gets topped up if your unpaid bills start piling up — the clearing house holds margin the same way, adjusting it as your position's risk grows or shrinks.",
+  example:["Priya opens a Nifty futures position worth ₹10 lakh.","The exchange requires initial margin of ₹1 lakh (10%) upfront, held by the clearing house.","The market moves against her overnight — her position now shows a ₹15,000 loss.","A margin call requires her to top up ₹15,000 by next morning, or her position gets force-closed."],
+  exampleHead:"A trader opens a futures position.",
+  exampleCallout:"Margin calls follow losses, daily",
+  mistakes:[
+    {think:"Margin is a fee you pay to trade.", reality:"It's a refundable deposit, not a fee — you get it back (adjusted for gains and losses) when the position closes. Brokerage and taxes are the actual fees."},
+    {think:"Once you post initial margin, you're done.", reality:"Margin is recalculated daily via mark-to-market — losses trigger margin calls, and you must top up or the position gets liquidated."}
+  ],
+  related:["Mark-to-Market","CCP","Haircut","Netting"],
+  quiz:{q:"Why would a trader receive a margin call?", options:["Because they made a profit","Because the exchange raised its listing fees","Because their open position lost value and needs more collateral","Because they placed too many orders in one day"], correct:2, explain:"Margin calls happen when mark-to-market losses erode the collateral cushion — the trader must top it up or the position gets closed out."}
+},
+"Mark-to-Market": {
+  analogyHead:"Checking today's resale value, not your receipt.",
+  analogy:"Like checking what your car is actually worth on a resale app every evening, instead of just remembering what you paid for it — your gains or losses are based on today's number, whether you like it or not.",
+  example:["Day 1: buys a futures contract at ₹100. Closing price that evening: ₹100 — no change.","Day 2: price closes at ₹96. Mark-to-market records a ₹4 loss, debited from margin.","Day 3: price closes at ₹92. Another ₹4 loss is recognised and debited.","The trader hasn't sold anything — but ₹8 of real cash has already left the account."],
+  exampleHead:"A trader holds a losing futures position for three days.",
+  exampleCallout:"₹8 lost, and already paid — before any sale",
+  mistakes:[
+    {think:"A loss only becomes real once you sell.", reality:"With mark-to-market, daily losses are cash-settled immediately via margin — you feel the loss in your account balance long before you decide to exit."},
+    {think:"Mark-to-market only matters for futures.", reality:"It's core to how any margined, clearing-house-guaranteed position is revalued daily — futures are just the clearest everyday example."}
+  ],
+  related:["Margin","Netting","T+1","Settlement"],
+  quiz:{q:"A trader's futures position loses ₹4 in value at today's close. What happens under mark-to-market?", options:["Nothing, until the position is sold","The ₹4 loss is recognised and debited from margin today","The loss is only recorded at contract expiry","The exchange absorbs the loss"], correct:1, explain:"Mark-to-market revalues open positions daily — losses are cash-settled out of margin the same day, not deferred until sale."}
+},
+"DvP": {
+  analogyHead:"Two hands moving at the same instant.",
+  analogy:"Like a vending machine that only drops the snack the exact instant your coin registers — never before, never after, and never one without the other.",
+  example:["Buyer's custodian confirms ₹10 lakh is available and ready to move.","Seller's custodian confirms the bonds are available and ready to move.","The depository executes both transfers as one atomic instruction: bonds to the buyer, cash to the seller.","Either both legs succeed together, or neither does — there is no in-between state."],
+  exampleHead:"Settlement of a ₹10 lakh bond trade.",
+  exampleCallout:"One atomic instruction, not two separate hopes",
+  mistakes:[
+    {think:"DvP just means both sides eventually get paid.", reality:"It means both legs are contractually and technically linked so neither can happen without the other — a hard settlement-system guarantee, not just a policy of 'eventually'."},
+    {think:"DvP protects only the buyer.", reality:"It protects both sides equally — the seller is just as guaranteed to receive payment as the buyer is guaranteed to receive securities."}
+  ],
+  related:["Settlement","Custodian","Depository","T+1"],
+  quiz:{q:"Under DvP, what happens if a buyer's cash isn't actually available at settlement?", options:["The seller delivers the securities anyway and chases payment later","Securities move but payment is delayed a day","Neither the securities nor the cash move","The CCP pays the seller out of its own funds automatically"], correct:2, explain:"DvP links both legs as one atomic action — if either side can't deliver, the whole exchange doesn't happen."}
+},
+"T+1": {
+  analogyHead:"Order today, delivery tomorrow — guaranteed.",
+  analogy:"Like a next-day delivery promise from an online store: you don't get the product the second you click buy, but you know exactly which day it lands, and everyone plans around that fixed promise.",
+  example:["Monday (T): Rohan buys 100 shares of Infosys at ₹1,600 each.","The trade is confirmed and novated to the clearing house that same day.","Tuesday (T+1): the shares land in Rohan's demat account, and ₹1,60,000 leaves his trading account.","Until Tuesday, Rohan owns a confirmed trade — not yet the shares themselves."],
+  exampleHead:"Buying shares on a Monday.",
+  exampleCallout:"Trade Monday, own it Tuesday",
+  mistakes:[
+    {think:"T+1 means the trade is only 'real' after settlement.", reality:"The trade is binding from the moment of execution — T+1 just describes when the actual exchange of shares and money happens, not when the obligation begins."},
+    {think:"Every market in the world settles on the same cycle.", reality:"Cycles vary — India runs T+1 for equities; the US only moved from T+2 to T+1 in 2024. Cross-border trades sometimes have to reconcile different cycles."}
+  ],
+  related:["Settlement","DvP","Failed Trade","Custodian"],
+  quiz:{q:"If a trade executes on Monday under a T+1 cycle, when does settlement happen?", options:["Monday, instantly","Tuesday, the next business day","The following Monday","Whenever the buyer transfers funds"], correct:1, explain:"T+1 means settlement lands one business day after the trade date — Monday's trade settles Tuesday."}
+},
+"Settlement": {
+  analogyHead:"The moment a promise becomes a fact.",
+  analogy:"Like the moment a courier actually hands over the package and takes your signature — before that, you had a tracking number and a promise; after it, you have the thing itself, undeniably.",
+  example:["Monday: Rohan's buy order executes at ₹1,600. This is still just a confirmed obligation.","Overnight: the trade is netted and novated through the clearing house.","Tuesday: DvP settlement occurs — 100 shares credit to Rohan's demat account, ₹1,60,000 debits from his account.","From this point, Rohan legally and permanently owns those 100 shares."],
+  exampleHead:"The finale of Rohan's Infosys trade.",
+  exampleCallout:"A promise, made permanent",
+  mistakes:[
+    {think:"A trade and a settlement are the same event.", reality:"They're two separate moments — execution is the agreement, settlement is the actual, final transfer of securities and cash, one or more days later."},
+    {think:"Once executed, a trade is guaranteed to settle.", reality:"Most do, but failures happen — see Failed Trade. Settlement is the finish line, not a foregone conclusion."}
+  ],
+  related:["T+1","DvP","Failed Trade","Custodian"],
+  quiz:{q:"What actually happens at settlement, as opposed to execution?", options:["The price is negotiated","The trade is legally agreed to for the first time","Securities and cash actually change hands","The order is placed on the exchange"], correct:2, explain:"Execution is the agreement; settlement is the actual final transfer of securities for cash, days (or one day) later."}
+},
+"Custodian": {
+  analogyHead:"A vault you never have to visit yourself.",
+  analogy:"Like a safety deposit service that not only stores your valuables but also handles the paperwork every time something needs to move in or out — you never touch the vault yourself, they do it on your behalf.",
+  example:["A US pension fund wants to buy shares listed only in India.","It can't hold a local demat account directly — foreign investors route through a custodian.","The custodian executes the settlement instructions, holds the shares safely, and reports the holding back to the fund.","The fund never directly touches the Indian market's plumbing — its custodian does, on its behalf."],
+  exampleHead:"A foreign fund buys Indian shares.",
+  exampleCallout:"One custodian, one market's worth of plumbing handled",
+  mistakes:[
+    {think:"A custodian is basically the same as a broker.", reality:"A broker executes trades; a custodian safekeeps assets and handles settlement and reporting afterward. Large institutions typically use both, for different jobs."},
+    {think:"Custodians are only relevant for foreign investors.", reality:"Domestic institutions — mutual funds, insurance companies — also use custodians for safekeeping and operational efficiency, not just cross-border investors."}
+  ],
+  related:["Depository","DvP","Settlement","Bilateral"],
+  quiz:{q:"Why does a foreign institutional investor typically need a custodian to invest in Indian equities?", options:["To get a better price on trades","Because foreign investors can't hold a local demat account directly and need someone to settle and safekeep on their behalf","Because custodians set the exchange's opening price","Because only custodians can place market orders"], correct:1, explain:"Foreign investors route through a custodian, which holds the securities and handles local settlement mechanics on their behalf."}
+},
+"Depository": {
+  analogyHead:"The one true ledger everyone else just displays.",
+  analogy:"Like a bank's core ledger versus your banking app — the app just shows you a friendly view of your balance, but the actual, legally authoritative record lives in the bank's own systems.",
+  example:["Rohan opens his broker's app and sees 100 Infosys shares in his portfolio.","His broker's app is just a display — the actual legal record lives at the depository (NSDL or CDSL).","If there's ever a mismatch, the depository's record is the one that's legally true, not the broker's app.","Corporate actions (dividends, splits) are also applied at the depository level, then reflected in every broker's app afterward."],
+  exampleHead:"Checking your share balance.",
+  exampleCallout:"The app shows it. The depository owns the truth.",
+  mistakes:[
+    {think:"My broker holds my shares.", reality:"Your broker just gives you a window into your holdings — the shares themselves sit as electronic records at a depository (NSDL/CDSL in India), tied to your own demat account."},
+    {think:"There's one single depository worldwide.", reality:"Each market typically has its own depository (or two, competing, as in India's NSDL/CDSL) — cross-border holdings need extra plumbing to reconcile between them."}
+  ],
+  related:["Demat","Custodian","Corporate Action","DvP"],
+  quiz:{q:"If your broker's app and the depository's records ever disagree on your share balance, which one is legally correct?", options:["The broker's app, since you interact with it","Whichever number is higher","The depository's record","Neither — you'd need a court to decide"], correct:2, explain:"The depository (NSDL/CDSL in India) holds the actual, legally authoritative electronic record — the broker's app is just a display of it."}
+},
+"Haircut": {
+  analogyHead:"The discount a nervous lender applies, just in case.",
+  analogy:"Like a pawnshop that only lends you 80% of your gold's market value — the 'haircut' is their cushion against the price of gold dropping before you repay.",
+  example:["Priya pledges ₹1,00,000 worth of shares as collateral for her trading margin.","The clearing house applies a 20% haircut, since share prices can fall.","She's credited only ₹80,000 of usable margin against that pledge.","If the shares' value falls further, the haircut-adjusted margin falls with it — she may need to pledge more."],
+  exampleHead:"Pledging shares for margin.",
+  exampleCallout:"₹1,00,000 pledged, ₹80,000 usable",
+  mistakes:[
+    {think:"A haircut is a fee charged for pledging collateral.", reality:"It's not a charge — it's a reduction in how much credit you get against the collateral's face value, to protect the lender against a price drop."},
+    {think:"The haircut percentage is the same for every asset.", reality:"Riskier or more volatile collateral (small-cap shares, for instance) gets a bigger haircut than safer collateral like government bonds."}
+  ],
+  related:["Margin","CCP","Netting","Mark-to-Market"],
+  quiz:{q:"Why does a clearing house apply a haircut to pledged share collateral?", options:["To charge a service fee","To cushion against the collateral's price falling before it can be used","To reward large investors","To comply with tax law"], correct:1, explain:"The haircut discounts the collateral's credited value so a price drop doesn't leave the lender under-collateralised."}
+},
+"Buy-in": {
+  analogyHead:"Someone else fills your order — and sends you the bill.",
+  analogy:"Like a caterer who promised 200 meals, came up short, and the venue simply orders replacement meals from elsewhere at whatever price it takes — then charges the shortfall straight back to the caterer.",
+  example:["A broker sells 1,000 shares of a stock it doesn't actually have ready to deliver by settlement day.","Settlement day arrives — the shares never show up. This is a failed trade.","After a grace period, the exchange executes a buy-in: it purchases 1,000 shares on the open market on the defaulting seller's behalf.","The defaulting seller is billed for the buy-in cost, plus any price difference and penalties."],
+  exampleHead:"A seller fails to deliver shares.",
+  exampleCallout:"The shortfall becomes the seller's bill, not the buyer's problem",
+  mistakes:[
+    {think:"A buy-in is a punishment separate from the failed trade.", reality:"It's the direct consequence — the exchange's mechanism for making sure the buyer still gets their shares, even if the original seller can't deliver."},
+    {think:"Buy-ins are rare edge cases that don't really matter.", reality:"They're real enforcement teeth behind settlement discipline — the credible threat of a buy-in is exactly why sellers work hard not to fail delivery in the first place."}
+  ],
+  related:["Failed Trade","Settlement","T+1","CCP"],
+  quiz:{q:"In a buy-in, who ultimately pays for the exchange purchasing replacement shares on the open market?", options:["The buyer who was owed the shares","The CCP, out of its default fund","The defaulting seller who failed to deliver","The stock exchange itself, as a cost of doing business"], correct:2, explain:"A buy-in bills the cost of the replacement purchase — plus any price difference and penalties — back to the seller who failed to deliver."}
+},
+"Bilateral": {
+  analogyHead:"Just the two of you, no referee.",
+  analogy:"Like agreeing to split a shared cab fare directly with a friend, with no app or driver keeping either of you honest — it works fine, right up until one of you doesn't pay up.",
+  example:["Bank A and Bank B agree directly on a custom interest-rate swap — no exchange, no clearing house involved.","Each bank now carries direct counterparty risk to the other, with no CCP standing in between.","They typically exchange collateral bilaterally and negotiate their own legal terms (an ISDA agreement) to manage that risk themselves.","If Bank B defaults, Bank A is exposed directly to Bank B — there's no CCP default fund to fall back on."],
+  exampleHead:"An OTC derivative between two banks.",
+  exampleCallout:"No CCP in the middle — the risk stays exactly where it started",
+  mistakes:[
+    {think:"Bilateral trades are always riskier and should be avoided.", reality:"They're more flexible for custom, non-standard contracts that clearing houses don't handle — the tradeoff is carrying counterparty risk yourself instead of transferring it to a CCP."},
+    {think:"Bilateral just means 'not on an exchange'.", reality:"It specifically means no CCP steps in via novation — some bilateral trades are still confirmed and reported through electronic systems, they just lack a central counterparty absorbing the risk."}
+  ],
+  related:["Novation","CCP","DvP","Custodian"],
+  quiz:{q:"What's the key difference between a bilateral trade and a CCP-cleared one?", options:["Bilateral trades are always illegal","In a bilateral trade, each party carries direct counterparty risk to the other, with no CCP absorbing it","Bilateral trades settle faster","There's no difference, just terminology"], correct:1, explain:"Without novation to a CCP, each side in a bilateral trade is directly exposed to the other's potential default."}
 }
 };
 
@@ -681,7 +863,7 @@ const DIAG = {
 </svg>`
 };
 
-const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat"];
+const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral"];
 
 /* Order Book's bespoke illustrated analogy scene (kept special — the flagship example) */
 const ORDER_BOOK_ILLO = `<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
@@ -705,8 +887,8 @@ const ORDER_BOOK_ILLO = `<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/200
 let currentTerm = null;
 
 function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
-function slugify(t){ return t.replace(/\s+/g,'-'); }
-function unslugify(s){ return s.replace(/-/g,' '); }
+function slugify(t){ return encodeURIComponent(t); }
+function unslugify(s){ return s; }
 
 function readingTime(term){
   const c = CONTENT[term];

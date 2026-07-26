@@ -388,7 +388,7 @@ html.pastel .banner{background:var(--panel-2)}
     <span class="lbl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z"/></svg>Today's Visual</span>
     <h3>Order Book</h3>
     <p>The live list of buy and sell orders in the market.</p>
-    <a class="tv-cta" href="concept.html#Order-Book">Learn in 2 minutes →</a>
+    <a class="tv-cta" href="concept.html#Order%20Book">Learn in 2 minutes →</a>
   </div>
   <div class="tv-viz">
     <svg viewBox="0 0 320 160" style="width:100%;max-width:340px">
@@ -3031,7 +3031,7 @@ catGrid.innerHTML = CATS.map((name,i) => {
   return `<div class="cat-card" data-cat="${i}" style="--cat-color:${meta.color};--cat-tint:${meta.tint}"><div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${meta.icon}</svg></div><h4>${esc(name)}</h4><div class="n">${n} concepts</div></div>`;
 }).join("");
 
-/* ---------- analogy + related-terms overlay (Lifecycle category, first 16 terms — more to follow) ---------- */
+/* ---------- analogy + related-terms overlay (Lifecycle + Clearing & Settlement, 29 terms so far — more to follow) ---------- */
 const ANALOGY_DATA = {
   "Order Book": {analogyHead:"A farmers' market, not a warehouse.", analogy:"Nothing is priced and shelved in advance. Every stall is just a person holding up a number — \"I'll sell at this price,\" \"I'll pay this much.\"", related:["Limit Order","Market Order","Bid-Ask Spread","Execution"]},
   "Limit Order": {analogyHead:"A ceiling, not a wish.", analogy:"Like telling a real-estate agent \"only call me if the flat is ₹50 lakh or under\" — you set the ceiling and walk away.", related:["Order Book","Market Order","Execution","Bid-Ask Spread"]},
@@ -3048,9 +3048,22 @@ const ANALOGY_DATA = {
   "Record Date": {analogyHead:"Attendance taken at exactly 9am.", analogy:"Like a school taking attendance at exactly 9:00am to decide who gets the field-trip slip — show up at 9:01 and you've missed the cutoff.", related:["Ex-Date","Corporate Action","Demat","ISIN"]},
   "Ex-Date": {analogyHead:"The perk that stops the moment it's announced.", analogy:"Like a concert ticket that stops including free parking the moment they announce it — buy after, and the parking pass isn't part of the deal.", related:["Record Date","Corporate Action","Order Book","Demat"]},
   "ISIN": {analogyHead:"A passport that never changes.", analogy:"Like a passport number for a stock — wherever it travels, that one code always points to exactly the same security.", related:["Demat","Corporate Action","Order Book","Confirmation"]},
-  "Demat": {analogyHead:"Your mattress-cash, now in a bank account.", analogy:"Like moving your savings from a mattress full of paper notes into a bank account — now it's a trusted ledger entry, not a physical thing that can be lost.", related:["ISIN","Corporate Action","Confirmation","Record Date"]}
+  "Demat": {analogyHead:"Your mattress-cash, now in a bank account.", analogy:"Like moving your savings from a mattress full of paper notes into a bank account — now it's a trusted ledger entry, not a physical thing that can be lost.", related:["ISIN","Corporate Action","Confirmation","Record Date"]},
+  "Novation": {analogyHead:"Trading with a stranger becomes trading with a bank.", analogy:"Like paying through an escrow service instead of directly to a seller — from that point on you're only ever dealing with the escrow, not each other.", related:["CCP","Bilateral","DvP","Settlement"]},
+  "CCP": {analogyHead:"The guarantor everyone secretly trusts more than each other.", analogy:"Like a marketplace that promises every buyer their goods and every seller their money, even if the other party turns out unreliable.", related:["Novation","Margin","DvP","Netting"]},
+  "Netting": {analogyHead:"One final bill, not ten separate ones.", analogy:"Like a group of friends who buy each other rounds all night — at the end someone works out who owes whom overall, and only that net amount moves.", related:["Settlement","CCP","Margin","Mark-to-Market"]},
+  "Margin": {analogyHead:"A security deposit, recalculated daily.", analogy:"Like a landlord holding a security deposit that gets topped up if your unpaid bills start piling up — adjusted as your risk grows or shrinks.", related:["Mark-to-Market","CCP","Haircut","Netting"]},
+  "Mark-to-Market": {analogyHead:"Checking today's resale value, not your receipt.", analogy:"Like checking what your car is actually worth on a resale app every evening, instead of remembering what you paid for it.", related:["Margin","Netting","T+1","Settlement"]},
+  "DvP": {analogyHead:"Two hands moving at the same instant.", analogy:"Like a vending machine that only drops the snack the exact instant your coin registers — never one without the other.", related:["Settlement","Custodian","Depository","T+1"]},
+  "T+1": {analogyHead:"Order today, delivery tomorrow — guaranteed.", analogy:"Like a next-day delivery promise from an online store — you don't get it instantly, but everyone plans around the fixed promise.", related:["Settlement","DvP","Failed Trade","Custodian"]},
+  "Settlement": {analogyHead:"The moment a promise becomes a fact.", analogy:"Like the moment a courier actually hands over the package and takes your signature — before that, a tracking number; after it, the thing itself.", related:["T+1","DvP","Failed Trade","Custodian"]},
+  "Custodian": {analogyHead:"A vault you never have to visit yourself.", analogy:"Like a safety deposit service that stores your valuables and handles the paperwork every time something needs to move.", related:["Depository","DvP","Settlement","Bilateral"]},
+  "Depository": {analogyHead:"The one true ledger everyone else just displays.", analogy:"Like a bank's core ledger versus your banking app — the app just shows a friendly view; the real record lives elsewhere.", related:["Demat","Custodian","Corporate Action","DvP"]},
+  "Haircut": {analogyHead:"The discount a nervous lender applies, just in case.", analogy:"Like a pawnshop that only lends you 80% of your gold's market value — the cushion against the price dropping before you repay.", related:["Margin","CCP","Netting","Mark-to-Market"]},
+  "Buy-in": {analogyHead:"Someone else fills your order — and sends you the bill.", analogy:"Like a caterer who came up short, so the venue orders replacements elsewhere and charges the shortfall back to the caterer.", related:["Failed Trade","Settlement","T+1","CCP"]},
+  "Bilateral": {analogyHead:"Just the two of you, no referee.", analogy:"Like splitting a shared cab fare directly with a friend, with no app keeping either of you honest — fine, until one of you doesn't pay up.", related:["Novation","CCP","DvP","Custodian"]}
 };
-const CONCEPT_PAGES = {"Order Book":true,"Limit Order":true,"Market Order":true,"Execution":true,"Allocation":true,"Confirmation":true,"Trade Enrichment":true,"STP":true,"Reconciliation":true,"Break":true,"Failed Trade":true,"Corporate Action":true,"Record Date":true,"Ex-Date":true,"ISIN":true,"Demat":true};
+const CONCEPT_PAGES = {"Order Book":true,"Limit Order":true,"Market Order":true,"Execution":true,"Allocation":true,"Confirmation":true,"Trade Enrichment":true,"STP":true,"Reconciliation":true,"Break":true,"Failed Trade":true,"Corporate Action":true,"Record Date":true,"Ex-Date":true,"ISIN":true,"Demat":true,"Novation":true,"CCP":true,"Netting":true,"Margin":true,"Mark-to-Market":true,"DvP":true,"T+1":true,"Settlement":true,"Custodian":true,"Depository":true,"Haircut":true,"Buy-in":true,"Bilateral":true};
 
 /* ---------- bookmarks ---------- */
 const BOOKMARK_KEY = "jargon-decoder-bookmarks";
@@ -3100,7 +3113,7 @@ function render(){
         ${an?`<div class="analogy"><span class="lbl">Think of it like</span><p>${esc(an.analogy)}</p></div>`:""}
         <p class="more">${esc(x.m)}</p>
         ${an?`<div class="related-terms"><span class="lbl">Related</span>${an.related.map(r=>`<span class="rel-chip">${esc(r)}</span>`).join("")}</div>`:""}
-        ${CONCEPT_PAGES[x.t]?`<a class="concept-link" href="concept.html#${encodeURIComponent(x.t.replace(/\\s+/g,'-'))}">Read the full concept guide →</a>`:""}
+        ${CONCEPT_PAGES[x.t]?`<a class="concept-link" href="concept.html#${encodeURIComponent(x.t)}">Read the full concept guide →</a>`:""}
         ${hasViz?`<div class="viz">${DIAG[x.t]}</div>`:""}
       </div>`;
     }).join("");
