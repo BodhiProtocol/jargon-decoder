@@ -280,7 +280,7 @@ button{font-family:inherit}
 
 <script>
 /* ===================== DATA ===================== */
-const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}, "Risk & Compliance":{color:'#DD7A40',tint:'#FBEDE2'}, "Market Structure":{color:'#3FA66B',tint:'#E6F5EC'}};
+const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}, "Risk & Compliance":{color:'#DD7A40',tint:'#FBEDE2'}, "Market Structure":{color:'#3FA66B',tint:'#E6F5EC'}, Technology:{color:'#4497C2',tint:'#E6F1F8'}};
 
 const CORE = {
   "Order Book": {p:"The exchange's live list of everyone waiting to buy or sell, and at what price.", m:"Buy orders (bids) on one side, sell orders (asks) on the other. Where they meet, trades happen.", c:"Lifecycle"},
@@ -384,7 +384,24 @@ const CORE = {
   "Short Squeeze": {p:"When a stock rockets upward because short-sellers are forced to buy it back to escape their losses.", m:"The more it rises, the more shorts are forced to cover, which pushes it up further. GameStop's 2021 spike is the textbook example.", c:"Market Structure"},
   "Activist Investor": {p:"An investor who buys a stake in a company specifically to force change — new management, a sale, a strategy shift.", m:"Not a passive shareholder. They show up, make noise, and sometimes win board seats to get their way.", c:"Market Structure"},
   "S&P 500": {p:"An index tracking 500 of the largest publicly traded companies in the US, weighted by size.", m:"The single most-quoted benchmark for 'how is the US stock market doing' in the world.", c:"Market Structure"},
-  "Dow Jones": {p:"An index of 30 major US companies, weighted by their share price rather than their size.", m:"Older and simpler than the S&P 500, but that price-weighting quirk makes it a less accurate market gauge.", c:"Market Structure"}
+  "Dow Jones": {p:"An index of 30 major US companies, weighted by their share price rather than their size.", m:"Older and simpler than the S&P 500, but that price-weighting quirk makes it a less accurate market gauge.", c:"Market Structure"},
+  "FIX Protocol": {p:"The common language trading systems speak to each other. Since 1992.", m:"Orders, executions, cancellations — all standardised messages. Tag 35=D means \"new order\". Every OMS speaks it.", c:"Technology"},
+  "OMS": {p:"Order Management System — where orders are born, validated, tracked, and audited.", m:"The buy-side's book of record for every order's life. The BA's most-visited system.", c:"Technology"},
+  "EMS": {p:"Execution Management System — the trader's cockpit for working orders in the market.", m:"Real-time data, algos, smart routing. The OMS decides what; the EMS decides how.", c:"Technology"},
+  "Matching Engine": {p:"The exchange's heart: the software that pairs buyers with sellers by price-time priority.", m:"Best price wins; at equal prices, first come first served. Microsecond fair play.", c:"Technology"},
+  "Market Data Feed": {p:"The live river of prices, quotes, and trades flowing out of exchanges.", m:"Every screen, algo, and risk system drinks from it. Latency here is measured in microseconds.", c:"Technology"},
+  "Reference Data": {p:"The quiet facts everything depends on: security details, calendars, counterparty records.", m:"Wrong reference data breaks trades silently, everywhere, at once. Unglamorous and mission-critical.", c:"Technology"},
+  "Golden Source": {p:"The one system officially trusted as the truth for a piece of data.", m:"When five systems disagree on a price, the golden source wins. Deciding which one — that's a BA workshop.", c:"Technology"},
+  "Audit Trail": {p:"The unforgeable diary: who did what, when, and from where.", m:"Regulators demand it, investigations depend on it, and good systems write it automatically.", c:"Technology"},
+  "API": {p:"A doorway systems use to talk to each other, with rules about what can be asked.", m:"Modern market infrastructure is APIs all the way down. BAs write the requirements for what flows through them.", c:"Technology"},
+  "Bloomberg Terminal": {p:"The most expensive, most powerful data terminal in finance — real-time prices, news, analytics, and a built-in chat network, all in one screen.", m:"Roughly $27,000 a year per license. If you've seen a trading floor in a movie, that orange-on-black screen is almost certainly this.", c:"Technology"},
+  "Capital IQ": {p:"A web-based research and data platform, especially strong for M&A screening and cleaned-up financial statements.", m:"Owned by S&P. The go-to tool for investment bankers building comps and precedent transaction lists.", c:"Technology"},
+  "FactSet": {p:"A data and analytics platform built around a best-in-class Excel and PowerPoint plugin.", m:"Popular with bankers building pitchbooks — it turns messy data into formatted slides and models fast.", c:"Technology"},
+  "Refinitiv Eikon": {p:"Bloomberg's most direct competitor, offering similar data at a meaningfully lower price.", m:"Now rebranded as LSEG Workspace after London Stock Exchange Group's acquisition. Often the terminal junior staff get before earning a Bloomberg seat.", c:"Technology"},
+  "Comps": {p:"Valuing a company by looking at what similar, publicly traded companies are worth.", m:"If three airlines trade at 8x earnings, a fourth probably should too — comps is finance's version of pricing by comparison.", c:"Technology"},
+  "Non-GAAP": {p:"A company's own version of its earnings, with items it considers one-off or non-recurring stripped out.", m:"Can be genuinely useful — or a way to make a bad quarter look better. Always worth checking what got excluded, and why.", c:"Technology"},
+  "Soft Dollar": {p:"Paying for research or services with trading commissions instead of cash — bundled into the cost of every trade.", m:"A quiet way asset managers fund data terminals and research without writing a separate check. Heavily regulated because of the obvious conflict of interest.", c:"Technology"},
+  "Data Scrubbing": {p:"Cleaning and standardizing a company's reported financials so they're actually comparable to another company's.", m:"Different companies report the same number in different ways — scrubbing normalizes it before you can compare apples to apples.", c:"Technology"}
 };
 
 const CONTENT = {
@@ -1713,6 +1730,227 @@ const CONTENT = {
   ],
   related:["S&P 500","Market Capitalization","Index Fund","Equity"],
   quiz:{q:"What makes the Dow Jones Industrial Average's weighting method unusual compared to the S&P 500?", options:["It's weighted by trading volume","It's price-weighted — a higher share price swings the average more, regardless of overall company size","It only includes technology companies","It's weighted by number of employees"], correct:1, explain:"The Dow is price-weighted, an older and less common method — companies with higher share prices, not necessarily larger overall size, have a bigger effect on the average."}
+},
+"FIX Protocol": {
+  analogyHead:"A universal order form every kitchen understands.",
+  analogy:"Like a universal restaurant order form used by every kitchen worldwide — write '35=D' on it and any kitchen anywhere, in any language, understands you mean 'this is a new order.'",
+  example:["A fund's OMS in Mumbai needs to send a new order to a broker's system in London.","Both systems, despite being built by completely different vendors, speak FIX Protocol.","The Mumbai system sends a standardized message: Tag 35=D, meaning 'this is a new order'.","The London system reads that same tag instantly and understands exactly what's being requested, no custom integration needed."],
+  exampleHead:"Two different trading systems place the same order.",
+  exampleCallout:"Tag 35=D, understood identically by any FIX-speaking system, anywhere",
+  mistakes:[
+    {think:"FIX Protocol is a specific trading platform or piece of software.", reality:"It's a messaging standard — a shared language different systems use to talk to each other, not a product itself."},
+    {think:"Every trading system needs a unique, custom integration with every other system it talks to.", reality:"That's exactly what FIX avoids — once a system speaks FIX, it can talk to any other FIX-compliant system without bespoke integration for each one."}
+  ],
+  related:["OMS","EMS","API","Matching Engine"],
+  quiz:{q:"What is FIX Protocol, fundamentally?", options:["A specific trading platform","A standardized messaging language that different trading systems use to communicate with each other","A stock exchange","A type of trading algorithm"], correct:1, explain:"FIX (Financial Information eXchange) is a shared messaging standard — it lets different systems, built by different vendors, communicate using the same standardized message formats."}
+},
+"OMS": {
+  analogyHead:"A hospital's patient chart, from admission to discharge.",
+  analogy:"Like a hospital's patient chart — every order's life from placement to close is recorded in one place, checked, and available for anyone to audit later.",
+  example:["A fund manager decides to buy 10,000 shares of a stock.","The order is created and validated for compliance in the OMS.","The OMS tracks the order's status — sent, partially filled, fully filled — throughout its life.","Every action on that order is logged in the OMS, creating a complete, auditable record afterward."],
+  exampleHead:"Tracking one order from birth to close.",
+  exampleCallout:"Born, validated, tracked, and logged — all inside the OMS",
+  mistakes:[
+    {think:"An OMS is the system that actually executes trades in the market.", reality:"That's the EMS's job. The OMS is the buy-side's book of record — it creates, validates, and tracks orders, but the EMS handles the real-time market execution."},
+    {think:"An OMS is only useful for very large institutional trades.", reality:"Every order, however small, typically flows through some form of order management — the OMS's core value is auditability and control, not just scale."}
+  ],
+  related:["EMS","FIX Protocol","Audit Trail","Buy-side"],
+  quiz:{q:"What is the core function of an OMS (Order Management System)?", options:["Executing trades directly in the market","Creating, validating, and tracking an order's full lifecycle as the buy-side's book of record","Setting exchange trading hours","Calculating a company's credit rating"], correct:1, explain:"An OMS is the buy-side's system of record — it's where orders are born, validated for compliance, and tracked through their entire lifecycle."}
+},
+"EMS": {
+  analogyHead:"The cockpit instruments a pilot flies with, not the flight plan.",
+  analogy:"Like a pilot's cockpit instruments during the actual flight — the flight plan (OMS) decided the destination, but the cockpit (EMS) is where real-time decisions about speed and route happen.",
+  example:["A trader receives a large order from the OMS to sell 50,000 shares.","Using the EMS, they see real-time market data across multiple venues at once.","They choose an algorithm within the EMS to break the order into smaller pieces and route them smartly.","The EMS handles the moment-to-moment execution; the OMS keeps the overall record of what was ultimately achieved."],
+  exampleHead:"A trader decides how to work a large order.",
+  exampleCallout:"OMS decided what to sell; EMS decides how to actually sell it",
+  mistakes:[
+    {think:"An EMS and an OMS are interchangeable, doing the same job.", reality:"The OMS is the order's book of record (what and why); the EMS is the trader's real-time execution cockpit (how and where) — related but distinct systems."},
+    {think:"An EMS is only relevant to high-frequency traders.", reality:"Any trader working a sizable order in the market — not just HFT firms — relies on an EMS for real-time data, algos, and smart order routing."}
+  ],
+  related:["OMS","Algorithmic Trading","Market Data Feed","Matching Engine"],
+  quiz:{q:"What does an EMS (Execution Management System) primarily provide to a trader?", options:["A compliance record of the order's approval","Real-time market data, algorithms, and smart routing to actually work an order in the market","A company's credit rating history","A regulatory filing tool"], correct:1, explain:"An EMS is the trader's real-time execution tool — live data, algos, and smart routing — distinct from the OMS, which is the order's overall book of record."}
+},
+"Matching Engine": {
+  analogyHead:"An auctioneer's gavel, deciding the winner in real time.",
+  analogy:"Like an auctioneer instantly pairing the highest bidder with the seller the moment their numbers match — except this auctioneer works in microseconds and never sleeps.",
+  example:["A buy order for 100 shares at ₹500 arrives on the exchange.","Microseconds later, a matching sell order for 100 shares at ₹500 arrives too.","The matching engine instantly pairs them, since their prices align.","If multiple orders sit at the identical best price, the one that arrived first gets matched first — price-time priority."],
+  exampleHead:"Two orders meet at the same price.",
+  exampleCallout:"Same price, first come first served — decided in microseconds",
+  mistakes:[
+    {think:"A matching engine involves a human deciding which orders to pair.", reality:"It's entirely automated software, operating in microseconds — no human is involved in the moment-to-moment matching decision."},
+    {think:"The largest order always gets matched first.", reality:"Matching follows price-time priority — best price wins first, and among equal prices, whichever order arrived earliest in the queue wins, regardless of size."}
+  ],
+  related:["Order Book","Exchange","Execution","FIX Protocol"],
+  quiz:{q:"When two orders sit at the identical best price, which one does the matching engine pair first?", options:["The larger order","Whichever arrived first","The exchange picks randomly","Whichever pays a higher fee"], correct:1, explain:"Matching engines operate on price-time priority — best price wins first, and among equal prices, the earliest arrival wins the queue."}
+},
+"Market Data Feed": {
+  analogyHead:"A live newswire ticking out prices instead of headlines.",
+  analogy:"Like a stock ticker tape from old movies, except now every screen, algorithm, and risk system in the world drinks from the exact same live river of numbers.",
+  example:["A stock trades at ₹500.10 on the exchange.","That price is broadcast out through the market data feed within microseconds.","A trading algorithm in Mumbai and a risk system in New York both receive that exact same price update, nearly simultaneously.","Any meaningful delay in that feed — even a few milliseconds — can mean trading on stale, out-of-date prices."],
+  exampleHead:"Every screen in the world sees the same price, instantly.",
+  exampleCallout:"₹500.10, broadcast globally within microseconds",
+  mistakes:[
+    {think:"A market data feed is the same thing as a trading platform's user interface.", reality:"The feed is the raw, underlying stream of prices and trades — the platform's screen is just one of many possible ways to display that same feed."},
+    {think:"Market data feeds are only relevant to human traders watching screens.", reality:"Algorithms, risk systems, and compliance tools all consume the same feeds automatically — humans watching screens are just one of many consumers."}
+  ],
+  related:["Matching Engine","Exchange","Reference Data","Slippage"],
+  quiz:{q:"Why is latency (delay) in a market data feed considered so critical?", options:["It affects how the screen looks visually","Trading on even slightly stale prices can mean missed opportunities or bad fills, especially for fast-moving strategies","It only matters for retail investors","It determines a stock's dividend"], correct:1, explain:"Market data feeds carry live prices that everyone — algorithms, risk systems, traders — relies on; even microsecond delays can mean acting on prices that are already out of date."}
+},
+"Reference Data": {
+  analogyHead:"The address book everyone assumes is correct.",
+  analogy:"Like a company-wide address book everyone quietly assumes is accurate — nobody notices until one wrong entry causes deliveries to go to the wrong place, everywhere, all at once.",
+  example:["A stock's ISIN is recorded incorrectly in a firm's reference data system.","Every trade in that stock now silently references the wrong security identifier.","Settlement instructions generated from that bad reference data start failing across multiple trades.","Nobody notices the root cause until someone traces every failure back to that one incorrect reference data entry."],
+  exampleHead:"A single wrong entry breaks trades silently.",
+  exampleCallout:"One wrong ISIN, breaking trades silently across the whole firm",
+  mistakes:[
+    {think:"Reference data is a minor, background detail that rarely matters.", reality:"It's foundational — nearly every downstream process (trading, settlement, risk) depends on reference data being correct, which is exactly why errors there cause widespread, hard-to-trace problems."},
+    {think:"Reference data only means security identifiers like ISIN.", reality:"It also covers things like holiday calendars, counterparty details, and currency codes — any foundational fact that many systems rely on without re-verifying."}
+  ],
+  related:["Golden Source","ISIN","Data Scrubbing","Audit Trail"],
+  quiz:{q:"Why are reference data errors often described as particularly dangerous?", options:["They're immediately obvious to everyone","They can silently break many downstream processes at once, since so many systems depend on that same foundational data","They only affect a single trade","They're always caught before impacting settlement"], correct:1, explain:"Reference data underpins many downstream systems — an error there can silently propagate into trades, settlements, and risk calculations across the board, often before anyone notices the root cause."}
+},
+"Golden Source": {
+  analogyHead:"The one clock everyone sets their watches by.",
+  analogy:"Like the one clock in an office that everyone agrees is correct, even if other clocks nearby show a slightly different time — when in doubt, that's the one you trust.",
+  example:["A stock's closing price shows up slightly differently across five internal systems, due to timing and feed differences.","A trader needs a single, definitive number for the day's official valuation.","The firm has designated one specific system as the golden source for closing prices.","Whatever that golden source system says, wins — regardless of what the other four show."],
+  exampleHead:"Five systems disagree on a price — one has the final say.",
+  exampleCallout:"Five different numbers, one designated winner",
+  mistakes:[
+    {think:"A golden source is automatically whichever system is technically most accurate.", reality:"It's a deliberate governance decision — often made in a workshop weighing reliability, timeliness, and ownership — not simply a technical measurement of accuracy."},
+    {think:"Once designated, a golden source never needs to be revisited.", reality:"As systems and data sources evolve, firms do periodically re-evaluate which source should remain authoritative for a given piece of data."}
+  ],
+  related:["Reference Data","Data Scrubbing","Audit Trail","API"],
+  quiz:{q:"What does 'golden source' mean in the context of a firm's data?", options:["The most expensive data vendor","The one system officially designated as the trusted, authoritative truth for a specific piece of data","A backup data system used only in emergencies","A regulatory reporting requirement"], correct:1, explain:"A golden source is the officially designated authoritative system for a given piece of data — when other systems disagree, the golden source is treated as correct."}
+},
+"Audit Trail": {
+  analogyHead:"A hotel's key-card log, showing who entered which room.",
+  analogy:"Like a hotel's key-card log system — it doesn't stop anyone from entering a room, but it leaves an unforgeable record of exactly who did, and when, for anyone investigating afterward.",
+  example:["A trade's settlement instructions were changed shortly before settlement, and something went wrong.","Compliance needs to know exactly who made that change, and when.","The system's audit trail shows: which user, what exact change, the precise timestamp, and from which terminal.","Because the audit trail is designed to be unforgeable, that record can be trusted as reliable evidence in the investigation."],
+  exampleHead:"Investigating who changed a trade's settlement instructions.",
+  exampleCallout:"Who, what, when, from where — all logged automatically",
+  mistakes:[
+    {think:"An audit trail is optional documentation a firm can choose to skip.", reality:"Regulators typically require a reliable audit trail for key financial processes — it's a compliance necessity, not an optional nice-to-have."},
+    {think:"An audit trail prevents mistakes or fraud from happening in the first place.", reality:"It doesn't stop an action from occurring — it creates an unforgeable record afterward, so mistakes and misconduct can be investigated and traced."}
+  ],
+  related:["Reference Data","Golden Source","KYC","Surveillance"],
+  quiz:{q:"What is the main purpose of an audit trail?", options:["To physically prevent unauthorized actions from happening","To create an unforgeable record of who did what, when, and from where, for later review","To calculate trading fees","To generate marketing reports"], correct:1, explain:"An audit trail doesn't stop an action — it creates a reliable, unforgeable historical record of it, which regulators and investigators depend on afterward."}
+},
+"API": {
+  analogyHead:"A restaurant's order window, with a strict menu.",
+  analogy:"Like a restaurant's order window to the kitchen — you can't wander in and cook yourself, but you can ask for anything on the defined menu, in the defined format, and get it back.",
+  example:["A fintech app wants to display a user's live stock portfolio value.","It doesn't have direct access to the broker's internal systems.","Instead, it calls the broker's API, requesting exactly the specific data it's allowed to ask for, in a defined format.","The API returns just that requested data — nothing more, nothing less, and no direct access to anything else inside the broker's systems."],
+  exampleHead:"One system requests data from another, through a defined doorway.",
+  exampleCallout:"A defined request in, a defined response out — nothing else exposed",
+  mistakes:[
+    {think:"An API gives full, unrestricted access to another system's internals.", reality:"An API deliberately exposes only specific, defined capabilities — it's a controlled doorway, not an open door into everything behind it."},
+    {think:"APIs are a purely technical detail that business analysts don't need to understand.", reality:"BAs frequently write the requirements defining exactly what data an API should expose and under what rules — it's very much a business-and-technology intersection."}
+  ],
+  related:["FIX Protocol","Market Data Feed","Golden Source","Reference Data"],
+  quiz:{q:"What best describes what an API actually is?", options:["A trading algorithm","A defined doorway that lets one system request specific data or actions from another, under set rules","A stock exchange","A type of financial instrument"], correct:1, explain:"An API is a controlled interface — it lets systems talk to each other through defined, permitted requests, rather than granting unrestricted access."}
+},
+"Bloomberg Terminal": {
+  analogyHead:"The one instrument panel every serious pilot learns.",
+  analogy:"Like the one instrument panel every serious commercial pilot learns to fly with, regardless of airline — expensive to install, but it's the industry's shared cockpit standard.",
+  example:["An analyst needs a stock's live price, recent news, and analyst estimates, all at once.","They pull all three up simultaneously on their Bloomberg Terminal.","They also need to quickly check something with a counterparty at another firm.","They message them directly through Bloomberg's built-in chat network — a feature almost every serious market participant also has access to."],
+  exampleHead:"Pulling up live data and chatting a counterparty, on one screen.",
+  exampleCallout:"Live data, news, analytics, and messaging — one integrated screen",
+  mistakes:[
+    {think:"A Bloomberg Terminal is just a fancy stock price screen.", reality:"It bundles real-time data, news, deep analytics, and a widely-used professional messaging network — the messaging network alone is a major reason many firms keep paying for it."},
+    {think:"Bloomberg Terminal is affordable for casual or individual investors.", reality:"At roughly $27,000 a year per license, it's built for institutional and professional use — not typically something an individual retail investor would subscribe to."}
+  ],
+  related:["Capital IQ","FactSet","Refinitiv Eikon","Market Data Feed"],
+  quiz:{q:"Besides real-time market data, what other well-known feature does the Bloomberg Terminal provide?", options:["A built-in stock exchange","A widely-used professional messaging/chat network","Free tax filing","A cryptocurrency wallet"], correct:1, explain:"Bloomberg's built-in chat network, used across the industry to communicate directly with counterparties, is one of its most valuable and sticky features beyond raw data."}
+},
+"Capital IQ": {
+  analogyHead:"A librarian who's already indexed every company's shelf.",
+  analogy:"Like a specialist librarian who's already indexed every company's financial history and can instantly pull up a shelf of comparable companies the moment you ask.",
+  example:["An investment banker needs to value a company by comparing it to its publicly traded peers.","Manually gathering and cleaning each peer's financials from scratch would take days.","Instead, they pull a pre-built, cleaned-up comps screen directly from Capital IQ.","What would've taken days of manual work is assembled in minutes, ready to drop into a pitch book."],
+  exampleHead:"Building a list of comparable companies fast.",
+  exampleCallout:"A cleaned comps list in minutes, not days",
+  mistakes:[
+    {think:"Capital IQ is primarily used for retail stock trading.", reality:"It's a professional research and data platform, especially valued for M&A screening and building financial comps — not a retail brokerage or trading tool."},
+    {think:"Every data platform in this space does exactly the same thing.", reality:"Capital IQ, FactSet, and Bloomberg overlap heavily but each have particular strengths — Capital IQ especially for M&A screening and cleaned financials."}
+  ],
+  related:["FactSet","Bloomberg Terminal","Comps","Data Scrubbing"],
+  quiz:{q:"What is Capital IQ particularly well known for among investment bankers?", options:["High-frequency trading execution","M&A screening and cleaned-up comparable company financials","Retail brokerage accounts","Currency exchange"], correct:1, explain:"Capital IQ is especially valued for building comps and precedent transaction lists — core tools for investment bankers doing M&A and valuation work."}
+},
+"FactSet": {
+  analogyHead:"A tailor turning messy fabric into a ready-to-wear suit.",
+  analogy:"Like a tailor who takes a pile of raw, messy fabric and hands you back a perfectly cut, presentation-ready suit — FactSet does that with data and slides.",
+  example:["An analyst needs to build a chart comparing five companies' revenue growth for a client pitch.","Pulling and formatting that data manually in Excel would take hours of careful cleanup.","Using FactSet's Excel and PowerPoint plugin, the data flows in already structured and up to date.","The chart is built, formatted, and dropped into the pitch deck in a fraction of the manual time."],
+  exampleHead:"Turning messy raw data into a polished pitch deck slide.",
+  exampleCallout:"Messy data in, presentation-ready slide out — fast",
+  mistakes:[
+    {think:"FactSet is mainly a standalone research website, like a browser tool.", reality:"Its most valued feature for many bankers is the deep Excel and PowerPoint integration — pulling live data directly into working models and slides, not just a browsable site."},
+    {think:"FactSet, Capital IQ, and Bloomberg are functionally identical.", reality:"They overlap substantially, but each has a particular strength — FactSet is especially known for its Excel/PowerPoint plugin workflow for pitchbook building."}
+  ],
+  related:["Capital IQ","Bloomberg Terminal","Comps","Pitch Book"],
+  quiz:{q:"What is FactSet particularly known for among bankers building pitchbooks?", options:["A built-in cryptocurrency exchange","A strong Excel and PowerPoint plugin that turns data into formatted models and slides quickly","Free access for retail investors","Setting exchange listing rules"], correct:1, explain:"FactSet's Excel/PowerPoint integration is a standout feature — it lets bankers pull and format data directly into working models and slides efficiently."}
+},
+"Refinitiv Eikon": {
+  analogyHead:"The well-regarded second brand, priced to compete.",
+  analogy:"Like a well-regarded second brand sitting right next to the market leader on the shelf — very similar features, at a noticeably friendlier price tag.",
+  example:["A junior analyst joins a bank and needs access to market data and news.","The firm isn't ready to pay for a full Bloomberg seat for every junior hire.","They're given a Refinitiv Eikon (now LSEG Workspace) license instead — similar core data, meaningfully lower cost.","As they're promoted and their role demands it, they may eventually be upgraded to a Bloomberg Terminal."],
+  exampleHead:"A junior analyst gets their first data terminal.",
+  exampleCallout:"Similar data, friendlier price — often the starter terminal",
+  mistakes:[
+    {think:"Refinitiv Eikon and LSEG Workspace are two separate, competing products.", reality:"They're the same product — Eikon was rebranded to LSEG Workspace after the London Stock Exchange Group's acquisition of Refinitiv."},
+    {think:"A cheaper terminal like Eikon means meaningfully worse or less reliable data.", reality:"It offers broadly similar core market data to Bloomberg at a lower price point — the gap is more about specific features, network effects, and prestige than raw data quality."}
+  ],
+  related:["Bloomberg Terminal","Capital IQ","FactSet","Market Data Feed"],
+  quiz:{q:"What happened to Refinitiv Eikon after the London Stock Exchange Group's acquisition of Refinitiv?", options:["It was discontinued entirely","It was rebranded as LSEG Workspace","It merged with Bloomberg Terminal","It became a free public tool"], correct:1, explain:"Refinitiv Eikon was rebranded as LSEG Workspace following the London Stock Exchange Group's acquisition of Refinitiv — same underlying product, new name."}
+},
+"Comps": {
+  analogyHead:"Pricing your flat by checking what the neighbors sold for.",
+  analogy:"Like pricing your flat for sale by checking what three nearly identical flats down the same street just sold for — if they went for a certain price, yours probably should too.",
+  example:["An analyst needs to value an airline that isn't yet publicly traded on a specific market.","They find three comparable, publicly traded airlines, each trading at roughly 8 times earnings.","Applying that same 8x multiple to the target airline's earnings gives a reasonable estimated valuation.","This comps approach is a quick, market-grounded sanity check — not a substitute for a full detailed valuation, but a useful starting point."],
+  exampleHead:"Valuing an airline by looking at its peers.",
+  exampleCallout:"Three peers at 8x earnings → the fourth probably should be too",
+  mistakes:[
+    {think:"Comps analysis gives one single, precisely correct valuation.", reality:"It gives a reasonable range grounded in how the market prices similar companies — different comparable sets or multiples can shift the answer meaningfully."},
+    {think:"Any company can be a valid comp for any other company.", reality:"Good comps analysis requires genuinely similar companies — comparable size, industry, growth profile, and risk — mismatched comps produce misleading valuations."}
+  ],
+  related:["P/E Ratio","Capital IQ","FactSet","Market Capitalization"],
+  quiz:{q:"What is the core logic behind a comps (comparable companies) valuation?", options:["Predicting future stock prices using historical charts","Valuing a company based on what similar, publicly traded companies are currently worth","Calculating a company's tax liability","Determining a bond's credit rating"], correct:1, explain:"Comps values a company by reference to how the market currently prices genuinely similar public companies — a market-grounded comparison, not a standalone calculation."}
+},
+"Non-GAAP": {
+  analogyHead:"A photo with the blemishes airbrushed out.",
+  analogy:"Like a company handing you two photos of the same event — one untouched, one airbrushed to remove anything it considers an unflattering one-off blemish — and labeling the second one as the 'real' picture.",
+  example:["A company's official GAAP earnings for the quarter come in at ₹50 crore.","It also reports a Non-GAAP figure of ₹80 crore, after excluding a one-time restructuring charge and certain stock-based compensation costs.","Investors are left to decide whether those exclusions are genuinely one-off, or a way to flatter the headline number.","Savvy analysts always check the reconciliation between the two figures before trusting the non-GAAP number at face value."],
+  exampleHead:"A company reports two versions of the same quarter.",
+  exampleCallout:"₹50 crore GAAP vs ₹80 crore Non-GAAP — the gap is what's excluded, and why",
+  mistakes:[
+    {think:"Non-GAAP figures are always misleading or manipulative.", reality:"They can be genuinely useful for stripping out real one-off distortions — the key is checking exactly what was excluded and whether that exclusion is reasonable, not dismissing the metric outright."},
+    {think:"Non-GAAP earnings are audited to the same standard as GAAP earnings.", reality:"Non-GAAP figures are company-defined and not subject to the same standardized accounting rules as GAAP — always worth more scrutiny."}
+  ],
+  related:["Comps","Data Scrubbing","P/E Ratio","Credit Rating"],
+  quiz:{q:"What should an analyst always check before trusting a company's Non-GAAP earnings figure?", options:["Nothing — Non-GAAP figures are always accurate","Exactly what was excluded from GAAP earnings to arrive at the Non-GAAP number, and whether that's reasonable","The company's stock ticker symbol","The CEO's personal investment portfolio"], correct:1, explain:"Non-GAAP figures are company-defined, so scrutinizing exactly what was stripped out — and why — is essential before taking the headline number at face value."}
+},
+"Soft Dollar": {
+  analogyHead:"Paying your tailor through a coupon bundled into the suit.",
+  analogy:"Like a shop that pays for its own market research by quietly bundling a small extra charge into every single item it sells you, rather than writing a separate cheque for that research.",
+  example:["An asset manager wants access to a premium research service.","Rather than paying for it directly out of pocket, it directs its trading commissions through a specific broker.","That broker, in turn, effectively covers the cost of the research service as part of the trading relationship.","The asset manager's clients ultimately bear this cost indirectly, through the trading commissions paid on their behalf."],
+  exampleHead:"Paying for research through trading commissions instead of a check.",
+  exampleCallout:"Research funded through commissions, not a separate invoice",
+  mistakes:[
+    {think:"Soft dollar arrangements are simply free perks with no real cost to anyone.", reality:"The cost is real — it's just bundled into trading commissions, ultimately paid by the asset manager's underlying clients rather than the manager itself."},
+    {think:"Soft dollar arrangements are unregulated and unrestricted.", reality:"They're heavily regulated precisely because of the obvious conflict of interest — a manager might route trades to benefit itself rather than get clients the best execution."}
+  ],
+  related:["Comps","Bloomberg Terminal","Broker","Sell-side"],
+  quiz:{q:"Why are soft dollar arrangements considered a potential conflict of interest?", options:["They're always illegal","A manager might route trades to a broker for its own research benefit, rather than purely for the client's best execution","They only benefit retail investors","They eliminate all trading commissions"], correct:1, explain:"Soft dollars create a potential conflict because a manager's choice of broker could be influenced by getting research benefits, rather than purely seeking clients' best execution."}
+},
+"Data Scrubbing": {
+  analogyHead:"Translating two recipes into the same measuring system.",
+  analogy:"Like translating two chefs' recipes — one in cups, one in grams — into the same measuring system before you can honestly compare whose dish uses more sugar.",
+  example:["Company A reports earnings that include a one-time asset sale gain; Company B doesn't have any such item.","Comparing their raw, reported earnings directly would unfairly favor Company A.","An analyst scrubs both companies' financials, adjusting out one-off items and standardizing the reporting basis.","Only after scrubbing can the two companies' earnings be honestly compared on a like-for-like basis."],
+  exampleHead:"Comparing two companies that report earnings differently.",
+  exampleCallout:"Raw numbers misleading, scrubbed numbers comparable",
+  mistakes:[
+    {think:"Data scrubbing means fixing typos or data entry errors.", reality:"In this financial context, it specifically means adjusting and standardizing reported figures so different companies' financials become genuinely comparable — a normalization exercise, not just error correction."},
+    {think:"Scrubbed financials are the company's own official reported numbers.", reality:"Scrubbed figures are an analyst's adjusted version, used for comparison purposes — they're not a substitute for the company's own official, audited financial statements."}
+  ],
+  related:["Comps","Non-GAAP","Capital IQ","Reference Data"],
+  quiz:{q:"Why would an analyst scrub two companies' financial statements before comparing them?", options:["To make the numbers look more impressive","To standardize and adjust reported figures so the companies can be honestly compared on a like-for-like basis","To satisfy a legal requirement","To calculate their credit ratings"], correct:1, explain:"Different companies report similarly-named figures in different ways — scrubbing normalizes those differences so a genuine apples-to-apples comparison is possible."}
 }
 };
 
@@ -1885,7 +2123,7 @@ const DIAG = {
 </svg>`
 };
 
-const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split","KYC","AML","Surveillance","Front Running","Insider Trading","Wash Trade","Circuit Breaker","Basis Point","VaR","Collateral","Liquidity","Slippage","Bid-Ask Spread","Counterparty","Counterparty Risk","Default","Exposure","Short Selling","Margin Call","Black Swan Event","Buy-side","Sell-side","Market Maker","Broker","OTC","Exchange","Prime Broker","Regulator","Dark Pool","Algorithmic Trading","HFT","Depository Participant","Foreign Portfolio Investor","Retail Investor","Institutional Investor","Proprietary Trading","Free Float","ISDA","Short Squeeze","Activist Investor","S&P 500","Dow Jones"];
+const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split","KYC","AML","Surveillance","Front Running","Insider Trading","Wash Trade","Circuit Breaker","Basis Point","VaR","Collateral","Liquidity","Slippage","Bid-Ask Spread","Counterparty","Counterparty Risk","Default","Exposure","Short Selling","Margin Call","Black Swan Event","Buy-side","Sell-side","Market Maker","Broker","OTC","Exchange","Prime Broker","Regulator","Dark Pool","Algorithmic Trading","HFT","Depository Participant","Foreign Portfolio Investor","Retail Investor","Institutional Investor","Proprietary Trading","Free Float","ISDA","Short Squeeze","Activist Investor","S&P 500","Dow Jones","FIX Protocol","OMS","EMS","Matching Engine","Market Data Feed","Reference Data","Golden Source","Audit Trail","API","Bloomberg Terminal","Capital IQ","FactSet","Refinitiv Eikon","Comps","Non-GAAP","Soft Dollar","Data Scrubbing"];
 
 /* Order Book's bespoke illustrated analogy scene (kept special — the flagship example) */
 const ORDER_BOOK_ILLO = `<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
