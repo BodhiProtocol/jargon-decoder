@@ -280,7 +280,7 @@ button{font-family:inherit}
 
 <script>
 /* ===================== DATA ===================== */
-const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}};
+const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}, "Risk & Compliance":{color:'#DD7A40',tint:'#FBEDE2'}};
 
 const CORE = {
   "Order Book": {p:"The exchange's live list of everyone waiting to buy or sell, and at what price.", m:"Buy orders (bids) on one side, sell orders (asks) on the other. Where they meet, trades happen.", c:"Lifecycle"},
@@ -342,7 +342,27 @@ const CORE = {
   "Green Bonds": {p:"Bonds where the money raised is earmarked specifically for environmental or sustainability projects.", m:"Same mechanics as any bond — coupon, maturity, credit rating — just with a legally tied purpose for the proceeds.", c:"Instruments"},
   "Stock Buyback": {p:"A company using its own cash to repurchase its own shares from the market.", m:"Fewer shares outstanding means each remaining share owns a bigger slice of the company — a direct alternative to paying dividends.", c:"Instruments"},
   "Stock Split": {p:"A company divides each existing share into several, cheaper ones — your total holding's value doesn't change.", m:"Own 1 share worth ₹1,000? After a 5-for-1 split, you own 5 shares worth ₹200 each. Same pie, more slices.", c:"Instruments"},
-  "Reverse Stock Split": {p:"The opposite of a split — several existing shares get combined into fewer, pricier ones.", m:"Often done to avoid an embarrassingly low share price, or to stay listed above an exchange's minimum price rule.", c:"Instruments"}
+  "Reverse Stock Split": {p:"The opposite of a split — several existing shares get combined into fewer, pricier ones.", m:"Often done to avoid an embarrassingly low share price, or to stay listed above an exchange's minimum price rule.", c:"Instruments"},
+  "KYC": {p:"Know Your Customer — proving people are who they claim before they touch the market.", m:"Identity, address, and risk profile, verified. The first gate every investor passes through.", c:"Risk & Compliance"},
+  "AML": {p:"Anti-Money Laundering — making sure the market isn't a washing machine for dirty money.", m:"Systems watch for suspicious patterns and report them. A pillar of every fraud programme.", c:"Risk & Compliance"},
+  "Surveillance": {p:"Watching every trade for patterns that shouldn't exist.", m:"Spoofing, layering, pump-and-dump — algorithms hunt algorithms. Alerts land on human desks for judgment.", c:"Risk & Compliance"},
+  "Front Running": {p:"Trading ahead of a client's big order because you saw it coming. Illegal.", m:"Knowledge of order flow is a trust, not an edge. Surveillance systems exist to catch exactly this.", c:"Risk & Compliance"},
+  "Insider Trading": {p:"Trading on material information the public doesn't have yet. Also illegal.", m:"The market's fairness depends on everyone facing the same information at the same time.", c:"Risk & Compliance"},
+  "Wash Trade": {p:"Selling to yourself to fake volume and paint a false picture of demand.", m:"No real change in ownership, no real risk — just manufactured activity. A classic manipulation flag.", c:"Risk & Compliance"},
+  "Circuit Breaker": {p:"An automatic pause when prices move too far, too fast.", m:"Markets halt so panic can cool. India halts trading at 10%, 15%, and 20% index moves.", c:"Risk & Compliance"},
+  "Basis Point": {p:"One hundredth of one percent. The market's smallest unit of seriousness.", m:"100 bps = 1%. When billions move, 0.01% is real money — so it earned its own name.", c:"Risk & Compliance"},
+  "VaR": {p:"Value at Risk — \"how much could we lose on a bad day, with 99% confidence?\"", m:"One number summarising portfolio risk. Useful, famous, and famously silent about the worst 1%.", c:"Risk & Compliance"},
+  "Collateral": {p:"Assets pledged as a promise: \"if I fail, take this.\"", m:"Cash, government bonds, blue-chip shares. The lubricant of trust between institutions.", c:"Risk & Compliance"},
+  "Liquidity": {p:"How easily you can trade without moving the price against yourself.", m:"Deep markets absorb big orders quietly. Illiquid ones punish urgency.", c:"Risk & Compliance"},
+  "Slippage": {p:"The gap between the price you expected and the price you got.", m:"You clicked at 100, filled at 100.30. In fast or thin markets, slippage is the silent fee.", c:"Risk & Compliance"},
+  "Bid-Ask Spread": {p:"The gap between the best buying price and the best selling price.", m:"Tight spreads mean healthy liquidity. Wide spreads mean you pay just to enter.", c:"Risk & Compliance"},
+  "Counterparty": {p:"The other side of your trade — whoever's on the hook to deliver what you're owed.", m:"Every trade has one. The question that matters: can you trust them to actually show up on settlement day?", c:"Risk & Compliance"},
+  "Counterparty Risk": {p:"The risk that the person on the other side of your trade simply doesn't pay up.", m:"The entire reason clearing houses, margin, and collateral exist — to make this risk someone else's problem.", c:"Risk & Compliance"},
+  "Default": {p:"A counterparty fails to deliver the cash or the securities they owe.", m:"Triggers the safety net: margin gets seized, the default fund kicks in, and the CCP still makes good on the trade.", c:"Risk & Compliance"},
+  "Exposure": {p:"How much you'd actually lose, right now, if a specific counterparty defaulted.", m:"Recalculated constantly as prices move. Risk teams watch exposure the way pilots watch altitude.", c:"Risk & Compliance"},
+  "Short Selling": {p:"Selling shares you've borrowed, betting the price falls so you can buy them back cheaper and return them.", m:"Profit is capped at 100% (the price can only fall to zero) but losses are theoretically unlimited (the price can keep rising).", c:"Risk & Compliance"},
+  "Margin Call": {p:"Your broker demanding you deposit more money, right now, because your leveraged position has moved against you.", m:"Ignore it and the broker force-sells your position to cover the shortfall — often at the worst possible moment.", c:"Risk & Compliance"},
+  "Black Swan Event": {p:"A rare, unpredictable shock that nobody's models saw coming — and that changes everything once it lands.", m:"2008's financial crisis, a pandemic — by definition, you can't predict the next one, only prepare for the fact that one will come.", c:"Risk & Compliance"}
 };
 
 const CONTENT = {
@@ -1125,6 +1145,266 @@ const CONTENT = {
   ],
   related:["Stock Split","Equity","Market Capitalization","Face Value"],
   quiz:{q:"A company executes a 1-for-10 reverse stock split. An investor who held 100 shares worth ₹10 each now holds:", options:["1,000 shares worth ₹1 each","10 shares worth ₹100 each","100 shares worth ₹100 each","No shares at all"], correct:1, explain:"A reverse split combines shares — 100 shares become 10, and since total value (₹1,000) is unchanged, each of those 10 shares is now worth ₹100."}
+},
+"KYC": {
+  analogyHead:"Showing ID at the door before you're let in.",
+  analogy:"Like a bouncer checking your ID and address before letting you into an exclusive club — the market wants to know exactly who you are before you're allowed to trade at all.",
+  example:["Priya wants to open a new demat and trading account.","The broker requires her PAN card, address proof, and a photograph before anything else.","She also declares her income bracket and investment experience.","Only after all of this is verified is her account activated and allowed to place its first trade."],
+  exampleHead:"Opening a new trading account.",
+  exampleCallout:"No verified identity, no market access — full stop",
+  mistakes:[
+    {think:"KYC is a one-time formality you complete once and forget.", reality:"Regulators require periodic re-verification, especially if your details change — it's an ongoing obligation, not a single checkbox."},
+    {think:"KYC only exists to slow down honest investors with paperwork.", reality:"It's the market's first line of defense against fraud and money laundering — the paperwork exists specifically so bad actors can't hide behind anonymous accounts."}
+  ],
+  related:["AML","Surveillance","Insider Trading","Front Running"],
+  quiz:{q:"What is the primary purpose of KYC (Know Your Customer)?", options:["To calculate a customer's tax liability","To verify a customer's identity before they're allowed to access the market","To set a customer's credit rating","To decide a customer's brokerage fee"], correct:1, explain:"KYC exists to confirm exactly who is entering the market — identity, address, and risk profile — before any trading is allowed."}
+},
+"AML": {
+  analogyHead:"A teller trained to notice cash that doesn't add up.",
+  analogy:"Like a bank teller trained to notice a customer depositing stacks of cash with no plausible explanation — the system is built to flag money that doesn't add up, before it can blend in.",
+  example:["An account suddenly receives large, irregular cash deposits from multiple unrelated sources.","The money is immediately used to buy and quickly resell securities, generating minimal profit.","AML systems flag this pattern as inconsistent with normal investing behavior.","The broker's compliance team investigates and, if warranted, files a suspicious activity report with regulators."],
+  exampleHead:"Spotting a suspicious pattern of trades.",
+  exampleCallout:"Unusual money flow, flagged before it can blend in",
+  mistakes:[
+    {think:"AML is only about literally stopping cash-in-suitcases scenarios.", reality:"Modern money laundering is far subtler — layering money through legitimate-looking trades and accounts. AML systems are built to catch exactly this kind of disguised pattern."},
+    {think:"AML compliance is solely the regulator's job, not the broker's.", reality:"Brokers, banks, and exchanges are themselves legally required to run their own AML monitoring and reporting — the obligation sits with every institution in the chain."}
+  ],
+  related:["KYC","Surveillance","Wash Trade","Counterparty"],
+  quiz:{q:"What is AML monitoring primarily designed to detect?", options:["Late trade settlements","Patterns consistent with laundering illicit money through legitimate-looking transactions","Stock price manipulation only","Currency exchange rate fluctuations"], correct:1, explain:"AML (Anti-Money Laundering) systems watch for transaction patterns that suggest illicit funds are being disguised as legitimate market activity."}
+},
+"Surveillance": {
+  analogyHead:"A lifeguard watching every stroke, not just the drowning swimmer.",
+  analogy:"Like a lifeguard who watches every swimmer's stroke pattern all day, not just reacting when someone's already drowning — trained to spot trouble before it becomes an emergency.",
+  example:["A trader repeatedly places large sell orders, then cancels them just before they'd execute.","Meanwhile, they quietly buy shares at the artificially depressed price those cancelled orders created.","Surveillance software flags this repeating pattern as a potential spoofing scheme.","The alert lands on a human compliance officer's desk for review and possible enforcement action."],
+  exampleHead:"An algorithm flags a suspicious order pattern.",
+  exampleCallout:"Pattern flagged by algorithm, judged by a human",
+  mistakes:[
+    {think:"Market surveillance means a person watches every single trade manually.", reality:"It's overwhelmingly automated — algorithms scan enormous volumes of trades for known suspicious patterns, and only flagged cases reach a human reviewer."},
+    {think:"Surveillance only looks for insider trading.", reality:"It watches for a wide range of manipulative patterns — spoofing, layering, wash trades, front running, pump-and-dump schemes, and more."}
+  ],
+  related:["Front Running","Wash Trade","Insider Trading","AML"],
+  quiz:{q:"How does most market surveillance actually work day to day?", options:["Human analysts manually review every single trade","Algorithms scan trading patterns at scale, flagging anomalies for human review","Surveillance only activates after a complaint is filed","It only checks trades once a year"], correct:1, explain:"Surveillance is overwhelmingly automated — algorithms hunt for known manipulative patterns across huge volumes of trades, escalating only flagged cases to humans."}
+},
+"Front Running": {
+  analogyHead:"A waiter rushing to buy the last steak he overheard you order.",
+  analogy:"Like a waiter who overhears you order the last steak on the menu, then rushes to the kitchen to buy it for himself before your order is even placed.",
+  example:["A pension fund tells its broker it plans to buy a huge block of a stock.","Before executing the client's order, the broker's own trader quietly buys shares for the firm's own account first.","The client's large order then pushes the price up, as expected.","The broker's trader sells their own shares into that price rise — profiting from information they were only given in trust."],
+  exampleHead:"A broker exploits advance knowledge of a client's order.",
+  exampleCallout:"A trust exploited for a head start — and it's illegal",
+  mistakes:[
+    {think:"Front running is just smart, fast trading.", reality:"It's illegal specifically because it exploits confidential knowledge of a client's pending order — a trust the broker was given, not an edge they earned."},
+    {think:"Front running only happens between brokers and outside clients.", reality:"It can happen inside a firm too — one desk trading ahead of another desk's known order flow is treated the same way."}
+  ],
+  related:["Insider Trading","Surveillance","Wash Trade","Counterparty"],
+  quiz:{q:"Why is front running illegal, specifically?", options:["Because it involves trading too quickly","Because it exploits confidential knowledge of a client's pending order for personal gain","Because it only happens on weekends","Because it requires special exchange permission"], correct:1, explain:"Front running abuses privileged, confidential knowledge of an impending order — a trust violation, not simply fast or aggressive trading."}
+},
+"Insider Trading": {
+  analogyHead:"Betting on a race after already knowing the result.",
+  analogy:"Like betting on a horse race after already knowing the result from a broadcast nobody else has seen yet — the outcome isn't in doubt for you, and that's exactly the unfair part.",
+  example:["A company's CFO knows, three days before public announcement, that quarterly earnings will badly miss expectations.","She sells her personal shares in the company immediately, before the news breaks.","The announcement drops, and the stock falls 15%.","Because she traded on material information the public didn't have, this is insider trading — a criminal offense."],
+  exampleHead:"An executive trades on information the public doesn't have yet.",
+  exampleCallout:"Traded 3 days early, on information nobody else had",
+  mistakes:[
+    {think:"Insider trading only applies to a company's own executives.", reality:"It applies to anyone trading on material non-public information — a friend tipped off by an executive can be just as liable as the executive themselves."},
+    {think:"It's only insider trading if you profit from it.", reality:"Avoiding a loss counts too — selling ahead of bad news you weren't supposed to know is treated exactly the same as profiting from good news."}
+  ],
+  related:["Front Running","Surveillance","Wash Trade","KYC"],
+  quiz:{q:"What makes a trade illegal insider trading, specifically?", options:["Trading a large volume of shares","Trading based on material information not yet available to the public","Trading through a particular broker","Holding a position for less than a day"], correct:1, explain:"Insider trading is defined by trading on material, non-public information — the size or speed of the trade isn't what makes it illegal."}
+},
+"Wash Trade": {
+  analogyHead:"Selling your own car to your cousin at a fake auction.",
+  analogy:"Like staging a fake sale of your own car to your cousin, at a fake auction, just so the local paper reports a headline sale price — nothing real changed hands, but the record now looks like real demand.",
+  example:["A trader controls two separate accounts under different names.","They sell 10,000 shares from Account A directly to Account B, at a price they set themselves.","No actual ownership risk changed hands — both accounts are controlled by the same person.","Reported trading volume for the stock jumps, creating a false impression of real market demand."],
+  exampleHead:"Manufacturing fake demand for a thinly-traded stock.",
+  exampleCallout:"Volume up, but nothing real actually traded hands",
+  mistakes:[
+    {think:"A wash trade is just a trade that happens to be small or unprofitable.", reality:"It's defined by the lack of genuine change in beneficial ownership — the same party, directly or through related accounts, is on both sides."},
+    {think:"Wash trades are hard for regulators to ever catch.", reality:"Because the same underlying party (or clearly linked accounts) is on both sides, surveillance systems are specifically built to flag this exact pattern."}
+  ],
+  related:["Surveillance","Front Running","AML","Circuit Breaker"],
+  quiz:{q:"What defines a wash trade?", options:["A trade executed at an unusually low price","A trade where no genuine change in ownership occurs, typically between accounts controlled by the same party","Any trade cancelled before settlement","A trade made using borrowed money"], correct:1, explain:"A wash trade fakes real market activity — the same party is effectively on both sides, so no real ownership risk or demand actually changes hands."}
+},
+"Circuit Breaker": {
+  analogyHead:"A fire alarm that halts the building the instant smoke appears.",
+  analogy:"Like a fire alarm that automatically halts an entire building's activity the instant smoke crosses a set threshold — not because there's definitely a fire, but because panic needs a pause to sort out what's real.",
+  example:["The Nifty 50 index falls 10% from the previous close, triggering the first circuit breaker level.","All equity and derivatives trading halts for a fixed cooling-off period, market-wide.","Trading resumes once the pause ends, giving participants time to absorb the news calmly.","If the index falls a further steep amount, a second, longer halt at the 15% level would trigger."],
+  exampleHead:"A market-wide index falls sharply in a single session.",
+  exampleCallout:"10% drop → market-wide pause, panic given time to cool",
+  mistakes:[
+    {think:"A circuit breaker only halts trading in the specific stock that's crashing.", reality:"Index-level circuit breakers halt the entire market, market-wide — not just one stock. Individual stocks also have their own separate price-band circuit breakers."},
+    {think:"Circuit breakers prevent losses.", reality:"They don't stop prices from eventually reflecting real news — they just impose a pause, giving the market time to process information rather than panic-trade through it."}
+  ],
+  related:["Black Swan Event","Liquidity","Surveillance","VaR"],
+  quiz:{q:"What does a market-wide circuit breaker actually do when triggered?", options:["It cancels all pending orders permanently","It halts trading market-wide for a fixed cooling-off period","It automatically buys shares to support the price","It only affects the single worst-performing stock"], correct:1, explain:"A circuit breaker triggers a temporary, market-wide trading halt when prices move too far too fast — giving the market a pause, not a price guarantee."}
+},
+"Basis Point": {
+  analogyHead:"The market's paisa — one hundredth of a percent.",
+  analogy:"Like how a rupee has 100 paise — a basis point is one hundredth of a percentage point, a unit small enough that only huge sums make it worth naming out loud.",
+  example:["A bond's yield moves from 7.00% to 7.25%.","That's a change of 25 basis points (0.25%).","On a ₹10,000 crore bond portfolio, even a 1 basis point move represents ₹1 crore in value.","At institutional scale, quoting in basis points avoids the ambiguity of talking in tiny decimal percentages."],
+  exampleHead:"Pricing a bond down to the smallest meaningful unit.",
+  exampleCallout:"25 basis points = 0.25% — small number, big money at scale",
+  mistakes:[
+    {think:"A basis point and a percentage point are the same size.", reality:"A basis point is one hundredth of a percentage point — 100 basis points make up just 1%."},
+    {think:"Basis points only matter for tiny, insignificant changes.", reality:"At institutional scale — bond portfolios worth crores — even a handful of basis points can represent enormous sums of real money."}
+  ],
+  related:["Yield","VaR","Liquidity","Bid-Ask Spread"],
+  quiz:{q:"How many basis points make up 1%?", options:["10","100","1,000","1"], correct:1, explain:"A basis point is defined as one hundredth of one percentage point — so exactly 100 basis points equal 1%."}
+},
+"VaR": {
+  analogyHead:"A forecast that stays silent about the flood.",
+  analogy:"Like a weather forecast that confidently predicts the worst rainfall you'd see on 99 days out of 100 — useful every ordinary day, and completely silent about the one flood that breaks the pattern.",
+  example:["A risk team calculates a 1-day 99% VaR of ₹5 crore for a trading portfolio.","This means: on 99 out of 100 trading days, the portfolio shouldn't lose more than ₹5 crore.","On a normal volatile day, the portfolio loses ₹3 crore — within the VaR estimate.","On a genuine crisis day (the rare 1%), the portfolio loses ₹40 crore — VaR said nothing about how bad that day specifically could get."],
+  exampleHead:"Summarizing a portfolio's risk in one number.",
+  exampleCallout:"₹5cr VaR covers 99 days out of 100 — and stays silent on the 1%",
+  mistakes:[
+    {think:"VaR tells you the absolute worst-case loss possible.", reality:"It deliberately excludes the tail — the rare, most extreme scenarios — which is exactly why VaR is often criticized after major crises, when the 'impossible' 1% happens anyway."},
+    {think:"A single VaR number captures every kind of risk a portfolio faces.", reality:"It's one useful summary statistic among many — real risk management also tracks stress tests, scenario analysis, and specific exposures VaR alone can miss."}
+  ],
+  related:["Black Swan Event","Exposure","Liquidity","Basis Point"],
+  quiz:{q:"A portfolio has a 1-day 99% VaR of ₹5 crore. What does this actually tell you?", options:["The portfolio can never lose more than ₹5 crore, ever","On 99 out of 100 days, losses shouldn't exceed ₹5 crore — it says nothing about the rare worst 1% of days","The portfolio is guaranteed to lose exactly ₹5 crore daily","The portfolio has ₹5 crore in cash reserves"], correct:1, explain:"VaR is a statistical estimate covering the typical range of days — it's specifically silent about the tail risk in the rare worst-case scenarios."}
+},
+"Collateral": {
+  analogyHead:"Leaving your passport at the rental counter.",
+  analogy:"Like leaving your passport at a rental counter as a promise you'll return the scooter — if you don't, they already have something valuable of yours to fall back on.",
+  example:["Rohan wants to take a larger trading position than his cash alone would allow.","He pledges ₹2,00,000 worth of government bonds he owns as collateral.","His broker now extends him additional trading limit, backed by that pledge.","If Rohan can't meet a future obligation, the broker has the right to seize and sell the pledged bonds to cover it."],
+  exampleHead:"Pledging assets to borrow with confidence.",
+  exampleCallout:"₹2,00,000 pledged — the broker's fallback if things go wrong",
+  mistakes:[
+    {think:"Pledging collateral means giving up ownership of the asset entirely.", reality:"You typically retain ownership (and can still collect any income from it) unless you actually default — collateral is a fallback claim, not an immediate transfer."},
+    {think:"Any asset can be pledged as collateral at its full market value.", reality:"Lenders apply a haircut, crediting less than full market value, precisely because the asset's price could fall before it's ever needed."}
+  ],
+  related:["Haircut","Margin","Counterparty Risk","Default"],
+  quiz:{q:"What happens to pledged collateral if the pledging party fails to meet their obligation?", options:["Nothing — collateral is symbolic only","The lender can seize and sell it to cover the shortfall","It's automatically returned regardless","It converts into equity"], correct:1, explain:"Collateral exists precisely as a fallback — if the borrower defaults, the lender has the right to seize and sell the pledged asset to cover what's owed."}
+},
+"Liquidity": {
+  analogyHead:"A deep river that barely ripples from a boulder.",
+  analogy:"Like a wide, deep river that barely ripples no matter how large a boulder you drop in — a shallow stream, by contrast, splashes everywhere from even a small stone.",
+  example:["Priya wants to sell ₹50 lakh worth of a heavily-traded large-cap stock.","Because the stock is highly liquid, her order absorbs into the order book with barely any price impact.","She tries the same ₹50 lakh trade in a thinly-traded small-cap stock instead.","This time, her own order moves the price down significantly just by trying to sell — a sign of poor liquidity."],
+  exampleHead:"Selling a large position without moving the price.",
+  exampleCallout:"Same ₹50 lakh: barely a ripple in one stock, a splash in another",
+  mistakes:[
+    {think:"Liquidity just means a stock trades a lot.", reality:"High trading volume usually helps, but true liquidity is about how easily you can trade a specific size without moving the price against yourself — volume is a proxy, not the definition itself."},
+    {think:"Illiquidity only matters for small investors with small trades.", reality:"It matters most for large institutional orders — a fund trying to exit a big position in a thin market can move the price sharply against its own trade."}
+  ],
+  related:["Bid-Ask Spread","Slippage","Market Order","Block Trade"],
+  quiz:{q:"What does it actually mean for a market to be 'liquid'?", options:["Prices never change","Large orders can be traded without significantly moving the price","Only institutional investors are allowed to trade it","The stock pays a high dividend"], correct:1, explain:"Liquidity describes how easily a security can be traded in size without materially moving its price — depth and ease of trading, not just raw volume."}
+},
+"Slippage": {
+  analogyHead:"Booking a window seat, getting handed a different one.",
+  analogy:"Like booking a specific window seat online, then being handed a slightly different one at the gate because seating shifted in the few minutes since you booked — small, but not what you clicked.",
+  example:["Rohan sees a stock trading at ₹100.00 and places a market order to buy.","In the few milliseconds it takes to reach the exchange, other orders have already moved the price.","His order actually fills at ₹100.30, not the ₹100.00 he saw on screen.","That ₹0.30 gap — multiplied across his full order size — is slippage, a real, invisible cost."],
+  exampleHead:"A market order fills at a worse price than expected.",
+  exampleCallout:"Expected ₹100.00, filled at ₹100.30 — the silent fee",
+  mistakes:[
+    {think:"Slippage only happens due to broker errors or fees.", reality:"It's a natural consequence of prices moving in the tiny gap between when you see a quote and when your order actually reaches and executes at the exchange."},
+    {think:"Slippage is always small and not worth worrying about.", reality:"In fast-moving or thin, illiquid markets, slippage can be substantial — especially for large orders that themselves eat through multiple price levels."}
+  ],
+  related:["Market Order","Liquidity","Bid-Ask Spread","Order Book"],
+  quiz:{q:"What is slippage, exactly?", options:["A fee charged by the exchange","The gap between the price you expected and the price your order actually filled at","A penalty for cancelling an order","The spread between a stock's high and low for the day"], correct:1, explain:"Slippage is the real-world gap between an expected execution price and the price actually achieved — often driven by price movement or thin liquidity."}
+},
+"Bid-Ask Spread": {
+  analogyHead:"The shop's buy price and sell price for the same item.",
+  analogy:"Like a shopkeeper who'll buy your used phone for ₹8,000 but sell an identical one for ₹8,200 — that ₹200 gap is how the shop makes money for standing ready to trade either direction, instantly.",
+  example:["A stock's best bid (highest buy offer) is ₹104.80.","Its best ask (lowest sell offer) is ₹105.00.","The bid-ask spread is ₹0.20 — the built-in cost of trading immediately in either direction.","In a highly liquid stock, this gap might be just a few paise; in an illiquid one, it could be several rupees."],
+  exampleHead:"A shop's buy price and sell price for the same item.",
+  exampleCallout:"₹105.00 ask − ₹104.80 bid = ₹0.20 spread",
+  mistakes:[
+    {think:"The bid-ask spread is a fee charged by the broker.", reality:"It's built into the market itself — the natural gap between what buyers are willing to pay and what sellers are willing to accept, not a broker commission."},
+    {think:"A wide bid-ask spread doesn't really cost you anything if you're not trading urgently.", reality:"Anyone trading with a market order pays the full spread as an implicit cost immediately — a wide spread means paying more just to enter or exit a position right now."}
+  ],
+  related:["Order Book","Liquidity","Slippage","Market Order"],
+  quiz:{q:"What does a wide bid-ask spread typically indicate about a stock?", options:["Very high liquidity","Poor liquidity — a real cost to trading immediately","A guaranteed price increase","A recent stock split"], correct:1, explain:"A wide bid-ask spread signals thin liquidity — the gap between what buyers will pay and sellers will accept is large, making immediate trades more costly."}
+},
+"Counterparty": {
+  analogyHead:"Whoever's holding the other end of the rope.",
+  analogy:"Like whoever's holding the other end of the rope in a trade — you're each pulling, and the deal only works because someone real is on the other side.",
+  example:["Priya places an order to buy 100 shares.","The exchange's matching engine pairs it with a matching sell order from another trader.","That other trader — whoever they are — is Priya's counterparty for this trade.","After novation, her counterparty is legally replaced by the CCP, but at the moment of execution, it was that specific other trader."],
+  exampleHead:"Identifying who's actually on the other side of a trade.",
+  exampleCallout:"Every trade has one — someone real on the other side",
+  mistakes:[
+    {think:"A counterparty is only relevant in complex OTC deals, not everyday exchange trades.", reality:"Every single trade, however small or routine, has a counterparty — someone on the other side who's obligated to deliver what you're owed."},
+    {think:"You always know exactly who your counterparty is.", reality:"On an anonymous exchange order book, you typically don't know the counterparty's identity directly — that's part of why novation to a CCP matters so much."}
+  ],
+  related:["Counterparty Risk","Novation","CCP","Bilateral"],
+  quiz:{q:"What is a counterparty, in a trade?", options:["The exchange itself","The other side of the trade — whoever is obligated to deliver what you're owed","A regulatory body overseeing the trade","The broker who places the order"], correct:1, explain:"A counterparty is simply whoever's on the other side of your trade — the party obligated to deliver the shares or cash you're owed."}
+},
+"Counterparty Risk": {
+  analogyHead:"Wondering if the other side will actually deliver.",
+  analogy:"Like lending your neighbor your ladder and wondering the whole time whether they'll actually give it back — the worry isn't the ladder, it's whether the other person follows through.",
+  example:["A bank agrees to a large bilateral derivative trade directly with another bank, no CCP involved.","Before agreeing, it assesses: how likely is this counterparty to actually honor the deal months from now?","It demands collateral upfront specifically to offset that risk.","If the counterparty later defaults, that pledged collateral is what protects the bank from a total loss."],
+  exampleHead:"Weighing whether the other side will actually deliver.",
+  exampleCallout:"Assessed before the deal, hedged with collateral",
+  mistakes:[
+    {think:"Counterparty risk only exists in bilateral, off-exchange trades.", reality:"It exists in principle for any trade — exchange-traded trades just have it managed for you via novation to a CCP, rather than eliminated outright."},
+    {think:"Counterparty risk is fixed once at the start of a trade and never changes.", reality:"It's reassessed continuously — a counterparty's creditworthiness, and your actual exposure to them, both shift as market conditions change."}
+  ],
+  related:["Counterparty","Collateral","Default","CCP"],
+  quiz:{q:"Why do clearing houses, margin, and collateral all exist?", options:["To generate fees for exchanges","Specifically to manage and absorb counterparty risk","To slow down high-frequency trading","To calculate stock market indices"], correct:1, explain:"Margin, collateral, and CCPs all exist for the same underlying reason: managing the risk that whoever's on the other side of a trade might not deliver."}
+},
+"Default": {
+  analogyHead:"The day the neighbor simply doesn't give the ladder back.",
+  analogy:"Like the day your neighbor simply doesn't return the ladder at all — the risk you were worried about has now actually happened.",
+  example:["A broker owes ₹10 crore in securities across multiple trades due to settle today.","Overnight, the broker becomes insolvent and cannot deliver.","This is a default — a failure to meet a settlement obligation.","The clearing house's safety net activates: the broker's margin is seized first, and if that's insufficient, the mutualised default fund covers the rest."],
+  exampleHead:"A counterparty fails to deliver on settlement day.",
+  exampleCallout:"₹10cr owed, not delivered — the safety net kicks in immediately",
+  mistakes:[
+    {think:"A default automatically means the counterparty who was owed money loses everything.", reality:"That's precisely what the clearing house's margin and default fund exist to prevent — a default triggers the safety net, not automatic losses for the other side."},
+    {think:"Default only happens due to outright fraud.", reality:"It's often simple insolvency or an operational failure — running out of cash or securities to deliver, with no fraudulent intent required at all."}
+  ],
+  related:["Counterparty Risk","Margin","CCP","Buy-in"],
+  quiz:{q:"What typically happens first when a CCP-cleared counterparty defaults?", options:["The trade is simply cancelled with no further action","The defaulting party's own margin is seized first to cover the shortfall","The exchange shuts down entirely","Nothing — defaults are absorbed silently with no process"], correct:1, explain:"A default triggers a defined waterfall — the defaulting member's own margin is used first, with the mutualised default fund as backup if that's not enough."}
+},
+"Exposure": {
+  analogyHead:"How many umbrellas are currently out on loan to one friend.",
+  analogy:"Like tallying up, at this exact moment, how many of your umbrellas are currently out on loan to one particular friend — that number is your exposure to them, and it changes every time you lend or get one back.",
+  example:["A bank has multiple open derivative trades with a single counterparty.","At today's prices, if that counterparty defaulted this instant, the bank calculates it would lose ₹8 crore.","That ₹8 crore is the bank's current exposure to this specific counterparty.","Tomorrow, as prices move, that exposure figure will be recalculated — it could rise or fall."],
+  exampleHead:"Measuring risk to one counterparty, right now.",
+  exampleCallout:"₹8 crore, right now — recalculated again tomorrow",
+  mistakes:[
+    {think:"Exposure is a fixed number set once at the start of a relationship.", reality:"It's recalculated continuously as market prices move — exposure to the same counterparty can swing significantly day to day."},
+    {think:"Exposure and counterparty risk mean exactly the same thing.", reality:"Counterparty risk is the general possibility of a counterparty failing; exposure is the specific, quantified amount you'd actually lose to them right now if they did."}
+  ],
+  related:["Counterparty Risk","VaR","Collateral","Default"],
+  quiz:{q:"What does 'exposure' to a counterparty actually measure?", options:["How many trades you've done with them historically","How much you'd lose right now if that specific counterparty defaulted this instant","Their credit rating","How long you've known them as a trading partner"], correct:1, explain:"Exposure is a live, quantified figure — the actual loss you'd face right now if a given counterparty defaulted, recalculated constantly as prices move."}
+},
+"Short Selling": {
+  analogyHead:"Borrowing a bat to sell now, buy back cheaper later.",
+  analogy:"Like borrowing a friend's cricket bat, selling it today for ₹2,000, betting its price falls so you can buy an identical one back for ₹1,500 tomorrow and return it — pocketing the ₹500 difference. If the price rises instead, you could end up paying far more to buy it back.",
+  example:["Rohan borrows 100 shares of a stock currently trading at ₹500 and immediately sells them — ₹50,000 in hand.","A week later, the stock falls to ₹400, as he expected.","He buys 100 shares back for ₹40,000 and returns them to the lender.","His profit is ₹10,000 — but if the stock had risen to ₹700 instead, he'd have had to buy back at a ₹20,000 loss."],
+  exampleHead:"Betting a stock's price will fall.",
+  exampleCallout:"Sold at ₹500, bought back at ₹400 — a ₹10,000 gain from a falling price",
+  mistakes:[
+    {think:"Short selling means you can lose at most 100% of your investment, same as buying a stock.", reality:"A short seller's losses are theoretically unlimited, since a stock's price can keep rising indefinitely — very different from a long position, where the maximum loss is capped at 100%."},
+    {think:"Short selling is always market manipulation.", reality:"Legitimate short selling is a normal, regulated market activity used for genuine bearish bets and hedging — manipulation only occurs with additional illegal tactics layered on top, like spreading false information."}
+  ],
+  related:["Margin Call","Liquidity","Counterparty","Slippage"],
+  quiz:{q:"Why is the potential loss on a short sale considered theoretically unlimited?", options:["Because brokers charge unlimited fees for shorting","Because a stock's price can keep rising indefinitely, and the short seller must eventually buy back at whatever that price is","Because short sales can never be closed out","Because short selling is illegal in most markets"], correct:1, explain:"A short seller must eventually buy back the shares to return them — since a stock's price has no upper limit, the potential cost of buying back is theoretically unbounded."}
+},
+"Margin Call": {
+  analogyHead:"A referee demanding you top up your stake mid-match.",
+  analogy:"Like a referee stopping a match mid-way to demand you top up your entry stake immediately, because you're already losing more than what you put in — refuse, and you're pulled from the game entirely.",
+  example:["Priya opens a leveraged position, posting ₹1,00,000 in margin.","The market moves against her, and her position now shows a ₹40,000 loss.","Her broker issues a margin call: deposit more funds today, or the position gets force-closed.","She doesn't respond in time — the broker liquidates her position at the prevailing market price to limit further losses."],
+  exampleHead:"A leveraged position moves against a trader.",
+  exampleCallout:"₹40,000 down, top-up demanded — or forced liquidation",
+  mistakes:[
+    {think:"A margin call is optional — you can simply ignore it with no consequences.", reality:"Ignoring a margin call typically leads to the broker force-selling your position, often at an unfavorable moment, specifically to protect against further losses."},
+    {think:"A margin call only ever happens to reckless traders.", reality:"Any leveraged position can trigger one if the market moves far enough against it — even a carefully considered trade isn't immune to adverse price moves."}
+  ],
+  related:["Margin","Mark-to-Market","Short Selling","Haircut"],
+  quiz:{q:"What happens if a trader fails to respond to a margin call?", options:["Nothing — margin calls are just informational notices","The broker typically force-closes the position to limit further losses","The position automatically doubles in size","The exchange forgives the shortfall"], correct:1, explain:"A margin call demands additional funds to cover a losing leveraged position — ignoring it usually results in the broker liquidating the position to cap the risk."}
+},
+"Black Swan Event": {
+  analogyHead:"A lifetime of white swans, until one isn't.",
+  analogy:"Like a lifetime of only ever seeing white swans, so confidently concluding all swans are white — until the one day a black swan appears and rewrites everything you thought you knew was possible.",
+  example:["Risk models across the industry are built on historical data and normal market patterns.","A sudden, unprecedented global event hits — one no model had ever seen or accounted for.","Markets worldwide crash simultaneously, correlations break down, and standard risk measures like VaR prove useless in the moment.","In hindsight, analysts construct explanations for why it happened — but by definition, nobody predicted it beforehand."],
+  exampleHead:"A shock nobody's models accounted for.",
+  exampleCallout:"Unmodeled, unprecedented, and only explainable in hindsight",
+  mistakes:[
+    {think:"A black swan event can be predicted if you build a good enough model.", reality:"By definition, it lies outside what any existing model considers possible — the entire point of the term is that it defies prior expectation, not that better modeling would have caught it."},
+    {think:"Black swan events are simply 'very bad' or 'very rare' events in general.", reality:"The term specifically means an event that was considered essentially impossible beforehand, based on all available prior data — not just any rare, severe outcome."}
+  ],
+  related:["VaR","Circuit Breaker","Liquidity","Exposure"],
+  quiz:{q:"What specifically defines a 'black swan' event, in this sense?", options:["Any stock market crash, however large","A severe but historically-typical downturn","An event considered virtually impossible beforehand, based on all prior data and models","An event that only affects a single company"], correct:2, explain:"A black swan event is defined by being outside all reasonable prior expectation — not just severe, but genuinely unmodeled and unprecedented until it happens."}
 }
 };
 
@@ -1297,7 +1577,7 @@ const DIAG = {
 </svg>`
 };
 
-const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split"];
+const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split","KYC","AML","Surveillance","Front Running","Insider Trading","Wash Trade","Circuit Breaker","Basis Point","VaR","Collateral","Liquidity","Slippage","Bid-Ask Spread","Counterparty","Counterparty Risk","Default","Exposure","Short Selling","Margin Call","Black Swan Event"];
 
 /* Order Book's bespoke illustrated analogy scene (kept special — the flagship example) */
 const ORDER_BOOK_ILLO = `<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
