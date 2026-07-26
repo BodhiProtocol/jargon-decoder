@@ -4,44 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Capital Markets Jargon Decoder · BodhiProtocol</title>
-<meta name="description" content="Jargon is a wall. This is a door. Plain-language answers to capital markets terminology — with visual explanations and a flashcard mode.">
-<meta name="theme-color" content="#14101F">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2314101F%22/><text x=%2250%22 y=%2266%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22%239D7BEA%22 font-family=%22Georgia,serif%22>J</text></svg>">
+<meta name="description" content="Jargon is a wall. This is a door. 229 capital markets terms decoded into plain language — with visual explanations, a flashcard mode, and full concept guides.">
+<meta name="theme-color" content="#F8F3E9">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%232E4D8A%22/><text x=%2250%22 y=%2266%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22%23F8F3E9%22 font-family=%22Georgia,serif%22>J</text></svg>">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Capital Markets Jargon Decoder · BodhiProtocol">
-<meta property="og:description" content="Jargon is a wall. This is a door. Plain-language answers to capital markets terminology — with visual explanations and a flashcard mode.">
+<meta property="og:description" content="Jargon is a wall. This is a door. 229 capital markets terms decoded into plain language — with visual explanations, a flashcard mode, and full concept guides.">
 <meta property="og:url" content="https://bodhiprotocol.github.io/jargon-decoder/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capital Markets Jargon Decoder · BodhiProtocol">
-<meta name="twitter:description" content="Jargon is a wall. This is a door. Plain-language answers to capital markets terminology — with visual explanations and a flashcard mode.">
+<meta name="twitter:description" content="Jargon is a wall. This is a door. 229 capital markets terms decoded into plain language — with visual explanations, a flashcard mode, and full concept guides.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#14101F;
-  --panel:#201936;
-  --panel-2:#2A2145;
-  --lotus:#9D7BEA;
-  --lavender:#C9B8F5;
-  --gold:#E8B75A;
-  --mist:#EDE9F7;
-  --muted:#8B84A3;
-  --line:rgba(157,123,234,.22);
-  --on-accent:#14101F;
+  --ink:#F8F3E9;
+  --panel:#FFFFFF;
+  --panel-2:#F3EEDF;
+  --lotus:#2E4D8A;
+  --lavender:#33507C;
+  --gold:#D97A42;
+  --mist:#1C1B22;
+  --muted:#6B6A75;
+  --line:#EAE1CD;
+  --on-accent:#FFFFFF;
+  --good:#3F8E5C;
+  --good-soft:#E5F3EA;
+  --bad:#C24A42;
+  --bad-soft:#FAEAE8;
+  --shadow:0 1px 2px rgba(28,27,34,.04), 0 16px 32px -18px rgba(28,27,34,.18);
 }
 html.pastel{
-  --ink:#F7F4EF;
-  --panel:#FFFFFF;
-  --panel-2:#EFEAE0;
-  --lotus:#5B7FA6;
-  --lavender:#7B98B8;
-  --gold:#C97F3E;
-  --mist:#3A3630;
-  --muted:#8A8578;
-  --line:rgba(58,54,48,.15);
-  --on-accent:#FFFFFF;
+  --ink:#151726;
+  --panel:#1E2135;
+  --panel-2:#262C4A;
+  --lotus:#7C97DD;
+  --lavender:#A8B7E8;
+  --gold:#E8996A;
+  --mist:#EFEEF6;
+  --muted:#9C9CB0;
+  --line:#2E3149;
+  --on-accent:#151726;
+  --good:#6FBF8C;
+  --good-soft:#1E332A;
+  --bad:#E2857D;
+  --bad-soft:#332423;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 16px 32px -18px rgba(0,0,0,.55);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 @media (prefers-reduced-motion: reduce){
@@ -49,7 +60,7 @@ html.pastel{
 }
 body{
   background:var(--ink);color:var(--mist);
-  font-family:'Inter',system-ui,sans-serif;line-height:1.6;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:880px;margin:0 auto;padding:0 24px}
@@ -58,7 +69,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 .theme-toggle{position:fixed;top:20px;right:20px;z-index:10;display:flex;gap:0}
 .theme-btn{
   background:var(--panel);border:1px solid var(--line);
-  color:var(--lavender);font-family:'Inter',sans-serif;font-weight:500;
+  color:var(--lavender);font-family:'IBM Plex Sans',sans-serif;font-weight:500;
   font-size:.76rem;padding:7px 16px;cursor:pointer;transition:all .25s ease;
 }
 .theme-btn:first-child{border-radius:999px 0 0 999px;border-right:none}
@@ -77,7 +88,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 
 .hero{padding:46px 0 26px;text-align:center}
 .hero h1{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-family:'Fraunces',serif;font-weight:600;
   font-size:clamp(2.3rem,6vw,3.6rem);line-height:1.1;
 }
 .hero h1 em{font-style:italic;color:var(--lotus)}
@@ -87,7 +98,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 .modes{display:flex;justify-content:center;gap:0;padding:4px 0 22px}
 .mode-btn{
   background:var(--panel);border:1px solid var(--line);
-  color:var(--lavender);font-family:'Inter',sans-serif;font-weight:500;
+  color:var(--lavender);font-family:'IBM Plex Sans',sans-serif;font-weight:500;
   font-size:.88rem;padding:10px 26px;cursor:pointer;transition:all .25s ease;
 }
 .mode-btn:first-child{border-radius:999px 0 0 999px}
@@ -101,7 +112,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 .decode-bar input{
   flex:1;background:var(--panel);border:1.5px solid var(--line);
   border-radius:999px;padding:15px 24px;color:var(--mist);
-  font-family:'Inter',sans-serif;font-size:1rem;outline:none;
+  font-family:'IBM Plex Sans',sans-serif;font-size:1rem;outline:none;
   transition:border-color .25s ease;
 }
 .decode-bar input::placeholder{color:var(--muted)}
@@ -109,7 +120,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 .decode-bar button{
   background:var(--lotus);border:none;border-radius:999px;
   padding:0 26px;color:var(--on-accent);font-weight:600;font-size:.92rem;
-  cursor:pointer;font-family:'Inter',sans-serif;transition:background .25s ease;
+  cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:background .25s ease;
   white-space:nowrap;
 }
 .decode-bar button:hover{background:var(--gold)}
@@ -126,7 +137,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 .chip{
   background:none;border:1px solid var(--line);border-radius:999px;
   padding:6px 16px;color:var(--lavender);font-size:.8rem;font-weight:500;
-  cursor:pointer;font-family:'Inter',sans-serif;transition:all .25s ease;
+  cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:all .25s ease;
 }
 .chip:hover{border-color:var(--lotus);background:var(--panel)}
 .chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
@@ -168,7 +179,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
   font-size:1.05rem;color:var(--mist);margin-bottom:8px;letter-spacing:.02em;
 }
 .card .plain{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-family:'Fraunces',serif;font-style:italic;
   font-size:1.12rem;color:var(--lavender);line-height:1.45;margin-bottom:10px;
 }
 .card .more{font-size:.86rem;color:var(--muted)}
@@ -178,14 +189,14 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 }
 .card.open .viz{display:block}
 .viz svg{width:100%;height:auto;display:block}
-.viz text{font-family:'Inter',sans-serif;fill:var(--mist)}
+.viz text{font-family:'IBM Plex Sans',sans-serif;fill:var(--mist)}
 .viz .vs{font-size:10px;fill:var(--muted)}
 .viz .vt{font-size:11px;font-weight:600;fill:var(--mist)}
 .viz .vg{fill:var(--gold)}
 .viz .vgt{font-size:11px;font-weight:600;fill:var(--on-accent)}
 .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
 .empty .big{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-family:'Fraunces',serif;font-style:italic;
   font-size:1.4rem;color:var(--lavender);margin-bottom:8px;
 }
 
@@ -203,7 +214,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
   letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;
 }
 .flash .fplain{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-family:'Fraunces',serif;font-style:italic;
   font-size:1.5rem;color:var(--lavender);line-height:1.4;margin-bottom:26px;
 }
 .flash .fterm{
@@ -214,7 +225,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 .flash.revealed .fterm,.flash.revealed .fmore{display:block}
 .fbtns{display:flex;gap:10px;justify-content:center}
 .fbtn{
-  border-radius:999px;padding:12px 30px;font-family:'Inter',sans-serif;
+  border-radius:999px;padding:12px 30px;font-family:'IBM Plex Sans',sans-serif;
   font-weight:600;font-size:.92rem;cursor:pointer;transition:all .25s ease;
 }
 .fbtn.primary{background:var(--lotus);border:none;color:var(--on-accent)}
@@ -231,7 +242,7 @@ header{padding:26px 0 0;display:flex;justify-content:center}
 
 footer{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center}
 footer .om{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-family:'Fraunces',serif;font-style:italic;
   color:var(--lavender);font-size:1.02rem;margin-bottom:10px;
 }
 footer .related{
@@ -255,22 +266,146 @@ footer .meta a:hover{color:var(--gold)}
   .badge{padding:10px 16px}
   .chip{padding:10px 16px}
 }
+
+/* ---------- v2 additions: banner, nav, hero illustration, today's visual, category grid, bookmark, analogy ---------- */
+.banner{background:var(--lotus);color:#fff;text-align:center;font-family:'IBM Plex Sans',sans-serif;font-size:.85rem;font-style:italic;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:8px}
+html.pastel .banner{background:var(--panel-2)}
+.banner svg{width:13px;height:13px;color:var(--gold);flex-shrink:0}
+.banner b{font-style:normal;font-weight:600;opacity:.85}
+
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:20px 0 0}
+.topnav .navlink{font-family:'IBM Plex Sans',sans-serif;font-size:.86rem;color:var(--muted);font-weight:500;margin-left:22px}
+.topnav .navlink:hover{color:var(--mist)}
+.topnav-right{display:flex;align-items:center}
+
+.hero-row{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:12px 0 4px}
+.hero-row .hero{padding:0;text-align:left}
+.hero-row .hero h1{text-align:left}
+.hero-illo{display:flex;justify-content:center;align-items:center}
+.hero-illo svg{width:100%;max-width:340px;height:auto}
+@media (max-width:860px){ .hero-row{grid-template-columns:1fr} .hero-illo{order:-1;max-width:260px;margin:0 auto} }
+
+.tv-card{margin:18px 0 40px;background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);display:grid;grid-template-columns:260px 1fr;overflow:hidden}
+.tv-copy{padding:26px 24px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.tv-copy .lbl{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lotus);margin-bottom:4px}
+.tv-copy .lbl svg{width:12px;height:12px;color:var(--gold)}
+.tv-copy h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;color:var(--mist)}
+.tv-copy p{color:var(--muted);font-size:.88rem;margin:4px 0 12px}
+.tv-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--lotus);color:var(--on-accent);border:none;border-radius:999px;padding:10px 18px;font-size:.84rem;font-weight:600;cursor:pointer;transition:opacity .2s ease;font-family:'IBM Plex Sans',sans-serif}
+.tv-cta:hover{opacity:.85}
+.tv-viz{padding:20px 24px;border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+@media (max-width:700px){ .tv-card{grid-template-columns:1fr} .tv-viz{border-left:none;border-top:1px solid var(--line)} }
+
+.cat-section{padding:4px 0 36px}
+.section-lbl{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.cat-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 15px;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s ease,border-color .2s ease}
+.cat-card:hover{transform:translateY(-2px);border-color:var(--cat-color, var(--lotus))}
+.cat-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--cat-tint);color:var(--cat-color);margin-bottom:10px}
+.cat-icon svg{width:17px;height:17px}
+.cat-card h4{font-size:.86rem;font-weight:600;color:var(--mist);margin-bottom:2px;font-family:'IBM Plex Sans',sans-serif}
+.cat-card .n{font-size:.7rem;color:var(--muted)}
+
+.bookmark-btn{width:26px;height:26px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--muted);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s ease}
+.bookmark-btn svg{width:13px;height:13px}
+.bookmark-btn:hover{border-color:var(--gold);color:var(--gold)}
+.bookmark-btn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fff}
+
+.analogy{margin:10px 0 0;padding:11px 14px;background:var(--panel-2);border-radius:10px}
+.analogy .lbl{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lotus);margin-bottom:5px;display:block;font-weight:600}
+.analogy p{font-family:'IBM Plex Sans',sans-serif;font-size:.86rem;color:var(--mist);line-height:1.5}
+
+.related-terms{margin-top:12px}
+.related-terms .lbl{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;display:block}
+.rel-chip{display:inline-block;margin:0 5px 5px 0;padding:4px 11px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--lavender);font-size:.74rem;font-family:'IBM Plex Sans',sans-serif}
+
+.concept-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-family:'IBM Plex Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--lotus)}
+.concept-link:hover{color:var(--gold)}
+
+@media (max-width:640px){
+  .tv-card{margin:14px 0 30px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
 
-<div class="theme-toggle" role="group" aria-label="Theme">
-  <button class="theme-btn active" id="themeDark" type="button">Dark</button>
-  <button class="theme-btn" id="themeLight" type="button">Light</button>
+<div class="banner">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z"/></svg>
+  "Words confuse. Clarity compounds." <b>— BodhiProtocol</b>
 </div>
 
-<header>
-  <div class="brand">Bodhi<b>Protocol</b></div>
+<header class="wrap">
+  <nav class="topnav">
+    <a class="brand" href="https://bodhiprotocol.com/" aria-label="BodhiProtocol home" style="text-decoration:none">Bodhi<b>Protocol</b></a>
+    <div class="topnav-right">
+      <a class="navlink" href="https://bodhiprotocol.com/library">Library</a>
+      <a class="navlink" href="https://github.com/BodhiProtocol/jargon-decoder">Contribute</a>
+      <div class="theme-toggle" role="group" aria-label="Theme" style="position:static;margin-left:22px">
+        <button class="theme-btn" id="themeDark" type="button">Dark</button>
+        <button class="theme-btn active" id="themeLight" type="button">Light</button>
+      </div>
+    </div>
+  </nav>
 </header>
 
-<section class="hero wrap">
-  <h1>Jargon is a wall.<br><em>This is a door.</em></h1>
-  <p>99+ capital markets terms, decoded into plain language. Search, browse by category, or test yourself with flashcards.</p>
+<section class="hero-row wrap">
+  <div class="hero">
+    <h1>Jargon is a wall.<br><em>This is a door.</em></h1>
+    <p>229 capital markets terms, decoded into plain language. Search, browse by category, or test yourself with flashcards.</p>
+  </div>
+  <div class="hero-illo">
+    <svg viewBox="0 0 400 400" fill="none">
+      <ellipse cx="200" cy="352" rx="120" ry="16" fill="var(--line)" opacity=".5"/>
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#F4D9A8"/><stop offset=".55" stop-color="#CFE0E8"/><stop offset="1" stop-color="#E9EEE7"/>
+        </linearGradient>
+        <linearGradient id="frame" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C9C3B4"/><stop offset="1" stop-color="#A9A192"/>
+        </linearGradient>
+      </defs>
+      <path d="M110 340 V180 A90 90 0 0 1 290 180 V340 Z" fill="url(#frame)"/>
+      <path d="M128 336 V182 A72 72 0 0 1 272 182 V336 Z" fill="url(#sky)"/>
+      <circle cx="176" cy="160" r="19" fill="#FBEAC2" opacity=".9"/>
+      <path d="M150 336 C158 268 168 232 200 200 C232 232 242 268 250 336 Z" fill="#DCE6D3" opacity=".7"/>
+      <path d="M198 336 C199 250 200 210 200 200" stroke="#B9C7AE" stroke-width="2.4" stroke-linecap="round"/>
+      <g>
+        <path d="M128 336 V182 A72 72 0 0 1 200 111 V336 Z" fill="var(--lotus)" opacity=".94" transform="translate(6,0) skewY(-1)"/>
+        <path d="M128 336 V182 A72 72 0 0 1 200 111 V336 Z" fill="none" stroke="var(--mist)" stroke-width="1.4" opacity=".25" transform="translate(6,0) skewY(-1)"/>
+        <circle cx="196" cy="240" r="4.4" fill="#F4D9A8"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="tv-card wrap">
+  <div class="tv-copy">
+    <span class="lbl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z"/></svg>Today's Visual</span>
+    <h3>Order Book</h3>
+    <p>The live list of buy and sell orders in the market.</p>
+    <a class="tv-cta" href="concept.html#Order-Book">Learn in 2 minutes →</a>
+  </div>
+  <div class="tv-viz">
+    <svg viewBox="0 0 320 160" style="width:100%;max-width:340px">
+      <text x="80" y="20" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="IBM Plex Sans">Bids (buyers)</text>
+      <rect x="30" y="30" width="100" height="16" rx="4" fill="var(--lotus)" opacity=".9"/>
+      <rect x="50" y="52" width="80" height="16" rx="4" fill="var(--lotus)" opacity=".6"/>
+      <rect x="70" y="74" width="60" height="16" rx="4" fill="var(--lotus)" opacity=".35"/>
+      <text x="240" y="20" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="IBM Plex Sans">Asks (sellers)</text>
+      <rect x="190" y="30" width="100" height="16" rx="4" fill="var(--gold)" opacity=".9"/>
+      <rect x="190" y="52" width="80" height="16" rx="4" fill="var(--gold)" opacity=".6"/>
+      <rect x="190" y="74" width="60" height="16" rx="4" fill="var(--gold)" opacity=".35"/>
+      <line x1="160" y1="26" x2="160" y2="96" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="160" y="118" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="IBM Plex Sans">Where the stacks meet, trades happen.</text>
+      <text x="160" y="133" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="IBM Plex Sans">Best prices sit closest to the middle.</text>
+    </svg>
+  </div>
+</section>
+
+<section class="cat-section wrap">
+  <div class="section-lbl">Explore Categories</div>
+  <div class="cat-grid" id="catGrid"></div>
 </section>
 
 <div class="modes wrap">
@@ -321,13 +456,12 @@ const THEME_KEY = "jargon-decoder-theme";
 const themeDarkBtn = document.getElementById("themeDark");
 const themeLightBtn = document.getElementById("themeLight");
 function applyTheme(theme){
-  document.documentElement.classList.toggle("pastel", theme === "light");
+  document.documentElement.classList.toggle("pastel", theme === "dark");
   themeDarkBtn.classList.toggle("active", theme === "dark");
   themeLightBtn.classList.toggle("active", theme === "light");
   localStorage.setItem(THEME_KEY, theme);
 }
-let savedTheme = localStorage.getItem(THEME_KEY) || "dark";
-if (savedTheme === "pastel") savedTheme = "light";
+let savedTheme = localStorage.getItem(THEME_KEY) || "light";
 applyTheme(savedTheme);
 themeDarkBtn.addEventListener("click", () => applyTheme("dark"));
 themeLightBtn.addEventListener("click", () => applyTheme("light"));
@@ -2872,12 +3006,63 @@ const TERMS = [
 {t:"Flywheel Effect",c:10,p:"A business loop where each part of the business makes every other part stronger, spinning faster the longer it runs.",m:"Amazon's version: lower prices bring more customers, more customers attract more sellers, more sellers mean more selection, more selection brings more customers."}
 ];
 
+/* ---------- category grid (real counts) ---------- */
+const CAT_META = [
+  {color:'#3B66C7',tint:'#E9EEFB',icon:'<path d="M4 12a8 8 0 0 1 14.3-5M20 12a8 8 0 0 1-14.3 5" stroke-linecap="round"/><path d="M18.3 3.5V7h-3.5M5.7 20.5V17h3.5" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {color:'#7F63C4',tint:'#F0ECFA',icon:'<path d="M3 10.5 12 4l9 6.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10.5V19M19 10.5V19M9 10.5V19M15 10.5V19" stroke-linecap="round"/><path d="M3 19h18" stroke-linecap="round"/>'},
+  {color:'#2F9E8F',tint:'#E4F5F2',icon:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 15V9M12 15v-3M16 15v-6" stroke-linecap="round"/>'},
+  {color:'#DD7A40',tint:'#FBEDE2',icon:'<path d="M12 3 4.5 6v6c0 4.6 3.2 7.9 7.5 9 4.3-1.1 7.5-4.4 7.5-9V6Z" stroke-linejoin="round"/><path d="M12 12v-2.5M12 15.2v.1" stroke-linecap="round"/>'},
+  {color:'#3FA66B',tint:'#E6F5EC',icon:'<path d="M5 19V10M11 19V5M17 19v-7" stroke-linecap="round"/><path d="M3 19h18" stroke-linecap="round"/>'},
+  {color:'#4497C2',tint:'#E6F1F8',icon:'<path d="m9 8-4 4 4 4M15 8l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {color:'#A6567F',tint:'#F7E9EF',icon:'<path d="M3 20h18M5 20V9l7-5 7 5v11" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-5h6v5" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {color:'#C79A3D',tint:'#F7EFDF',icon:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/><path d="M8.5 11.5 10 13l3.5-4" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {color:'#C2554F',tint:'#F8E9E8',icon:'<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5" stroke-linecap="round"/>'},
+  {color:'#D6B23B',tint:'#F9F1DE',icon:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7v10M9 9.5c0-1.4 1.3-2.5 3-2.5s3 .9 3 2.2c0 3-6 1.6-6 4.6 0 1.3 1.3 2.2 3 2.2s3-1.1 3-2.5" stroke-linecap="round"/>'},
+  {color:'#6E7A8C',tint:'#EAECEF',icon:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/>'}
+];
+const catGrid=document.getElementById("catGrid");
+catGrid.innerHTML = CATS.map((name,i) => {
+  const n = TERMS.filter(t=>t.c===i).length;
+  const meta = CAT_META[i];
+  return `<div class="cat-card" data-cat="${i}" style="--cat-color:${meta.color};--cat-tint:${meta.tint}"><div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${meta.icon}</svg></div><h4>${esc(name)}</h4><div class="n">${n} concepts</div></div>`;
+}).join("");
+
+/* ---------- analogy + related-terms overlay (Lifecycle category, first 16 terms — more to follow) ---------- */
+const ANALOGY_DATA = {
+  "Order Book": {analogyHead:"A farmers' market, not a warehouse.", analogy:"Nothing is priced and shelved in advance. Every stall is just a person holding up a number — \"I'll sell at this price,\" \"I'll pay this much.\"", related:["Limit Order","Market Order","Bid-Ask Spread","Execution"]},
+  "Limit Order": {analogyHead:"A ceiling, not a wish.", analogy:"Like telling a real-estate agent \"only call me if the flat is ₹50 lakh or under\" — you set the ceiling and walk away.", related:["Order Book","Market Order","Execution","Bid-Ask Spread"]},
+  "Market Order": {analogyHead:"\"I'll take it\" — no haggling.", analogy:"Like walking into a shop and saying \"I'll take it, whatever the price on the tag says\" — you get it now, no negotiation.", related:["Order Book","Limit Order","Execution","Slippage"]},
+  "Execution": {analogyHead:"The whistle, not the negotiation.", analogy:"Like a referee's whistle the instant a deal is struck at a bazaar — before it, two people were talking prices; after it, a sale happened.", related:["Order Book","Confirmation","Settlement","STP"]},
+  "Allocation": {analogyHead:"One big order, portioned out afterward.", analogy:"Like a caterer buying one massive order of food, then portioning it out afterward to each table that actually ordered it.", related:["Order Book","Trade Enrichment","Confirmation","Block Trade"]},
+  "Confirmation": {analogyHead:"Comparing notes after a handshake.", analogy:"Like both sides of a handshake deal texting each other afterward to double check: \"We agreed on ₹500 for 100 units, right?\"", related:["Execution","Break","Reconciliation","Trade Enrichment"]},
+  "Trade Enrichment": {analogyHead:"Filling in the delivery details.", analogy:"Like a delivery order that arrives with just an address — enrichment is filling in the apartment number and gate code before it can be delivered.", related:["Confirmation","STP","Allocation","Settlement"]},
+  "STP": {analogyHead:"Self-checkout, not a cashier queue.", analogy:"Like a self-checkout lane versus a cashier — STP is the trade equivalent of scan-bag-pay with nobody touching it.", related:["Trade Enrichment","Reconciliation","Break","Confirmation"]},
+  "Reconciliation": {analogyHead:"Balancing your books, every single day.", analogy:"Like balancing your own bank statement against your checkbook every single day — except the \"bank\" is your custodian, and you never skip a day.", related:["Break","Failed Trade","STP","Confirmation"]},
+  "Break": {analogyHead:"Two stories that don't agree.", analogy:"Like two people who both swear they agreed to meet at \"5 o'clock\" — except one meant 5pm and the other meant 5am.", related:["Reconciliation","Failed Trade","Confirmation","STP"]},
+  "Failed Trade": {analogyHead:"The delivery that never shows up.", analogy:"Like ordering food for delivery, paying upfront, and the courier never shows up with the food or your money back — on the day it was promised.", related:["Break","Reconciliation","Corporate Action","Settlement"]},
+  "Corporate Action": {analogyHead:"When the rules of ownership change under you.", analogy:"Like a landlord announcing \"starting next month, every unit is being renumbered\" — everyone holding a lease has to update their records.", related:["Record Date","Ex-Date","Demat","ISIN"]},
+  "Record Date": {analogyHead:"Attendance taken at exactly 9am.", analogy:"Like a school taking attendance at exactly 9:00am to decide who gets the field-trip slip — show up at 9:01 and you've missed the cutoff.", related:["Ex-Date","Corporate Action","Demat","ISIN"]},
+  "Ex-Date": {analogyHead:"The perk that stops the moment it's announced.", analogy:"Like a concert ticket that stops including free parking the moment they announce it — buy after, and the parking pass isn't part of the deal.", related:["Record Date","Corporate Action","Order Book","Demat"]},
+  "ISIN": {analogyHead:"A passport that never changes.", analogy:"Like a passport number for a stock — wherever it travels, that one code always points to exactly the same security.", related:["Demat","Corporate Action","Order Book","Confirmation"]},
+  "Demat": {analogyHead:"Your mattress-cash, now in a bank account.", analogy:"Like moving your savings from a mattress full of paper notes into a bank account — now it's a trusted ledger entry, not a physical thing that can be lost.", related:["ISIN","Corporate Action","Confirmation","Record Date"]}
+};
+const CONCEPT_PAGES = {"Order Book":true,"Limit Order":true,"Market Order":true,"Execution":true,"Allocation":true,"Confirmation":true,"Trade Enrichment":true,"STP":true,"Reconciliation":true,"Break":true,"Failed Trade":true,"Corporate Action":true,"Record Date":true,"Ex-Date":true,"ISIN":true,"Demat":true};
+
+/* ---------- bookmarks ---------- */
+const BOOKMARK_KEY = "jargon-decoder-bookmarks";
+let bookmarks = new Set(JSON.parse(localStorage.getItem(BOOKMARK_KEY) || "[]"));
+function saveBookmarks(){
+  localStorage.setItem(BOOKMARK_KEY, JSON.stringify([...bookmarks]));
+  if(typeof savedChip!=="undefined") savedChip.textContent = "★ Saved (" + bookmarks.size + ")";
+}
+
 /* ---------- decode mode ---------- */
 const grid=document.getElementById("grid");
 const countEl=document.getElementById("count");
 const q=document.getElementById("q");
 const chipsEl=document.getElementById("chips");
 let activeCat=-1;
+let savedOnly=false;
 
 function esc(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
 
@@ -2886,31 +3071,49 @@ function render(){
   const list=TERMS.filter(x=>{
     const catOk = activeCat===-1 || x.c===activeCat;
     const qOk = !query || x.t.toLowerCase().includes(query) || x.p.toLowerCase().includes(query) || x.m.toLowerCase().includes(query);
-    return catOk && qOk;
+    const savedOk = !savedOnly || bookmarks.has(x.t);
+    return catOk && qOk && savedOk;
   });
   if(!list.length){
     grid.innerHTML=`<div class="empty"><div class="big">Not in the book — yet.</div>Try another word, or clear the filter. The wall is tall; the door is patient.</div>`;
   }else{
     grid.innerHTML=list.map((x,idx)=>{
       const hasViz=!!DIAG[x.t];
+      const an=ANALOGY_DATA[x.t];
+      const isBookmarked=bookmarks.has(x.t);
       return `
       <div class="card${hasViz?' has-viz':''}" data-term="${esc(x.t)}">
         <div class="top">
           <div class="cat">${CATS[x.c]}</div>
           <div class="top-actions">
+            <button class="bookmark-btn" type="button" aria-pressed="${isBookmarked}" aria-label="Bookmark this term" data-bookmark="${esc(x.t)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4-7 4V4.5a1 1 0 0 1 1-1Z"/></svg></button>
             <button class="link-badge" type="button" data-term="${esc(x.t)}">copy link</button>
             ${hasViz?`<button class="badge" type="button" data-viz="${esc(x.t)}">◆ visual</button>`:""}
           </div>
         </div>
         <h3>${esc(x.t)}</h3>
         <p class="plain">${esc(x.p)}</p>
+        ${an?`<div class="analogy"><span class="lbl">Think of it like</span><p>${esc(an.analogy)}</p></div>`:""}
         <p class="more">${esc(x.m)}</p>
+        ${an?`<div class="related-terms"><span class="lbl">Related</span>${an.related.map(r=>`<span class="rel-chip">${esc(r)}</span>`).join("")}</div>`:""}
+        ${CONCEPT_PAGES[x.t]?`<a class="concept-link" href="concept.html#${encodeURIComponent(x.t.replace(/\\s+/g,'-'))}">Read the full concept guide →</a>`:""}
         ${hasViz?`<div class="viz">${DIAG[x.t]}</div>`:""}
       </div>`;
     }).join("");
     grid.querySelectorAll(".badge").forEach(b=>{
       b.addEventListener("click",e=>{
         e.currentTarget.closest(".card").classList.toggle("open");
+      });
+    });
+    grid.querySelectorAll(".bookmark-btn").forEach(b=>{
+      b.addEventListener("click",e=>{
+        const btn=e.currentTarget;
+        const term=btn.getAttribute("data-bookmark");
+        const pressed=btn.getAttribute("aria-pressed")==="true";
+        btn.setAttribute("aria-pressed",String(!pressed));
+        if(pressed){bookmarks.delete(term);}else{bookmarks.add(term);}
+        saveBookmarks();
+        if(savedOnly)render();
       });
     });
     grid.querySelectorAll(".link-badge").forEach(b=>{
@@ -2951,13 +3154,41 @@ const allChip=document.createElement("button");
 allChip.className="chip active";allChip.textContent="All";
 allChip.addEventListener("click",()=>{activeCat=-1;setChip(allChip);render();});
 chipsEl.appendChild(allChip);
+const catChips=[];
 CATS.forEach((c,i)=>{
   const b=document.createElement("button");
   b.className="chip";b.textContent=c;
-  b.addEventListener("click",()=>{activeCat=i;setChip(b);render();});
+  b.addEventListener("click",()=>{activeCat=i;savedOnly=false;setChip(b);render();});
   chipsEl.appendChild(b);
+  catChips.push(b);
 });
+const savedChip=document.createElement("button");
+savedChip.className="chip";savedChip.style.borderColor="var(--gold)";savedChip.style.color="var(--gold)";
+savedChip.textContent="★ Saved ("+bookmarks.size+")";
+savedChip.addEventListener("click",()=>{
+  savedOnly=!savedOnly;
+  savedChip.classList.toggle("active",savedOnly);
+  if(savedOnly){document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));savedChip.classList.add("active");}
+  render();
+});
+chipsEl.appendChild(savedChip);
 function setChip(el){document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));el.classList.add("active");}
+
+/* category grid click -> filter */
+document.querySelectorAll(".cat-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const i=parseInt(card.getAttribute("data-cat"),10);
+    activeCat=i;savedOnly=false;setChip(catChips[i]);render();
+    document.getElementById("decodeView").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+
+/* Cmd/Ctrl+K focuses search */
+document.addEventListener("keydown",e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){
+    e.preventDefault();q.focus();q.select();
+  }
+});
 
 q.addEventListener("input",render);
 document.getElementById("surprise").addEventListener("click",()=>{
