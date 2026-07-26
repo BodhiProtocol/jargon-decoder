@@ -280,7 +280,7 @@ button{font-family:inherit}
 
 <script>
 /* ===================== DATA ===================== */
-const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}, "Risk & Compliance":{color:'#DD7A40',tint:'#FBEDE2'}};
+const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}, "Risk & Compliance":{color:'#DD7A40',tint:'#FBEDE2'}, "Market Structure":{color:'#3FA66B',tint:'#E6F5EC'}};
 
 const CORE = {
   "Order Book": {p:"The exchange's live list of everyone waiting to buy or sell, and at what price.", m:"Buy orders (bids) on one side, sell orders (asks) on the other. Where they meet, trades happen.", c:"Lifecycle"},
@@ -362,7 +362,29 @@ const CORE = {
   "Exposure": {p:"How much you'd actually lose, right now, if a specific counterparty defaulted.", m:"Recalculated constantly as prices move. Risk teams watch exposure the way pilots watch altitude.", c:"Risk & Compliance"},
   "Short Selling": {p:"Selling shares you've borrowed, betting the price falls so you can buy them back cheaper and return them.", m:"Profit is capped at 100% (the price can only fall to zero) but losses are theoretically unlimited (the price can keep rising).", c:"Risk & Compliance"},
   "Margin Call": {p:"Your broker demanding you deposit more money, right now, because your leveraged position has moved against you.", m:"Ignore it and the broker force-sells your position to cover the shortfall — often at the worst possible moment.", c:"Risk & Compliance"},
-  "Black Swan Event": {p:"A rare, unpredictable shock that nobody's models saw coming — and that changes everything once it lands.", m:"2008's financial crisis, a pandemic — by definition, you can't predict the next one, only prepare for the fact that one will come.", c:"Risk & Compliance"}
+  "Black Swan Event": {p:"A rare, unpredictable shock that nobody's models saw coming — and that changes everything once it lands.", m:"2008's financial crisis, a pandemic — by definition, you can't predict the next one, only prepare for the fact that one will come.", c:"Risk & Compliance"},
+  "Buy-side": {p:"The investors — funds, insurers, pensions — who buy securities to grow money they manage.", m:"Mutual funds, hedge funds, sovereign funds. They generate the orders; the sell-side executes them.", c:"Market Structure"},
+  "Sell-side": {p:"The brokers and investment banks who make markets, execute orders, and sell research.", m:"They sit between investors and exchanges. Their product is access, execution, and advice.", c:"Market Structure"},
+  "Market Maker": {p:"A firm that quotes both buy and sell prices all day, so there's always someone to trade with.", m:"They earn the spread in exchange for providing liquidity. The market's shock absorbers.", c:"Market Structure"},
+  "Broker": {p:"Your licensed doorway to the exchange. You can't walk onto NSE yourself.", m:"Executes your orders, holds your margin, answers to the regulator for your conduct.", c:"Market Structure"},
+  "OTC": {p:"Over-The-Counter — trades negotiated directly between two parties, off the exchange.", m:"Flexible and private, but without the exchange's transparency or the CCP's guarantee.", c:"Market Structure"},
+  "Exchange": {p:"The regulated arena where orders meet, prices form, and everyone sees the same numbers.", m:"NSE and BSE in India. Transparency, rules, and a matching engine at the core.", c:"Market Structure"},
+  "Prime Broker": {p:"A one-stop bank for hedge funds: custody, lending, leverage, and settlement under one roof.", m:"The fund trades everywhere but clears through its prime. Convenience, concentrated.", c:"Market Structure"},
+  "Regulator": {p:"The referee. Writes the rules, watches the game, and penalises the fouls.", m:"SEBI for Indian securities markets, RBI for banking and currency. Their circulars become your requirements.", c:"Market Structure"},
+  "Dark Pool": {p:"A private venue where big trades happen away from the public order book, so the price doesn't move before the trade completes.", m:"Institutions use them to avoid tipping their hand — buy a large stake openly and the price runs away from you before you're done.", c:"Market Structure"},
+  "Algorithmic Trading": {p:"Letting code decide when, how, and how fast to buy or sell — no finger on the button.", m:"From simple rules to complex models, algos now execute the majority of volume on most major exchanges.", c:"Market Structure"},
+  "HFT": {p:"Algorithmic trading turned up to the extreme — positions held for fractions of a second, profit measured in fractions of a cent.", m:"High-Frequency Trading — wins are made in microseconds and enormous volume, not conviction. Speed itself is the edge.", c:"Market Structure"},
+  "Depository Participant": {p:"Your actual point of contact for holding shares electronically — usually your broker or bank, acting as an agent of the depository.", m:"NSDL and CDSL are the depositories; your DP is the retail-facing counter that opens and manages your demat account.", c:"Market Structure"},
+  "Foreign Portfolio Investor": {p:"An overseas investor who buys into Indian markets without taking a controlling stake in any company.", m:"Registered and regulated by SEBI as an FPI; their custodian handles settlement since they don't hold assets directly.", c:"Market Structure"},
+  "Retail Investor": {p:"You, most likely — an individual investing personal money, not managing someone else's.", m:"Smaller order sizes, no special market access, but collectively retail investors move real volume in markets like India's.", c:"Market Structure"},
+  "Institutional Investor": {p:"A professional managing large pools of other people's money — pension funds, insurers, mutual funds.", m:"Bigger orders, more market influence, and usually access that individual retail investors don't get.", c:"Market Structure"},
+  "Proprietary Trading": {p:"A firm trading with its own money for its own profit — not on behalf of any client.", m:"Also called \"prop trading.\" The firm keeps all the gains and eats all the losses itself.", c:"Market Structure"},
+  "Free Float": {p:"The portion of a company's shares actually available to trade — excluding what promoters and insiders hold tightly.", m:"Most major indices, including Nifty and Sensex, weight companies by free float, not total market cap.", c:"Market Structure"},
+  "ISDA": {p:"The standard legal contract that governs most over-the-counter derivative trades between two counterparties.", m:"International Swaps and Derivatives Association. One master agreement, signed once, covers every derivative trade you do with that counterparty afterward.", c:"Market Structure"},
+  "Short Squeeze": {p:"When a stock rockets upward because short-sellers are forced to buy it back to escape their losses.", m:"The more it rises, the more shorts are forced to cover, which pushes it up further. GameStop's 2021 spike is the textbook example.", c:"Market Structure"},
+  "Activist Investor": {p:"An investor who buys a stake in a company specifically to force change — new management, a sale, a strategy shift.", m:"Not a passive shareholder. They show up, make noise, and sometimes win board seats to get their way.", c:"Market Structure"},
+  "S&P 500": {p:"An index tracking 500 of the largest publicly traded companies in the US, weighted by size.", m:"The single most-quoted benchmark for 'how is the US stock market doing' in the world.", c:"Market Structure"},
+  "Dow Jones": {p:"An index of 30 major US companies, weighted by their share price rather than their size.", m:"Older and simpler than the S&P 500, but that price-weighting quirk makes it a less accurate market gauge.", c:"Market Structure"}
 };
 
 const CONTENT = {
@@ -1405,6 +1427,292 @@ const CONTENT = {
   ],
   related:["VaR","Circuit Breaker","Liquidity","Exposure"],
   quiz:{q:"What specifically defines a 'black swan' event, in this sense?", options:["Any stock market crash, however large","A severe but historically-typical downturn","An event considered virtually impossible beforehand, based on all prior data and models","An event that only affects a single company"], correct:2, explain:"A black swan event is defined by being outside all reasonable prior expectation — not just severe, but genuinely unmodeled and unprecedented until it happens."}
+},
+"Buy-side": {
+  analogyHead:"The people deciding what to cook, not the kitchen staff.",
+  analogy:"Like a family deciding what groceries to buy for the week — the buy-side decides what to invest in and how much, driven by growing the money entrusted to them.",
+  example:["A pension fund manages retirement savings for millions of workers.","Its analysts decide the fund should buy a large stake in a growing company.","The fund's trader calls a broker on the sell-side to actually execute that large purchase.","The pension fund never touches the exchange directly — it decides, and the sell-side executes."],
+  exampleHead:"A pension fund decides what to buy.",
+  exampleCallout:"Buy-side decides, sell-side executes",
+  mistakes:[
+    {think:"Buy-side firms trade directly on the exchange themselves.", reality:"They almost always route orders through a sell-side broker, who actually executes on the exchange on their behalf."},
+    {think:"'Buy-side' means a firm that only ever buys, never sells.", reality:"Buy-side describes the role — investing on behalf of the money it manages — not a one-directional trading restriction; buy-side firms sell just as often as they buy."}
+  ],
+  related:["Sell-side","Institutional Investor","Broker","Exchange"],
+  quiz:{q:"What best describes a 'buy-side' firm?", options:["A broker that executes trades for clients","An investor (fund, insurer, pension) that invests money it manages, generating the orders","The exchange itself","A regulator overseeing the market"], correct:1, explain:"Buy-side firms are the investors — they decide what to buy and sell with money they manage, then route those orders through the sell-side to execute."}
+},
+"Sell-side": {
+  analogyHead:"The kitchen staff executing everyone else's orders.",
+  analogy:"Like restaurant kitchen staff who don't decide the menu themselves — they execute whatever orders come in, and offer advice on what pairs well with what.",
+  example:["A pension fund (buy-side) decides to buy a large stake in a company.","It calls an investment bank's trading desk (sell-side) to execute the order.","The sell-side desk also provides research recommending which stocks look attractive.","The sell-side earns its money through trading commissions and selling that research and advice — not by managing its own investment portfolio for growth."],
+  exampleHead:"An investment bank executes a client's order.",
+  exampleCallout:"Access, execution, and advice — that's the sell-side's product",
+  mistakes:[
+    {think:"Sell-side firms only ever sell securities, never buy.", reality:"They execute both buy and sell orders on behalf of clients — 'sell-side' describes their role as market-facing intermediaries, not a one-way direction."},
+    {think:"The sell-side and the exchange are the same thing.", reality:"The sell-side (brokers, banks) sits between clients and the exchange — the exchange itself is the separate, regulated venue where the actual matching happens."}
+  ],
+  related:["Buy-side","Broker","Exchange","Market Maker"],
+  quiz:{q:"What does the sell-side primarily provide to buy-side clients?", options:["Regulatory approval","Execution, market access, and research/advice","Retirement savings management","Government bond issuance"], correct:1, explain:"The sell-side (brokers and investment banks) sits between investors and the exchange, providing execution, access, and research — not managing investment portfolios themselves."}
+},
+"Market Maker": {
+  analogyHead:"A shopkeeper who'll trade with you any hour, day or night.",
+  analogy:"Like a 24-hour currency exchange counter that will always quote you both a buy and sell rate, rain or shine — you can trade with them any time, because someone is always standing ready.",
+  example:["A market maker continuously quotes both a buy price (₹104.80) and a sell price (₹105.00) for a stock.","A retail investor wants to sell immediately — the market maker buys at ₹104.80, right now, no waiting for another trader.","Minutes later, another investor wants to buy immediately — the market maker sells at ₹105.00.","The market maker pockets the ₹0.20 spread across thousands of such trades, in exchange for always being available to trade."],
+  exampleHead:"Always ready to trade, on both sides.",
+  exampleCallout:"Always quoting both sides — spread is the reward for standing ready",
+  mistakes:[
+    {think:"A market maker only trades when it's confident the price will move in its favor.", reality:"Its role is to quote continuously on both sides regardless of its own view — providing liquidity is the job, not directional speculation."},
+    {think:"Market makers guarantee the price never moves.", reality:"They guarantee there's always someone to trade with at a quoted price — the price itself still moves with genuine supply, demand, and news."}
+  ],
+  related:["Bid-Ask Spread","Liquidity","Exchange","Broker"],
+  quiz:{q:"What is a market maker's core function?", options:["Deciding what stocks a fund should invest in","Continuously quoting both buy and sell prices, so there's always someone to trade with","Setting government interest rates","Auditing company financial statements"], correct:1, explain:"A market maker's job is to provide continuous two-sided liquidity — always ready to buy or sell — earning the bid-ask spread in exchange."}
+},
+"Broker": {
+  analogyHead:"The only licensed doorway into a restricted club.",
+  analogy:"Like needing a licensed local guide to enter a restricted national park — you can't just walk in on your own, they're the one who actually has the pass.",
+  example:["Rohan wants to buy shares of a company listed on NSE.","He isn't a registered member of the exchange, so he can't place the order himself.","He opens an account with a licensed broker, who is a registered NSE member.","The broker places Rohan's order on the exchange on his behalf, and is legally answerable to the regulator for how it handles his account."],
+  exampleHead:"An individual investor needs a licensed doorway.",
+  exampleCallout:"You can't walk onto NSE yourself — the broker is your registered doorway",
+  mistakes:[
+    {think:"Anyone can place an order directly on an exchange like NSE.", reality:"Only registered exchange members — brokers — can place orders directly. Everyone else must go through one."},
+    {think:"A broker is the same thing as a market maker.", reality:"A broker executes and facilitates trades on a client's behalf; a market maker takes the other side of trades using its own capital to provide liquidity — different roles, sometimes performed by the same firm."}
+  ],
+  related:["Exchange","Sell-side","Market Maker","Regulator"],
+  quiz:{q:"Why does an individual investor need a broker to trade on an exchange like NSE?", options:["It's optional, just more convenient","Only registered exchange members can place orders directly, and a broker is that registered member","Brokers set the exchange's opening prices","Exchanges only accept institutional orders"], correct:1, explain:"Direct access to an exchange is restricted to its registered members — brokers — so individual and institutional investors alike must route orders through one."}
+},
+"OTC": {
+  analogyHead:"A handshake deal in a back room, not a town-square auction.",
+  analogy:"Like negotiating a custom price directly with a single seller in a back room, instead of bidding in a public town-square auction where everyone can see the going rate.",
+  example:["Two banks want to enter into a custom interest-rate swap tailored to their specific needs.","No exchange lists this exact, bespoke contract.","They negotiate the terms directly with each other, over the counter.","The trade is private and flexible, but without an exchange's public price transparency or a CCP's settlement guarantee, unless they separately arrange for one."],
+  exampleHead:"Two banks negotiate a custom derivative directly.",
+  exampleCallout:"Flexible and private — but no exchange transparency, no automatic CCP guarantee",
+  mistakes:[
+    {think:"OTC trades are always illegal or shady.", reality:"OTC trading is a large, legitimate, regulated part of markets — especially for large or highly customized deals that don't fit a standardized exchange contract."},
+    {think:"OTC trades carry the same counterparty protection as exchange trades.", reality:"Without novation to a CCP, each side typically carries direct counterparty risk to the other — unless they separately arrange collateral or clearing."}
+  ],
+  related:["Exchange","Bilateral","ISDA","Counterparty Risk"],
+  quiz:{q:"What's the key structural difference between an OTC trade and an exchange trade?", options:["OTC trades are always larger in size","OTC trades are negotiated directly between two parties, off the public exchange, typically without a CCP guarantee","OTC trades settle faster","There is no real difference"], correct:1, explain:"OTC (Over-The-Counter) trades are privately negotiated directly between two parties, rather than matched on a public exchange with a CCP standing behind them."}
+},
+"Exchange": {
+  analogyHead:"The town square where every price is shouted out loud.",
+  analogy:"Like a town square market where every price is called out loud, in front of everyone, so no one can quietly cut a different deal on the side.",
+  example:["Priya wants to buy shares of a listed company.","She places her order through her broker, which routes it to NSE — a regulated exchange.","NSE's matching engine pairs it with a matching sell order, at a price visible to everyone watching the order book.","Every participant, big or small, sees the exact same live price — no one gets a private, different number."],
+  exampleHead:"A regulated venue where everyone sees the same price.",
+  exampleCallout:"Same price, same rules, visible to everyone at once",
+  mistakes:[
+    {think:"An exchange is the same thing as a broker.", reality:"A broker is your access point to the market; the exchange is the actual regulated venue where orders from many different brokers' clients are matched."},
+    {think:"All trades in a country must legally happen on an exchange.", reality:"OTC and dark pool trading also exist legally alongside exchanges — an exchange is simply the most transparent, publicly visible venue."}
+  ],
+  related:["Broker","OTC","Market Maker","Regulator"],
+  quiz:{q:"What is a defining feature of a stock exchange, compared to OTC trading?", options:["Only institutions are allowed to use it","Prices and orders are visible to everyone, matched transparently by a regulated venue","It only trades on weekends","There's no regulator involved"], correct:1, explain:"An exchange is defined by its transparency — a regulated arena where all participants see the same prices and orders, unlike privately negotiated OTC trades."}
+},
+"Prime Broker": {
+  analogyHead:"One valet for every restaurant you visit.",
+  analogy:"Like a single valet service that parks your car, fuels it, and insures it, no matter which of a dozen restaurants you actually eat at that night.",
+  example:["A hedge fund trades across a dozen different brokers to get the best execution on each individual trade.","Rather than dealing with a dozen separate custody and financing relationships, it uses one prime broker.","The prime broker consolidates custody, provides leverage, and handles clearing for all those trades in one place.","The fund gets simplicity and financing; the prime broker gets a concentrated, valuable relationship."],
+  exampleHead:"A hedge fund consolidates its back-office needs.",
+  exampleCallout:"Trades everywhere, clears through one prime — convenience, concentrated",
+  mistakes:[
+    {think:"A prime broker executes all of a hedge fund's trades itself.", reality:"The fund can trade through many different brokers for execution — the prime broker's core role is custody, financing, and consolidating everything afterward, not necessarily executing every trade."},
+    {think:"Prime brokerage services are available to any retail investor.", reality:"They're built specifically for hedge funds and large institutional clients whose scale and complexity justify a dedicated, concentrated relationship."}
+  ],
+  related:["Hedge Fund","Custodian","Broker","Margin"],
+  quiz:{q:"What is a prime broker's core role for a hedge fund?", options:["Executing every single trade the fund makes","Consolidating custody, financing, and clearing services under one relationship","Setting the fund's investment strategy","Regulating the fund's activities"], correct:1, explain:"A prime broker's value is consolidating custody, leverage, and clearing in one place — the fund can still execute trades across many different brokers."}
+},
+"Regulator": {
+  analogyHead:"The referee who never plays, but can send anyone off.",
+  analogy:"Like a football referee who never touches the ball but can blow the whistle, hand out a red card, or rewrite the rulebook before the next match.",
+  example:["A broker is suspected of mishandling client funds.","SEBI, India's securities regulator, investigates the broker's conduct.","It finds violations of investor-protection rules and issues penalties, including a trading suspension.","The broker must comply or face further, escalating regulatory action — SEBI's word here is final within its authority."],
+  exampleHead:"SEBI investigates a broker's misconduct.",
+  exampleCallout:"Writes the rules, watches the game, penalises the fouls",
+  mistakes:[
+    {think:"A regulator only steps in after something has already gone wrong.", reality:"Regulators also proactively write rules, license participants, and run ongoing surveillance — enforcement after the fact is only part of the job."},
+    {think:"There's only one regulator for all of India's financial markets.", reality:"Different regulators cover different domains — SEBI for securities markets, RBI for banking and currency, IRDAI for insurance, and so on."}
+  ],
+  related:["KYC","AML","Surveillance","Exchange"],
+  quiz:{q:"What is SEBI's role in the Indian securities market?", options:["It's a stock exchange like NSE","It's the regulator — writing rules, licensing participants, and enforcing compliance","It's a clearing house","It's a mutual fund company"], correct:1, explain:"SEBI is India's securities markets regulator — it writes the rules, oversees participants, and penalises violations, rather than being an exchange or trading venue itself."}
+},
+"Dark Pool": {
+  analogyHead:"Selling your house quietly, so the street doesn't panic-price.",
+  analogy:"Like selling your house through a quiet, private broker instead of a public listing — so the whole street doesn't see the sale and start repricing their own homes before you're done.",
+  example:["A large pension fund wants to sell a massive block of shares.","Selling it openly on the public exchange would visibly signal the huge order and move the price down before it's fully filled.","Instead, the fund routes the trade through a dark pool, matched privately against another large institutional order.","The trade completes at a fair price, away from public view, and is only reported to the wider market afterward."],
+  exampleHead:"A large institutional trade avoids tipping its hand.",
+  exampleCallout:"Matched privately, reported afterward — no price impact along the way",
+  mistakes:[
+    {think:"Dark pools are illegal or unregulated.", reality:"They're legal, regulated trading venues — just with reduced pre-trade transparency, specifically to let large trades happen without moving the public price first."},
+    {think:"Dark pools are only used for illicit or manipulative trading.", reality:"Their main legitimate use is letting institutions execute large orders without signalling their intentions to the wider market and getting a worse price as a result."}
+  ],
+  related:["Liquidity","Block Trade","Institutional Investor","Exchange"],
+  quiz:{q:"Why would a large institutional investor route a trade through a dark pool instead of the public exchange?", options:["To avoid all regulation","To execute a large order without publicly signalling it and moving the price first","Because dark pools offer better prices by law","Because dark pools are faster than exchanges"], correct:1, explain:"Dark pools let large trades happen away from public view specifically so the size of the order doesn't move the market price against itself before it completes."}
+},
+"Algorithmic Trading": {
+  analogyHead:"A vending machine that restocks itself, no human involved.",
+  analogy:"Like a vending machine that restocks and reprices itself automatically the moment its sensors detect low stock — no human standing there pressing buttons.",
+  example:["A fund wants to buy a large position without disrupting the market price.","Instead of placing one giant order, it programs an algorithm to break the order into hundreds of small pieces.","The algorithm times each small piece based on real-time market conditions, all without a human clicking each trade.","The full position is built up gradually, with far less price impact than one large manual order would cause."],
+  exampleHead:"Code decides when and how to execute a large order.",
+  exampleCallout:"Hundreds of small automated trades, instead of one disruptive big one",
+  mistakes:[
+    {think:"Algorithmic trading always means extremely fast, high-frequency trading.", reality:"Many algorithms trade over minutes, hours, or days specifically to reduce price impact — speed and frequency vary hugely depending on the strategy's actual goal."},
+    {think:"Algorithms remove all human involvement from trading entirely.", reality:"Humans design, set the rules for, and monitor these algorithms — the code executes the strategy, but people define the strategy and its risk limits."}
+  ],
+  related:["HFT","Market Maker","OMS","Slippage"],
+  quiz:{q:"What is the main reason a fund might use algorithmic trading to execute a large order?", options:["To guarantee no losses are possible","To break the order into smaller pieces and reduce price impact versus one large manual trade","To avoid regulatory oversight entirely","To trade only once a year"], correct:1, explain:"Algorithms are often used specifically to slice large orders into smaller pieces over time, reducing the price impact a single giant order would otherwise cause."}
+},
+"HFT": {
+  analogyHead:"Reacting in microseconds to a shopper still mid-stride.",
+  analogy:"Like a shop that can reprice its shelf tags in the literal microsecond it detects a shopper reaching for an item — the edge isn't a better price, it's raw speed.",
+  example:["A high-frequency trading firm's systems detect a tiny, fleeting price discrepancy between two related instruments.","Its algorithm reacts and executes a trade in microseconds — far faster than any human could click a mouse.","The profit on that single trade might be a fraction of a rupee.","Repeated millions of times a day across enormous volume, those fractional profits add up meaningfully."],
+  exampleHead:"Profiting from a discrepancy that lasts microseconds.",
+  exampleCallout:"Fractions of a cent, millions of times a day — speed is the edge",
+  mistakes:[
+    {think:"HFT and algorithmic trading are exactly the same thing.", reality:"HFT is a specific, extreme subset of algorithmic trading — defined by extraordinarily short holding periods and reliance on raw speed, not just automation."},
+    {think:"HFT firms hold large directional bets on where a stock is headed.", reality:"Most HFT strategies hold positions for a fraction of a second and rely on volume and speed, not conviction about a stock's future direction."}
+  ],
+  related:["Algorithmic Trading","Market Maker","Liquidity","Slippage"],
+  quiz:{q:"What primarily distinguishes HFT from ordinary algorithmic trading?", options:["HFT never uses computers","HFT is defined by extremely short holding periods and reliance on raw execution speed","HFT only trades bonds, never stocks","HFT is illegal in most markets"], correct:1, explain:"HFT is algorithmic trading taken to an extreme — positions held for fractions of a second, with speed itself as the primary edge rather than a directional view."}
+},
+"Depository Participant": {
+  analogyHead:"The bank branch counter, not the central vault.",
+  analogy:"Like a bank branch counter where you actually open and manage your account, even though your money ultimately sits in the bank's central vault system behind the scenes.",
+  example:["Priya wants to open a demat account to hold shares electronically.","She can't open an account directly with the depository (NSDL/CDSL) herself.","She opens it through her broker, who is registered as a Depository Participant — an authorized agent of the depository.","Her DP handles the account opening, statements, and day-to-day servicing, while the depository holds the actual master electronic record."],
+  exampleHead:"Opening a demat account through an authorized agent.",
+  exampleCallout:"Your DP is the retail-facing counter; NSDL/CDSL is the vault behind it",
+  mistakes:[
+    {think:"A Depository Participant and the depository itself are the same entity.", reality:"The depository (NSDL/CDSL) is the central record-keeper; a Depository Participant (usually your broker or bank) is the authorized agent you actually interact with day to day."},
+    {think:"Any broker can automatically act as a Depository Participant.", reality:"Acting as a DP requires separate registration and authorization from the depository — not every broker is automatically one."}
+  ],
+  related:["Depository","Demat","Broker","Custodian"],
+  quiz:{q:"What is a Depository Participant's role, relative to a depository like NSDL or CDSL?", options:["They are the same organization under different names","The DP is the authorized, retail-facing agent (often your broker) through which you access the depository's services","The DP sets India's securities regulations","The DP only exists for foreign investors"], correct:1, explain:"A Depository Participant is the authorized intermediary — typically your broker or bank — that gives you access to the depository's central electronic recordkeeping."}
+},
+"Foreign Portfolio Investor": {
+  analogyHead:"A tourist who invests, but never applies to run the shop.",
+  analogy:"Like a tourist who happily invests money into local businesses during their stay, but has no interest in actually taking over management of any of them.",
+  example:["A US-based fund wants exposure to Indian equities, without buying a controlling stake in any single company.","It registers with SEBI as a Foreign Portfolio Investor.","It buys shares across multiple Indian companies through the exchange, via its custodian.","It never seeks a board seat or management control — it's a portfolio investment, not an acquisition."],
+  exampleHead:"A foreign fund invests without seeking control.",
+  exampleCallout:"Registered, regulated, diversified — but never seeking control",
+  mistakes:[
+    {think:"Any foreign investor buying Indian shares is automatically classified the same way.", reality:"FPI status is a specific, registered regulatory category (versus, say, Foreign Direct Investment, which does involve seeking a controlling or strategic stake)."},
+    {think:"FPIs hold shares directly in a local demat account like a domestic investor.", reality:"FPIs typically route through a custodian, since they generally can't hold local assets directly themselves."}
+  ],
+  related:["Custodian","Institutional Investor","Retail Investor","ADR/GDR"],
+  quiz:{q:"What distinguishes a Foreign Portfolio Investor from a foreign investor seeking a controlling stake?", options:["FPIs can only invest in bonds","FPIs invest for portfolio diversification without seeking control of any company","FPIs are never regulated","FPIs are limited to a single trade per year"], correct:1, explain:"FPI status specifically describes foreign investment aimed at portfolio exposure and diversification, not acquiring control or a strategic stake in a company."}
+},
+"Retail Investor": {
+  analogyHead:"One shopper at the market, buying for their own kitchen.",
+  analogy:"Like one individual shopper at a farmers' market, buying vegetables for their own kitchen — compared to a restaurant's purchasing manager buying in bulk for hundreds of covers a night.",
+  example:["Rohan invests ₹50,000 of his own savings into a mutual fund SIP each month.","He's investing his personal money, for his own goals — not managing money on behalf of others.","His order sizes are small relative to institutional trades, and he gets no special market access.","Collectively, though, millions of retail investors like Rohan move enormous real volume in markets like India's."],
+  exampleHead:"An individual investing their own money.",
+  exampleCallout:"Small individually, enormous collectively",
+  mistakes:[
+    {think:"Retail investors don't meaningfully move markets.", reality:"Individually, orders are small — but collectively, retail participation drives a substantial and growing share of trading volume in markets like India's."},
+    {think:"Retail investors have access to the exact same information and tools as institutions.", reality:"Institutional investors typically have research access, direct market relationships, and scale advantages that individual retail investors generally don't get."}
+  ],
+  related:["Institutional Investor","Broker","Mutual Fund","KYC"],
+  quiz:{q:"What defines a 'retail investor'?", options:["Someone managing a pension fund","An individual investing personal money for their own account, not managing others' money","A licensed stock exchange member","A government regulatory body"], correct:1, explain:"A retail investor is simply an individual trading their own personal money, as distinct from an institution managing pooled money on behalf of others."}
+},
+"Institutional Investor": {
+  analogyHead:"The restaurant's purchasing manager, buying for hundreds a night.",
+  analogy:"Like a restaurant's purchasing manager buying vegetables in bulk for hundreds of covers a night, compared to one individual shopper buying for their own kitchen.",
+  example:["A large pension fund manages retirement savings for hundreds of thousands of workers.","It decides to invest ₹500 crore into a diversified basket of equities.","Because of its scale, it gets research access, negotiated fees, and sometimes direct relationships that individual investors don't.","Its large orders can meaningfully influence a stock's price, especially in less liquid names."],
+  exampleHead:"A pension fund invests at massive scale.",
+  exampleCallout:"₹500 crore at once — scale brings both influence and responsibility",
+  mistakes:[
+    {think:"Institutional investors always outperform retail investors.", reality:"Scale brings advantages (research, access, negotiated fees), but institutional investors are not immune to poor decisions or underperformance — many actively managed institutional funds still lag their benchmark index."},
+    {think:"Institutional investor just means 'a big fund'.", reality:"It specifically means an entity investing pooled money on behalf of others — pension funds, insurers, mutual funds — as opposed to any large individual investor trading their own personal wealth."}
+  ],
+  related:["Retail Investor","Buy-side","Mutual Fund","Hedge Fund"],
+  quiz:{q:"What defines an institutional investor?", options:["Any individual with a very large personal net worth","A professional entity managing large pools of other people's money, like a pension fund or insurer","A government regulatory agency","A stock exchange"], correct:1, explain:"An institutional investor manages pooled money on behalf of others — pension funds, insurers, mutual funds — distinct from an individual trading their own personal wealth, however large."}
+},
+"Proprietary Trading": {
+  analogyHead:"A chef cooking a dish purely to eat it themselves.",
+  analogy:"Like a chef who cooks a dish purely for themselves to eat, not to serve to any paying customer — all the enjoyment, or disappointment, is entirely their own.",
+  example:["A trading firm allocates ₹100 crore of its own capital to a trading desk.","The desk trades that capital purely for the firm's own profit — no outside client is involved.","A winning quarter means the firm keeps 100% of the gains.","A losing quarter means the firm alone absorbs the losses — there's no client whose money was at risk."],
+  exampleHead:"A firm trades its own money for its own profit.",
+  exampleCallout:"₹100cr of the firm's own money — all gains and all losses stay in-house",
+  mistakes:[
+    {think:"Proprietary trading is done on behalf of the firm's clients.", reality:"By definition, it's the firm's own capital and own risk — no client money or client relationship is involved in a proprietary trade."},
+    {think:"Proprietary trading and market making are exactly the same activity.", reality:"Market making specifically involves continuously quoting two-sided prices to provide liquidity; proprietary trading is broader — any trading of the firm's own capital for its own profit, market making or otherwise."}
+  ],
+  related:["Hedge Fund","Market Maker","Buy-side","Sell-side"],
+  quiz:{q:"In proprietary trading, whose capital and risk is actually on the line?", options:["A client's money, managed on their behalf","The trading firm's own capital, for its own profit","Government funds","A regulator's reserve fund"], correct:1, explain:"Proprietary trading means the firm is trading its own money for its own account — no client capital or relationship is involved in that specific activity."}
+},
+"Free Float": {
+  analogyHead:"Only the stadium seats actually available for sale.",
+  analogy:"Like a stadium where a chunk of seats are permanently reserved for the team owner's family and never go on public sale — free float is only the seats actually available for anyone to buy.",
+  example:["A company has 100 crore total shares outstanding.","Promoters and insiders hold 60 crore of those shares tightly, with no intention to sell.","Only the remaining 40 crore shares are actually available for the public to trade — that's the free float.","Major indices like Nifty weight this company by its 40 crore free float, not its full 100 crore market cap."],
+  exampleHead:"Only the shares actually available to trade count.",
+  exampleCallout:"100cr total, but only 40cr free float — the rest is locked up tight",
+  mistakes:[
+    {think:"Free float and total shares outstanding are the same number.", reality:"Free float specifically excludes promoter, insider, and other tightly-held stakes — it's always equal to or smaller than total shares outstanding."},
+    {think:"Major indices weight companies purely by total market capitalization.", reality:"Most modern indices, including Nifty and Sensex, weight by free-float market cap specifically — a company with a huge total market cap but low free float gets a smaller index weighting than its raw size might suggest."}
+  ],
+  related:["Market Capitalization","Equity","Activist Investor","S&P 500"],
+  quiz:{q:"Why do major indices like Nifty weight companies by free float rather than total market cap?", options:["Free float is easier to calculate","It reflects only the shares actually available for the public to trade, not shares locked up by promoters/insiders","Free float is always a fixed percentage for every company","Regulators require it for tax reasons"], correct:1, explain:"Free-float weighting reflects real tradable supply — shares locked up by promoters or insiders don't represent genuinely available market liquidity, so indices exclude them."}
+},
+"ISDA": {
+  analogyHead:"One master agreement, signed once, covering every rental after.",
+  analogy:"Like signing one master rental agreement with a landlord that covers every future flat you might rent from them — you don't renegotiate the basic terms from scratch each time.",
+  example:["Two banks plan to trade dozens of different OTC derivatives with each other over the coming years.","Rather than negotiating fresh legal terms for every single trade, they sign one ISDA Master Agreement upfront.","That single master agreement sets out shared definitions, default provisions, and netting terms for every future trade between them.","Each subsequent individual trade only needs a short confirmation referencing the master agreement already in place."],
+  exampleHead:"One master agreement, covering every future trade.",
+  exampleCallout:"Signed once, referenced by every derivative trade afterward",
+  mistakes:[
+    {think:"ISDA is a regulator or an exchange.", reality:"It's a trade association that publishes the standard legal documentation (the ISDA Master Agreement) used across the industry — it doesn't itself regulate or run a market."},
+    {think:"Every OTC derivative trade needs its own full legal negotiation from scratch.", reality:"That's exactly what an ISDA Master Agreement avoids — once signed between two counterparties, individual trades just reference it via a short confirmation."}
+  ],
+  related:["OTC","Bilateral","Counterparty Risk","Derivative"],
+  quiz:{q:"What is the practical purpose of an ISDA Master Agreement between two counterparties?", options:["It sets exchange trading hours","It establishes shared legal terms once, so individual OTC derivative trades don't need to be renegotiated from scratch each time","It replaces the need for collateral","It's a government tax filing"], correct:1, explain:"An ISDA Master Agreement is signed once and covers shared legal terms for all future derivative trades between two parties, avoiding fresh negotiation each time."}
+},
+"Short Squeeze": {
+  analogyHead:"Everyone rushing to buy back the same borrowed umbrella at once.",
+  analogy:"Like a sudden downpour where everyone who borrowed an umbrella has to rush out and buy one back at once, and the more people scramble, the scarcer and pricier umbrellas get — feeding the very panic driving it.",
+  example:["A heavily shorted stock unexpectedly reports strong earnings, and its price starts rising fast.","Short sellers, facing mounting losses, start buying back shares to close their positions and cap the damage.","That wave of buying pushes the price up even further.","The higher price forces even more short sellers to capitulate and buy back too, in a self-reinforcing spiral upward."],
+  exampleHead:"Short sellers scramble to buy back at once.",
+  exampleCallout:"Rising price forces buying, which pushes the price up further",
+  mistakes:[
+    {think:"A short squeeze happens because of some external manipulation alone.", reality:"It's often triggered by genuine news, but the mechanism — forced buying by short sellers feeding further price rises — is a structural feature of how short positions work, not manipulation by itself."},
+    {think:"A short squeeze is good news reflecting the company's actual improved fundamentals.", reality:"The price spike is driven substantially by forced short covering, not necessarily by a proportional change in the company's real business value — it can reverse sharply once the squeeze passes."}
+  ],
+  related:["Short Selling","Margin Call","Liquidity","Black Swan Event"],
+  quiz:{q:"What actually drives the self-reinforcing price spike in a short squeeze?", options:["Regulators artificially inflating the price","Short sellers being forced to buy back shares as losses mount, which pushes the price up further and forces even more buying","A stock split","A dividend announcement"], correct:1, explain:"A short squeeze feeds on itself: rising prices force short sellers to buy back shares to limit losses, and that buying pushes the price up even more, forcing further covering."}
+},
+"Activist Investor": {
+  analogyHead:"A shareholder who buys a seat at the table to bang on it.",
+  analogy:"Like someone who buys into a family business specifically to have a legitimate seat at the table, then loudly insists on changes nobody else in the room wanted to discuss.",
+  example:["An investor buys a 5% stake in an underperforming company.","Rather than staying quiet, they publicly write to the board demanding a change in strategy.","They campaign for and eventually win two seats on the board.","With that influence, they push through changes — a new CEO, a divestiture — that they believe will unlock more value."],
+  exampleHead:"A shareholder demands change, not silence.",
+  exampleCallout:"5% stake, 2 board seats, a new strategic direction",
+  mistakes:[
+    {think:"An activist investor is just a large shareholder who happens to be vocal.", reality:"It specifically describes an investor who buys a stake with the deliberate purpose of forcing change — not a passive large holder who occasionally comments."},
+    {think:"Activist campaigns are always hostile and adversarial.", reality:"Some activists work collaboratively with existing management behind the scenes — public, adversarial campaigns are common but not the only mode of activist engagement."}
+  ],
+  related:["Equity","Free Float","Institutional Investor","Stock Buyback"],
+  quiz:{q:"What specifically distinguishes an activist investor from a typical large shareholder?", options:["They only invest in bonds","They buy a stake deliberately intending to push for specific changes at the company, not just hold passively","They're barred from voting their shares","They must be a company's original founder"], correct:1, explain:"An activist investor's defining trait is intent — buying a stake specifically to campaign for change (strategy, management, structure), not simply holding passively."}
+},
+"S&P 500": {
+  analogyHead:"America's leaderboard of 500 biggest companies, size-weighted.",
+  analogy:"Like a leaderboard of the 500 largest companies in America, where the biggest ones move the overall score the most — a single, widely-watched scoreboard for 'how's the market doing.'",
+  example:["An analyst wants a quick read on how the overall US stock market is doing today.","They check the S&P 500, which tracks 500 of the largest publicly traded US companies.","The index is weighted by market capitalization — a huge company like a major tech giant moves the index far more than a smaller constituent.","A 1% move in the S&P 500 is treated by the whole world as a meaningful signal about US market sentiment that day."],
+  exampleHead:"Checking the market's most-watched scoreboard.",
+  exampleCallout:"500 companies, size-weighted, the world's go-to US benchmark",
+  mistakes:[
+    {think:"The S&P 500 includes literally every company listed in the US.", reality:"It's a curated selection of roughly 500 large-cap companies meeting specific criteria — not every listed US company makes the cut."},
+    {think:"Every company in the S&P 500 moves the index by an equal amount.", reality:"It's market-cap weighted — the very largest constituents move the overall index far more than smaller ones with the same percentage price change."}
+  ],
+  related:["Market Capitalization","Index Fund","Dow Jones","ETF"],
+  quiz:{q:"How does the S&P 500 weight its 500 constituent companies?", options:["Equally, regardless of size","By market capitalization — larger companies move the index more","By alphabetical order","By share price alone"], correct:1, explain:"The S&P 500 is market-cap weighted, meaning the largest companies by total value have a proportionally greater effect on the index's overall movement."}
+},
+"Dow Jones": {
+  analogyHead:"A scoreboard where the priciest ticket counts more than the crowd.",
+  analogy:"Like an older scoreboard of 30 well-known companies where whichever one has the highest single share price swings the average the most — not necessarily the biggest company overall.",
+  example:["Two companies are both in the Dow Jones Industrial Average.","Company A has a share price of ₹3,000 but a smaller overall size; Company B has a share price of ₹300 but is actually a much bigger company overall.","A 5% move in Company A's high share price swings the Dow's average more than the same 5% move in Company B.","This price-weighting quirk means the Dow can sometimes give a distorted read on which companies are truly driving the market's move."],
+  exampleHead:"A high share price counts more than true company size.",
+  exampleCallout:"Higher share price swings the Dow more — regardless of overall company size",
+  mistakes:[
+    {think:"The Dow Jones is weighted by company size, just like the S&P 500.", reality:"It's price-weighted — a company with a high share price influences the average more than one with a low share price, regardless of which company is actually bigger."},
+    {think:"The Dow, tracking 30 companies, is a more precise gauge of the market than the broader S&P 500.", reality:"Its narrower coverage (30 companies) and unusual price-weighting are generally considered less representative of the overall market than the larger, cap-weighted S&P 500."}
+  ],
+  related:["S&P 500","Market Capitalization","Index Fund","Equity"],
+  quiz:{q:"What makes the Dow Jones Industrial Average's weighting method unusual compared to the S&P 500?", options:["It's weighted by trading volume","It's price-weighted — a higher share price swings the average more, regardless of overall company size","It only includes technology companies","It's weighted by number of employees"], correct:1, explain:"The Dow is price-weighted, an older and less common method — companies with higher share prices, not necessarily larger overall size, have a bigger effect on the average."}
 }
 };
 
@@ -1577,7 +1885,7 @@ const DIAG = {
 </svg>`
 };
 
-const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split","KYC","AML","Surveillance","Front Running","Insider Trading","Wash Trade","Circuit Breaker","Basis Point","VaR","Collateral","Liquidity","Slippage","Bid-Ask Spread","Counterparty","Counterparty Risk","Default","Exposure","Short Selling","Margin Call","Black Swan Event"];
+const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split","KYC","AML","Surveillance","Front Running","Insider Trading","Wash Trade","Circuit Breaker","Basis Point","VaR","Collateral","Liquidity","Slippage","Bid-Ask Spread","Counterparty","Counterparty Risk","Default","Exposure","Short Selling","Margin Call","Black Swan Event","Buy-side","Sell-side","Market Maker","Broker","OTC","Exchange","Prime Broker","Regulator","Dark Pool","Algorithmic Trading","HFT","Depository Participant","Foreign Portfolio Investor","Retail Investor","Institutional Investor","Proprietary Trading","Free Float","ISDA","Short Squeeze","Activist Investor","S&P 500","Dow Jones"];
 
 /* Order Book's bespoke illustrated analogy scene (kept special — the flagship example) */
 const ORDER_BOOK_ILLO = `<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">

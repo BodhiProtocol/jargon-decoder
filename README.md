@@ -10,7 +10,7 @@ Live demo → https://jargon-decoder.bodhiprotocol.com/
 
 Every industry protects itself with vocabulary. Capital markets more than most: novation, DvP, corporate actions, golden source, T+1.
 
-This is 229 of those terms decoded into plain language — one italic sentence anyone can understand, plus one more sentence of depth for those who want it. A growing subset also get a full **concept page**: an analogy, a real worked example, common mistakes, related concepts, and a quiz — currently live for Lifecycle, Clearing & Settlement, Instruments, and Risk & Compliance (80 terms), with the other seven categories still on the plain card.
+This is 229 of those terms decoded into plain language — one italic sentence anyone can understand, plus one more sentence of depth for those who want it. A growing subset also get a full **concept page**: an analogy, a real worked example, common mistakes, related concepts, and a quiz — currently live for Lifecycle, Clearing & Settlement, Instruments, Risk & Compliance, and Market Structure (102 terms), with the other six categories still on the plain card.
 
 Business analysts live at the translation layer between business and technology. This tool is that skill, made visible.
 
@@ -20,7 +20,7 @@ Eleven categories, spanning the trading lifecycle, the deal-making side of marke
 
 `Lifecycle · Clearing & Settlement · Instruments · Risk & Compliance · Market Structure · Technology · Investment Banking · Investment Analysis · Behavioral Finance · Economics · Business Strategy`
 
-Features: live search across terms and definitions, category filters, a **Surprise me** button for wandering, a **mini-diagram for every single term** (look for the ◆ visual badge), a **Test me** flashcard mode, and **bookmarking** — save terms and filter down to your own list. Eighty terms also carry a plain-spoken analogy and related-concept links right on the card.
+Features: live search across terms and definitions, category filters, a **Surprise me** button for wandering, a **mini-diagram for every single term** (look for the ◆ visual badge), a **Test me** flashcard mode, and **bookmarking** — save terms and filter down to your own list. 102 terms also carry a plain-spoken analogy and related-concept links right on the card.
 
 ## Tech
 
