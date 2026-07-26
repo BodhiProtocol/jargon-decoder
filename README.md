@@ -10,7 +10,7 @@ Live demo → https://jargon-decoder.bodhiprotocol.com/
 
 Every industry protects itself with vocabulary. Capital markets more than most: novation, DvP, corporate actions, golden source, T+1.
 
-This is 229 of those terms decoded into plain language — one italic sentence anyone can understand, plus one more sentence of depth for those who want it. A growing subset also get a full **concept page**: an analogy, a real worked example, common mistakes, related concepts, and a quiz — currently live for Lifecycle, Clearing & Settlement, Instruments, Risk & Compliance, Market Structure, Technology, and Investment Banking (148 terms), with the other four categories still on the plain card.
+This is 229 of those terms decoded into plain language — one italic sentence anyone can understand, plus one more sentence of depth for those who want it. Every single term also gets a full **concept page**: an analogy, a real worked example, common mistakes, related concepts, and a quiz — 229/229, across all eleven categories.
 
 Business analysts live at the translation layer between business and technology. This tool is that skill, made visible.
 
