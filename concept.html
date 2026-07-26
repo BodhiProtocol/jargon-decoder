@@ -280,7 +280,7 @@ button{font-family:inherit}
 
 <script>
 /* ===================== DATA ===================== */
-const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}, "Risk & Compliance":{color:'#DD7A40',tint:'#FBEDE2'}, "Market Structure":{color:'#3FA66B',tint:'#E6F5EC'}, Technology:{color:'#4497C2',tint:'#E6F1F8'}};
+const CATS = {Lifecycle:{color:'#3B66C7',tint:'#E9EEFB'}, "Clearing & Settlement":{color:'#7F63C4',tint:'#F0ECFA'}, Instruments:{color:'#2F9E8F',tint:'#E4F5F2'}, "Risk & Compliance":{color:'#DD7A40',tint:'#FBEDE2'}, "Market Structure":{color:'#3FA66B',tint:'#E6F5EC'}, Technology:{color:'#4497C2',tint:'#E6F1F8'}, "Investment Banking":{color:'#9C4148',tint:'#F5E7E6'}};
 
 const CORE = {
   "Order Book": {p:"The exchange's live list of everyone waiting to buy or sell, and at what price.", m:"Buy orders (bids) on one side, sell orders (asks) on the other. Where they meet, trades happen.", c:"Lifecycle"},
@@ -401,7 +401,36 @@ const CORE = {
   "Comps": {p:"Valuing a company by looking at what similar, publicly traded companies are worth.", m:"If three airlines trade at 8x earnings, a fourth probably should too — comps is finance's version of pricing by comparison.", c:"Technology"},
   "Non-GAAP": {p:"A company's own version of its earnings, with items it considers one-off or non-recurring stripped out.", m:"Can be genuinely useful — or a way to make a bad quarter look better. Always worth checking what got excluded, and why.", c:"Technology"},
   "Soft Dollar": {p:"Paying for research or services with trading commissions instead of cash — bundled into the cost of every trade.", m:"A quiet way asset managers fund data terminals and research without writing a separate check. Heavily regulated because of the obvious conflict of interest.", c:"Technology"},
-  "Data Scrubbing": {p:"Cleaning and standardizing a company's reported financials so they're actually comparable to another company's.", m:"Different companies report the same number in different ways — scrubbing normalizes it before you can compare apples to apples.", c:"Technology"}
+  "Data Scrubbing": {p:"Cleaning and standardizing a company's reported financials so they're actually comparable to another company's.", m:"Different companies report the same number in different ways — scrubbing normalizes it before you can compare apples to apples.", c:"Technology"},
+  "IBD": {p:"The division that advises companies on mergers, and helps them raise money by issuing stocks or bonds.", m:"Short for Investment Banking Division — it houses M&A advisory, ECM, and DCM under one roof.", c:"Investment Banking"},
+  "M&A": {p:"One company buying another, or two companies combining — advised, negotiated, and priced by bankers on both sides.", m:"The advisory fees are earned whether the deal creates value or destroys it. Getting it done is the job; getting it right is the reputation.", c:"Investment Banking"},
+  "ECM": {p:"The desk that takes companies to the stock market — IPOs, follow-on offerings, everything equity-related.", m:"Equity Capital Markets — works hand in hand with Sales & Trading to gauge investor appetite before pricing a deal.", c:"Investment Banking"},
+  "DCM": {p:"The desk that helps companies and governments borrow money by issuing bonds instead of taking a bank loan.", m:"Debt Capital Markets — structures the bond, prices it, and lines up the investors who'll buy it.", c:"Investment Banking"},
+  "Sales & Trading": {p:"The desk that sells securities to big institutional clients, and trades some of it on the bank's own account too.", m:"Often grouped by asset class — equities, or FICC (fixed income, currencies, commodities). The bridge between the bank's clients and the market.", c:"Investment Banking"},
+  "Research": {p:"Analysts studying companies and markets, then publishing an opinion on what to buy, hold, or sell.", m:"Feeds both external clients and the bank's own trading desks — though a wall is supposed to separate research opinions from trading decisions.", c:"Investment Banking"},
+  "Risk Management": {p:"The team whose job is to know exactly how much the bank could lose, before it happens.", m:"Market risk, credit risk, liquidity risk — modelled, limited, and reported daily, so no single trader's bet can sink the firm.", c:"Investment Banking"},
+  "Compliance": {p:"The team making sure the bank actually follows the rules regulators set — not just the ones that are convenient.", m:"KYC, AML, market abuse surveillance — compliance signs off before the business can move forward.", c:"Investment Banking"},
+  "IPO": {p:"A company selling shares to the public for the very first time.", m:"Initial Public Offering — turns a private company into one anyone can own a piece of, usually via ECM bankers and a roadshow.", c:"Investment Banking"},
+  "Pitch Book": {p:"The polished deck a bank builds to convince a client to hire them for a deal.", m:"Part sales pitch, part strategic analysis — the document that opens the door to an M&A or capital markets mandate.", c:"Investment Banking"},
+  "Underwriting": {p:"The bank guaranteeing to buy an entire securities offering, then reselling it to investors — taking the risk off the issuer's hands.", m:"If investors don't buy enough, the underwriter is stuck holding what's left. That risk is exactly why underwriting fees exist.", c:"Investment Banking"},
+  "LBO": {p:"Buying a company using mostly borrowed money, with the target's own future cash flows expected to pay it off.", m:"Leveraged Buyout — private equity's signature move. More debt means more risk, but also more potential return.", c:"Investment Banking"},
+  "FICC": {p:"Fixed Income, Currencies & Commodities — one of the two big trading floors, the other being equities.", m:"Bonds, currency pairs, oil, gold — anything that isn't a stock usually trades through a FICC desk.", c:"Investment Banking"},
+  "Hedge": {p:"Taking a second position specifically to cancel out the risk of the first one.", m:"You don't hedge to make money — you hedge so a bad move somewhere else doesn't wipe you out.", c:"Investment Banking"},
+  "Long / Short": {p:"Long means you profit if the price rises. Short means you profit if it falls.", m:"Shorting usually means borrowing the asset to sell it now, planning to buy it back cheaper later and return it.", c:"Investment Banking"},
+  "Repo": {p:"A short-term loan where securities are handed over as collateral, with a promise to buy them back later at a slightly higher price.", m:"Repurchase Agreement — the overnight plumbing that keeps trading desks and banks funded day to day.", c:"Investment Banking"},
+  "Trading Book": {p:"The running list of everything a trader currently holds — their actual positions, not the exchange's public one.", m:"Distinct from the Order Book: that's the market's queue of orders, this is one trader's or one desk's live exposure.", c:"Investment Banking"},
+  "P&L": {p:"Profit & Loss — the number that says whether a trading desk made or lost money today.", m:"Marked to market every day. In trading, your P&L is the only opinion that counts by the end of the session.", c:"Investment Banking"},
+  "Market Colour": {p:"The informal, off-the-record read a trader gives a client — not just the price, but what's actually happening beneath it.", m:"Often shared over chat or phone: who's buying, who's nervous, where the flow is heading. Judgment, not data.", c:"Investment Banking"},
+  "Axe": {p:"A trader's not-so-secret bias — what they're actually keen to buy or sell right now.", m:"\"What's your axe on this bond?\" is trading-floor shorthand for: what position are you trying to get out of, or into?", c:"Investment Banking"},
+  "Block Trade": {p:"A large trade negotiated privately between two parties, away from the public order book, then reported afterward.", m:"Done this way so a big order doesn't move the price against itself before it's even filled.", c:"Investment Banking"},
+  "Bulge Bracket": {p:"The handful of full-service global banks at the very top of the food chain — Goldman Sachs, JPMorgan, Morgan Stanley, and a few others.", m:"They do everything: M&A, underwriting, trading, research, across every sector and every country. Size is the whole point.", c:"Investment Banking"},
+  "Elite Boutique": {p:"A smaller, independent advisory firm that does M&A and restructuring — and nothing else.", m:"No trading floor, no balance sheet, no conflicts of interest. Firms like Evercore and Lazard compete with bulge brackets purely on advice.", c:"Investment Banking"},
+  "Synergies": {p:"The extra value two companies are supposed to create together that they couldn't create apart.", m:"Cost synergies cut overlapping expenses; revenue synergies grow sales. Promised in every deal pitch, delivered in far fewer.", c:"Investment Banking"},
+  "Financial Sponsor": {p:"The industry's polite term for a private equity firm buying a company.", m:"Distinguishes them from a 'strategic' — an actual operating company doing the buying. Sponsors buy to sell later; strategics buy to keep.", c:"Investment Banking"},
+  "Secondary Offering": {p:"A company selling more shares to the public after it's already listed.", m:"Unlike an IPO, the company's already public — this just raises more capital, or lets early investors finally sell out.", c:"Investment Banking"},
+  "Direct Listing": {p:"A company goes public by simply letting existing shares trade — no new shares issued, no underwriters buying in first.", m:"Skips the traditional IPO roadshow and price-setting process. Spotify and Slack both went public this way.", c:"Investment Banking"},
+  "Divestiture": {p:"A company selling off a division, unit, or subsidiary it no longer wants.", m:"The mirror image of M&A — instead of buying to grow, a company sells to focus, raise cash, or shed something unprofitable.", c:"Investment Banking"},
+  "Coverage Group": {p:"The team assigned to know one industry inside out — and be the bank's face to every company in it.", m:"Banks are organized on two axes: coverage groups own the client relationships by sector, product groups (M&A, ECM, DCM) execute the actual deals.", c:"Investment Banking"},
 };
 
 const CONTENT = {
@@ -1951,7 +1980,384 @@ const CONTENT = {
   ],
   related:["Comps","Non-GAAP","Capital IQ","Reference Data"],
   quiz:{q:"Why would an analyst scrub two companies' financial statements before comparing them?", options:["To make the numbers look more impressive","To standardize and adjust reported figures so the companies can be honestly compared on a like-for-like basis","To satisfy a legal requirement","To calculate their credit ratings"], correct:1, explain:"Different companies report similarly-named figures in different ways — scrubbing normalizes those differences so a genuine apples-to-apples comparison is possible."}
-}
+},
+"IBD": {
+  analogyHead:"The umbrella over three trades: M&A, ECM, DCM.",
+  analogy:"Like a general contractor who doesn't do the plumbing or electrics personally, IBD doesn't trade or manage money — it houses the specialists who advise on deals and raise capital, then hands clients off to the desks that execute.",
+  example:["A mid-sized Indian pharma company wants to acquire a smaller competitor and also needs ₹500 crore to fund it.","It hires an investment bank's IBD team.","The M&A bankers structure and negotiate the acquisition, while the DCM bankers arrange the debt to pay for it — both inside the same division.","The client gets one relationship team coordinating both workstreams."],
+  exampleHead:"One client, two problems, one division.",
+  exampleCallout:"IBD coordinates the deal and the financing",
+  mistakes:[
+    {think:"IBD is just another name for 'the whole investment bank'.", reality:"IBD is one specific division — advisory and capital-raising. Sales & Trading, Research, and Risk Management are separate divisions of the same bank, doing very different jobs."},
+    {think:"IBD bankers trade stocks and bonds for clients.", reality:"That's Sales & Trading. IBD bankers advise and structure deals; they don't sit on a trading floor executing orders."}
+  ],
+  related:["M&A","ECM","DCM","Pitch Book"],
+  quiz:{q:"What does IBD actually do, as opposed to Sales & Trading?", options:["It trades securities on the bank's own account","It advises on M&A and helps companies raise capital, rather than trading securities","It manages the bank's own risk limits","It regulates other banks"], correct:1, explain:"IBD is the advisory and capital-raising engine — M&A, ECM, DCM. Trading securities for clients or the bank's own book is Sales & Trading's job, a separate division."}
+},
+"M&A": {
+  analogyHead:"A marriage, brokered and priced by lawyers on both sides.",
+  analogy:"Two companies deciding to combine is like two families negotiating a merger of households — everyone agrees it could work, but every detail of who owns what and who's in charge gets fought over by advisors before anyone signs.",
+  example:["A large FMCG company wants to buy a smaller D2C snacks brand to enter a new category fast.","Both sides hire M&A bankers to value the target, structure the deal, and negotiate price.","After weeks of back-and-forth, they agree on ₹1,200 crore, partly cash and partly stock.","The bankers' fee is earned regardless of whether the combined company later thrives or struggles."],
+  exampleHead:"An FMCG giant buys a smaller D2C brand.",
+  exampleCallout:"Deal closes at ₹1,200 crore",
+  mistakes:[
+    {think:"The M&A bankers' advice is purely objective, since they're the experts.", reality:"Bankers are usually paid a success fee, only if the deal closes. That creates a real incentive to get deals done — not necessarily to advise walking away from a bad one."},
+    {think:"Once two companies 'merge,' they become perfectly equal partners.", reality:"Almost every 'merger' has an actual acquirer and an actual target underneath the friendly language — someone ends up controlling the combined company."}
+  ],
+  related:["Synergies","Financial Sponsor","Pitch Book","Divestiture"],
+  quiz:{q:"Why might an M&A banker be incentivized to push a deal toward completion?", options:["Because bankers legally must complete every deal","Because they're typically paid a success fee only if the deal closes","Because regulators require it","Because it's the only way to get research coverage"], correct:1, explain:"Most M&A advisory fees are contingent on the deal actually closing — which creates a built-in incentive to get to the finish line, not necessarily to recommend walking away."}
+},
+"ECM": {
+  analogyHead:"The desk that opens the stock market's front door.",
+  analogy:"Think of ECM as an event planner for a company's public debut — they read the room (investor appetite), pick the date, set the price, and make sure enough people show up to buy.",
+  example:["A fast-growing logistics startup decides to go public.","ECM bankers spend weeks meeting institutional investors to gauge how much demand exists and at what price.","Based on that feedback, they set the IPO price band and the number of shares to sell.","On listing day, the stock opens near the top of that range — a sign the pricing read the market correctly."],
+  exampleHead:"Taking a logistics startup public.",
+  exampleCallout:"IPO priced using real investor demand",
+  mistakes:[
+    {think:"ECM only handles IPOs.", reality:"ECM covers all equity-related fundraising — IPOs, but also follow-on/secondary offerings, rights issues, and convertible bond deals."},
+    {think:"The IPO price is whatever the company wants to charge.", reality:"It's set through active negotiation with real investor demand — price too high and the deal fails to sell out; price too low and the company leaves money on the table."}
+  ],
+  related:["IPO","Secondary Offering","Direct Listing","Underwriting"],
+  quiz:{q:"What is ECM's role beyond just IPOs?", options:["Only advising on mergers","Managing all equity-related fundraising, including follow-on offerings and rights issues","Setting interest rates for corporate bonds","Enforcing securities regulations"], correct:1, explain:"ECM handles the full range of equity fundraising — IPOs, secondary/follow-on offerings, rights issues, and convertible equity deals — not just first-time listings."}
+},
+"DCM": {
+  analogyHead:"The desk that turns 'we need to borrow' into a tradable bond.",
+  analogy:"Like a loan officer who packages a loan and sells slices of it to hundreds of investors instead of keeping it on the bank's own books, DCM structures the debt and finds the buyers, rather than lending the bank's own money.",
+  example:["A state-owned power company needs ₹2,000 crore to fund a new plant, and a bank loan would be too expensive and inflexible.","DCM bankers structure a 10-year bond instead, setting the coupon based on the company's credit rating.","They market it to insurance companies, pension funds, and mutual funds who want steady, long-term income.","The bond is issued, oversubscribed, and starts trading — the company got its ₹2,000 crore without touching a bank's balance sheet."],
+  exampleHead:"A power company borrows via bonds, not a bank loan.",
+  exampleCallout:"₹2,000 crore raised, oversubscribed",
+  mistakes:[
+    {think:"DCM bankers lend the bank's own money to the company.", reality:"They structure and place the bond with outside investors — the bank generally isn't the one holding the debt afterward, unlike a traditional bank loan."},
+    {think:"Debt is only for companies in financial trouble.", reality:"Even the strongest, most creditworthy companies and governments routinely raise money through DCM — it's often cheaper than equity because lenders take less risk than shareholders."}
+  ],
+  related:["ECM","Underwriting","Coupon","Credit Rating"],
+  quiz:{q:"How does a DCM-structured bond differ from a traditional bank loan?", options:["It's identical, just with more paperwork","The debt is packaged and sold to many outside investors, rather than held by one lending bank","It doesn't have to be repaid","Only governments can use it"], correct:1, explain:"DCM structures debt as a tradable security and places it with a wide pool of investors, spreading the risk — unlike a bank loan, which one lender holds directly."}
+},
+"Sales & Trading": {
+  analogyHead:"The bridge between the bank's clients and the live market.",
+  analogy:"Like a broker at a wholesale market who fills orders for regular customers and sometimes buys extra stock speculatively for their own stall, sales staff take client orders and traders execute them — and sometimes trade the bank's own money too.",
+  example:["A mutual fund wants to buy a large block of government bonds.","The fund calls its Sales & Trading contact at a bank.","The salesperson relays the order to the FICC trading desk, which finds the other side of the trade — either from its own inventory or from another client.","The trade executes, and the desk earns a spread for providing that liquidity."],
+  exampleHead:"A mutual fund needs to buy bonds fast.",
+  exampleCallout:"Order filled through the bank's own inventory",
+  mistakes:[
+    {think:"Sales & Trading is just 'trading,' the same as day trading.", reality:"It's built around serving institutional clients — sales staff manage relationships and take orders, traders execute and manage risk. It's a client-facing business, not solo speculation."},
+    {think:"Every trade a desk makes is on behalf of a client.", reality:"Desks also trade some of the bank's own capital, known as proprietary or principal trading — though this is more tightly regulated than it used to be."}
+  ],
+  related:["FICC","Market Maker","Prime Broker","Trading Book"],
+  quiz:{q:"What's the core function of a Sales & Trading desk?", options:["Auditing the bank's own financial statements","Connecting institutional clients to the market — taking their orders and executing trades","Approving new employee hires","Setting the bank's dividend policy"], correct:1, explain:"Sales & Trading exists to serve institutional clients — sales staff manage the relationship and take orders, traders execute them and manage the resulting risk."}
+},
+"Research": {
+  analogyHead:"A restaurant critic's opinion, published for anyone who trades on it.",
+  analogy:"Like a film critic who watches a movie before general release and publishes a rating, equity research analysts study a company in depth and publish a buy, hold, or sell opinion — before, and after, the rest of the market reacts.",
+  example:["An analyst covering the auto sector studies a carmaker's quarterly results, factory output, and competitor pricing.","She concludes the stock is undervalued relative to its earnings growth.","She publishes a 'Buy' report with a price target, distributed to institutional clients and the bank's own sales desk.","Clients who trust her track record adjust their positions based on the call."],
+  exampleHead:"An analyst rates a carmaker's stock 'Buy.'",
+  exampleCallout:"Published Buy rating, target price attached",
+  mistakes:[
+    {think:"Research analysts and traders work together to move a stock's price.", reality:"A regulatory 'Chinese wall' is supposed to separate research opinions from trading desks specifically to prevent that kind of coordination — though the two do sit inside the same bank."},
+    {think:"A 'Buy' rating means the stock will definitely go up.", reality:"It's one analyst's informed opinion, not a guarantee — research calls are wrong often enough that no one should treat them as certainty."}
+  ],
+  related:["Comps","Non-GAAP","Bloomberg Terminal","Coverage Group"],
+  quiz:{q:"Why is research meant to be separated from trading within a bank?", options:["Because research analysts aren't smart enough to trade","To prevent trading decisions from improperly influencing published research opinions, or vice versa","Because it's cheaper to keep them apart","Because regulators ban banks from having both"], correct:1, explain:"The separation — often called a Chinese wall — exists to stop a desk's trading interests from contaminating the objectivity of a published research opinion, and vice versa."}
+},
+"Risk Management": {
+  analogyHead:"The smoke detector that goes off before the fire, not after.",
+  analogy:"Like a building's fire-safety officer who sets occupancy limits before a party gets out of hand, risk managers set position limits before a trader's bet gets big enough to sink the firm.",
+  example:["A trader on the FX desk wants to take a much larger position than usual, betting the rupee will weaken.","The bank's risk management system flags that this would breach the desk's daily Value at Risk limit.","The trade is blocked until the trader either reduces the size or gets special sign-off.","Two days later, an unexpected rate announcement moves the currency sharply — the limit likely prevented an outsized loss."],
+  exampleHead:"A trader's oversized FX bet gets stopped before it happens.",
+  exampleCallout:"Trade blocked by the VaR limit",
+  mistakes:[
+    {think:"Risk Management's job is to stop the bank from taking risks.", reality:"Its job is to measure and limit risk to a level the firm has consciously chosen to accept — banks exist to take calculated risks, not avoid them entirely."},
+    {think:"Only traders create risk that needs managing.", reality:"Risk Management also tracks credit risk (counterparties defaulting) and liquidity risk (not being able to fund positions) — not just market price moves."}
+  ],
+  related:["VaR","Exposure","Counterparty Risk","Compliance"],
+  quiz:{q:"What is Risk Management's actual goal?", options:["To eliminate all risk from the bank's operations","To measure and keep risk within limits the firm has deliberately chosen to accept","To approve every individual trade personally","To set the bank's stock price"], correct:1, explain:"Risk Management isn't trying to avoid risk — a bank's business model requires taking it. Its job is measuring exposure and keeping it inside firm-wide, deliberately chosen limits."}
+},
+"Compliance": {
+  analogyHead:"The referee who blows the whistle before the regulator has to.",
+  analogy:"Like a referee watching a match live so the league doesn't have to review it afterward and hand out suspensions, Compliance checks the bank's own conduct in real time so a regulator doesn't have to catch it later.",
+  example:["A trader wants to execute a large sell order in a stock right before the company announces disappointing earnings.","Compliance's surveillance system flags the order for review, since the trader may have had early access to results.","Compliance investigates the trader's information access and timing before allowing the trade to proceed.","The trade is cleared once compliance confirms no non-public information was involved."],
+  exampleHead:"A suspicious pre-earnings trade gets flagged.",
+  exampleCallout:"Cleared only after compliance review",
+  mistakes:[
+    {think:"Compliance exists to slow the business down for no reason.", reality:"It exists to keep the bank inside the rules that let it keep operating at all — a serious violation can cost licenses, fines, and reputations far larger than any deal it delayed."},
+    {think:"Compliance and Risk Management do the same job.", reality:"Risk Management manages financial exposure; Compliance ensures the bank follows laws and regulations. Related, but distinct mandates."}
+  ],
+  related:["KYC","AML","Surveillance","Insider Trading"],
+  quiz:{q:"What's the key difference between Compliance and Risk Management?", options:["There is no difference, they're the same team","Compliance ensures the bank follows laws and regulations; Risk Management manages financial exposure","Compliance only works with retail clients","Risk Management reports to Compliance"], correct:1, explain:"They're related but distinct: Risk Management is about financial exposure and potential losses, while Compliance is about adherence to laws, regulations, and internal conduct rules."}
+},
+"IPO": {
+  analogyHead:"A private club opening its doors to the public for the first time.",
+  analogy:"A company going public is like a members-only club deciding to sell memberships to anyone — suddenly thousands of new owners get a say, and the club has to publish its books for everyone to see.",
+  example:["A profitable but privately-held software company decides it needs public capital to expand.","ECM bankers run a roadshow, pitching the company to institutional investors across several cities.","Based on demand, they price the IPO at ₹850 per share and allocate shares to investors.","The stock lists on the exchange, and for the first time, anyone can buy a piece of the company."],
+  exampleHead:"A software company goes public.",
+  exampleCallout:"Listed at ₹850 per share",
+  mistakes:[
+    {think:"An IPO is when a company 'starts selling stock' for the first time ever.", reality:"The company already has shares — an IPO is the first time those shares (or new ones) are offered to the general public, not the first time shares existed."},
+    {think:"IPO pricing is guesswork by the company.", reality:"It's set through weeks of structured investor feedback (the roadshow) — closer to a negotiated price discovery process than a guess."}
+  ],
+  related:["ECM","Underwriting","Pitch Book","Secondary Offering"],
+  quiz:{q:"What actually happens for the first time in an IPO?", options:["The company earns its first profit","Shares are offered to the general public for the first time","The company is founded","The company pays its first dividend"], correct:1, explain:"An IPO — Initial Public Offering — is the first time a company's shares are made available to public investors, not the first time the company or its shares existed."}
+},
+"Pitch Book": {
+  analogyHead:"The wedding proposal before the wedding.",
+  analogy:"Like a contractor bringing blueprints and a portfolio to convince a homeowner to hire them over three other bidders, a pitch book is the bank's case for why it — not a rival bank — should win the client's deal.",
+  example:["A telecom company is considering an acquisition and invites three banks to pitch for the advisory mandate.","Each bank's team builds a pitch book: market analysis, potential targets, valuation ranges, and the bank's relevant deal experience.","The bankers present it in a two-hour meeting with the company's CFO.","The telecom company picks the bank whose pitch book showed the sharpest strategic thinking — and hires them."],
+  exampleHead:"Three banks compete for one advisory mandate.",
+  exampleCallout:"Won on the strength of the pitch",
+  mistakes:[
+    {think:"A pitch book guarantees the bank gets the deal.", reality:"It's a competitive proposal — often several banks pitch the same client, and only one (or a small group) is actually hired."},
+    {think:"Pitch books are only for winning new clients.", reality:"Banks also pitch existing clients on new ideas — a possible acquisition target, a chance to refinance debt — to generate fresh mandates from relationships they already have."}
+  ],
+  related:["M&A","Coverage Group","IBD","Financial Sponsor"],
+  quiz:{q:"What is a pitch book primarily used for?", options:["Recording completed trades","Convincing a prospective or existing client to hire the bank for a specific deal","Filing regulatory disclosures","Training new analysts"], correct:1, explain:"A pitch book is a persuasive, analysis-backed proposal built to win a specific mandate — it's a sales document as much as a piece of financial analysis."}
+},
+"Underwriting": {
+  analogyHead:"Buying the whole print run before a single copy has sold.",
+  analogy:"Like a distributor who guarantees a publisher they'll buy the entire first print run of a book, then takes on the risk of actually selling every copy to bookstores, an underwriter guarantees to buy an entire securities offering, then resells it to investors.",
+  example:["A company wants to raise ₹500 crore through a bond issue but is nervous about whether investors will buy it all.","An underwriting bank agrees to buy the full ₹500 crore of bonds itself, guaranteeing the company gets its money.","The bank then resells those bonds to institutional investors over the following days.","If demand is soft and the bank can't sell everything at the expected price, it absorbs the loss on the leftover bonds."],
+  exampleHead:"A bank guarantees a bond issue will get funded.",
+  exampleCallout:"Bank buys, then resells to investors",
+  mistakes:[
+    {think:"Underwriting just means 'organizing' a securities offering.", reality:"It specifically means the bank takes on the financial risk of buying the offering itself first — that risk-taking is exactly why underwriting fees exist."},
+    {think:"The underwriter always sells everything at the price they paid.", reality:"If investor demand falls short, the underwriter can be stuck holding unsold securities at a loss — underwriting risk is real, not just a formality."}
+  ],
+  related:["IPO","ECM","DCM","Bulge Bracket"],
+  quiz:{q:"What risk does an underwriter specifically take on?", options:["The risk that the company's stock price falls a year later","The risk of being unable to resell the securities it guaranteed to buy, at the price it paid","The risk of regulatory fines","The risk that the company goes bankrupt after the IPO"], correct:1, explain:"Underwriting risk is about the offering itself — the bank commits to buy the whole issuance and then has to resell it; if demand disappoints, it can be left holding unsold inventory at a loss."}
+},
+"LBO": {
+  analogyHead:"Buying a rental property with a huge mortgage, paid off by the rent it earns.",
+  analogy:"Like buying a rental property mostly with borrowed money and using the tenants' rent to pay down the mortgage, a leveraged buyout uses mostly debt to buy a company — and that company's own future cash flow is expected to pay the debt back.",
+  example:["A private equity firm wants to buy a stable, cash-generating manufacturing company for ₹1,000 crore.","It puts in ₹300 crore of its own money and borrows the remaining ₹700 crore against the target company's assets and cash flow.","Over the next five years, the company's own profits are used to pay down that debt.","The firm eventually sells the company — now debt-free — for a much larger equity return than it would have earned funding the deal entirely with cash."],
+  exampleHead:"A private equity firm buys a company mostly on debt.",
+  exampleCallout:"₹700 crore borrowed, ₹300 crore equity",
+  mistakes:[
+    {think:"An LBO is just a regular acquisition, only bigger.", reality:"What defines it is the debt-to-equity mix — a small equity check funding a much larger purchase, with the target's own cash flows on the hook to repay the debt."},
+    {think:"More leverage always means a better return for the buyer.", reality:"More debt magnifies returns when things go well — but it magnifies losses just as sharply if the company's cash flow falters and can't cover the payments."}
+  ],
+  related:["Financial Sponsor","Trading Book","Hedge","M&A"],
+  quiz:{q:"What specifically makes a buyout 'leveraged'?", options:["The company being bought is very large","The purchase is funded mostly with borrowed money rather than the buyer's own cash","The deal takes a long time to close","The buyer is a public company"], correct:1, explain:"Leverage refers to debt. An LBO is defined by using mostly borrowed money to fund the purchase, with the acquired company's own cash flows expected to service that debt."}
+},
+"FICC": {
+  analogyHead:"Everything that isn't a stock, under one roof.",
+  analogy:"Like a general store next to a boutique — the boutique (equities) sells one specific thing, while the general store (FICC) stocks bonds, currencies, and commodities side by side because clients who need one often need the others too.",
+  example:["An Indian exporter needs to hedge against the rupee weakening before a large dollar payment arrives.","It calls its bank's FICC desk, which trades currency forwards alongside bonds and commodities.","The FICC desk structures a forward contract locking in today's exchange rate for the future payment.","When the dollars arrive months later, the exporter converts them at the rate it locked in — regardless of where the rupee actually moved."],
+  exampleHead:"An exporter hedges currency risk through FICC.",
+  exampleCallout:"Exchange rate locked in advance",
+  mistakes:[
+    {think:"FICC only trades bonds.", reality:"The name says it: Fixed Income, Currencies & Commodities — three distinct asset classes bundled into one trading floor, not just one."},
+    {think:"FICC and equities trading are basically interchangeable.", reality:"They're organized separately at most banks because the products, clients, and risks are genuinely different — a bond trader and an FX trader need different expertise."}
+  ],
+  related:["Sales & Trading","Trading Book","Hedge","Repo"],
+  quiz:{q:"What does the 'FICC' acronym actually stand for?", options:["Foreign Investment and Currency Council","Fixed Income, Currencies & Commodities","Financial Instruments Clearing Corporation","Futures, Indices, Commodities & Cash"], correct:1, explain:"FICC groups three related but distinct asset classes — bonds (fixed income), currencies, and commodities — under one trading floor, separate from equities."}
+},
+"Hedge": {
+  analogyHead:"Buying an umbrella on a sunny day, just in case.",
+  analogy:"Like buying travel insurance you hope to never use, a hedge is a position you take specifically expecting it might lose money — because its whole job is to offset a loss somewhere else.",
+  example:["An Indian airline has locked in future jet fuel purchases in dollars, priced off crude oil.","Worried oil prices might spike, it buys crude oil futures as a hedge.","Oil prices do rise sharply over the next quarter, and the airline's fuel costs jump.","But the futures position gains value at the same time, offsetting a large chunk of that extra cost."],
+  exampleHead:"An airline hedges against rising fuel costs.",
+  exampleCallout:"Futures gains offset higher fuel bills",
+  mistakes:[
+    {think:"A hedge is meant to make extra profit.", reality:"A hedge is insurance, not a bet for gains — its purpose is to reduce the impact of an unwanted move elsewhere, even if that means giving up some upside too."},
+    {think:"If the hedge loses money, the hedging strategy failed.", reality:"A hedge losing money by itself can be exactly right, if it's offsetting a bigger gain (or avoided loss) on the position it was protecting."}
+  ],
+  related:["Derivative","Future","Exposure","FICC"],
+  quiz:{q:"What is the actual purpose of putting on a hedge?", options:["To maximize total profit from a position","To reduce the impact of an unwanted move in a related position, even at some cost","To avoid paying taxes","To guarantee a trade never loses money"], correct:1, explain:"A hedge exists to offset risk elsewhere in a portfolio — it's protection, not a profit play, and it can lose money on its own while still doing its job perfectly."}
+},
+"Long / Short": {
+  analogyHead:"Betting a price goes up, or betting it comes down.",
+  analogy:"Going long is like buying a house expecting it to appreciate; going short is like a scalper 'selling' concert tickets they don't own yet, planning to buy them cheaper before they have to hand them over.",
+  example:["A hedge fund manager believes Stock A is undervalued and Stock B in the same sector is overvalued.","She goes long Stock A, buying shares she expects to rise.","She goes short Stock B, borrowing and selling shares she expects to fall, planning to buy them back later at a lower price.","If she's right on both, she profits whether the whole sector rises or falls — because it's the gap between the two that matters."],
+  exampleHead:"A manager pairs a long bet with a short bet.",
+  exampleCallout:"Profits from the gap between two stocks",
+  mistakes:[
+    {think:"Short selling means selling shares you already own.", reality:"It means borrowing shares you don't own, selling them now, and planning to buy them back later to return — you're betting on a price fall, not cashing out an existing holding."},
+    {think:"You can only make money by going long.", reality:"Going short lets an investor profit specifically when a price falls — the two positions are mirror images of the same basic bet, just in opposite directions."}
+  ],
+  related:["Short Selling","Hedge","Sales & Trading","Trading Book"],
+  quiz:{q:"What does 'going short' on a stock actually involve?", options:["Buying shares and holding them for a short time only","Borrowing shares, selling them now, and planning to buy them back later at a lower price","Buying a smaller quantity of shares than usual","Investing only in small-cap companies"], correct:1, explain:"Short selling means borrowing shares to sell now, betting the price falls so they can be bought back cheaper later and returned — profit comes from the price dropping."}
+},
+"Repo": {
+  analogyHead:"Pawning your gold overnight, then buying it back in the morning.",
+  analogy:"Like pawning jewelry for quick cash with a promise to buy it back tomorrow for slightly more, a repo is a short-term loan where securities are the collateral — and the 'slightly more' is the interest.",
+  example:["A bank needs cash overnight to cover a temporary funding gap.","It sells government bonds to another institution, with an agreement to buy them back the next day at a slightly higher price.","The overnight difference between the sale price and buyback price is effectively the interest on the loan.","The next morning, the bank buys the bonds back, and both sides return to where they started — just with cash having temporarily changed hands."],
+  exampleHead:"A bank borrows cash overnight using bonds as collateral.",
+  exampleCallout:"Bonds sold, then bought back next day",
+  mistakes:[
+    {think:"A repo is a permanent sale of the securities.", reality:"It's structured as a sale, but it's really a short-term secured loan — both sides expect the securities to come back to the original owner, usually within a day or a few weeks."},
+    {think:"Repo is a niche, rarely-used tool.", reality:"It's the everyday overnight plumbing that keeps banks and trading desks funded — enormous volumes move through repo markets daily, often invisibly to the wider public."}
+  ],
+  related:["Collateral","Haircut","FICC","Bilateral"],
+  quiz:{q:"What is a repo really, despite being structured as a sale?", options:["A permanent transfer of ownership","A short-term loan, with securities used as collateral and bought back later","A type of dividend payment","An accounting error"], correct:1, explain:"Although structured legally as a sale-and-repurchase, a repo functions economically as a short-term, securities-backed loan — the seller always intends to buy the securities back."}
+},
+"Trading Book": {
+  analogyHead:"A trader's personal scoreboard, not the stadium's.",
+  analogy:"The exchange's Order Book is the stadium's public scoreboard — everyone's bids and offers. A trading book is one player's personal stat sheet: what they actually hold right now, and what they stand to gain or lose.",
+  example:["A bond trader buys ₹50 crore of corporate bonds over the course of a morning, from several different clients.","Each purchase updates her trading book — her running record of exactly what she owns and at what average price.","By afternoon, her book shows a large position that's now moving against her as rates rise.","Her desk head reviews the trading book and asks her to trim the position before it breaches her risk limit."],
+  exampleHead:"A trader's live position, tracked all day.",
+  exampleCallout:"₹50 crore position flagged for reduction",
+  mistakes:[
+    {think:"Trading Book and Order Book mean the same thing.", reality:"The Order Book is the market's shared list of outstanding buy/sell orders. A trading book is one specific trader's or desk's private record of what they currently hold."},
+    {think:"A trading book only matters at the end of the day.", reality:"It's tracked and marked to market continuously — risk limits and margin calls respond to live changes in a trading book, not just an end-of-day snapshot."}
+  ],
+  related:["Order Book","P&L","Mark-to-Market","Exposure"],
+  quiz:{q:"How does a trading book differ from the market's order book?", options:["They're the same thing, just different names","A trading book is one trader's or desk's own live positions; the order book is the market's shared list of outstanding orders","A trading book only exists for bonds","The order book is private, the trading book is public"], correct:1, explain:"The order book is public and shared — everyone's outstanding orders. A trading book is private and personal — the record of what one trader or desk actually owns right now."}
+},
+"P&L": {
+  analogyHead:"The scoreboard that resets every single day.",
+  analogy:"Like a shopkeeper counting the till at closing time, a trading desk's P&L is tallied fresh each day — yesterday's big win doesn't carry over as a cushion for today's numbers.",
+  example:["A trader starts the day holding a large bond position bought at ₹100.","By the close, the bond's market price has risen to ₹101.50.","Her P&L for the day shows a gain, marked to that day's closing price — even though she hasn't sold anything.","If the price fell back to ₹99 the next day, that would show up as a loss on tomorrow's P&L, regardless of today's gain."],
+  exampleHead:"A day's gain, marked to market.",
+  exampleCallout:"Gain recorded, position still held",
+  mistakes:[
+    {think:"P&L only counts once a position is actually sold.", reality:"Trading desks mark P&L to market daily — unrealized gains and losses on positions still being held count immediately, not just at the point of sale."},
+    {think:"A good P&L day means the trader made a smart decision.", reality:"P&L reflects the market's move, which isn't always the same as good judgment — a reckless bet can post a great P&L day purely by luck, and a sound one can post a bad day regardless."}
+  ],
+  related:["Mark-to-Market","Trading Book","VaR","Exposure"],
+  quiz:{q:"Why can a trader's P&L change even without selling anything?", options:["P&L is only updated once a year","Positions are marked to market, so unrealized price moves show up in P&L immediately","P&L is unrelated to market prices","Traders manually decide their own P&L"], correct:1, explain:"Trading P&L is marked to market — it reflects the current value of positions still being held, not just gains or losses that have been locked in by selling."}
+},
+"Market Colour": {
+  analogyHead:"The gossip beneath the headline number.",
+  analogy:"A stock price is the headline; market colour is the whispered context underneath it — like a real-estate agent telling you not just the asking price, but that the seller is desperate and three other buyers just walked away.",
+  example:["A portfolio manager asks his sales contact why a bond's price suddenly dropped, beyond just the number.","The salesperson shares market colour: a large pension fund has been quietly selling all morning, and several desks are pulling back from making markets in it.","Armed with that context, the portfolio manager decides to wait rather than sell into a temporarily thin, jumpy market.","By afternoon, the selling pressure eases and the price recovers — the colour, not just the price, shaped the right call."],
+  exampleHead:"Context behind a sudden price move.",
+  exampleCallout:"Colour explains what the price alone didn't",
+  mistakes:[
+    {think:"Market colour is the same as official market data.", reality:"It's informal, qualitative, and based on judgment and relationships — genuinely useful, but not a verified data feed like a price or volume figure."},
+    {think:"Market colour is always accurate.", reality:"It's one trader's or salesperson's read of the room, shared informally — it can be wrong, outdated, or shaped by their own position, so it's treated as input, not fact."}
+  ],
+  related:["Axe","Sales & Trading","Liquidity","Bid-Ask Spread"],
+  quiz:{q:"What best describes 'market colour'?", options:["An official price feed from the exchange","Informal, qualitative context about what's actually happening in the market, shared by traders or salespeople","A regulatory filing","A type of chart pattern"], correct:1, explain:"Market colour is informal insight — who's buying, who's nervous, why a price moved — shared conversationally between market participants, distinct from verified, official market data."}
+},
+"Axe": {
+  analogyHead:"The seller who really, really wants to sell you their car.",
+  analogy:"Like a car salesman more eager to move a specific model off the lot because he's overstocked on it, a trader with an axe has a bias toward a specific trade because of a position they're already sitting on.",
+  example:["A bond trader is sitting on a large, unwanted position in a particular corporate bond.","When a client calls asking for a price on a range of bonds, the trader quotes an especially attractive price on that specific one.","A sharp client asks directly: 'What's your axe here?'","The trader admits he's keen to reduce that position — the client now knows exactly why the price looked so good."],
+  exampleHead:"A trader's eagerness reveals their real position.",
+  exampleCallout:"'What's your axe?' gets a straight answer",
+  mistakes:[
+    {think:"Having an axe means a trader is doing something improper.", reality:"It's a completely normal, openly-acknowledged part of trading — traders manage inventory, and being upfront about an axe is considered good trading-floor etiquette, not misconduct."},
+    {think:"An axe only applies to buying.", reality:"A trader can have an axe to either buy or sell — whichever direction reduces or builds the position they're currently trying to manage."}
+  ],
+  related:["Market Colour","Trading Book","Sales & Trading","Bid-Ask Spread"],
+  quiz:{q:"What does it mean when a trader says they have an 'axe' on a bond?", options:["They are legally barred from trading it","They have a particular bias to buy or sell it, usually tied to a position they're managing","They think the bond is a fraud","They've never traded it before"], correct:1, explain:"An axe is a trader's known leaning — usually because they're trying to build or unload a position — openly signaled so clients understand why a quote looks especially aggressive."}
+},
+"Block Trade": {
+  analogyHead:"Selling a whole building, not one apartment at a time.",
+  analogy:"Selling shares one small order at a time on the open market is like listing a hundred apartments individually — it works, but it moves the neighborhood's prices as you go. A block trade sells the whole building in one private, negotiated deal instead.",
+  example:["A large mutual fund wants to sell 2 million shares of a mid-cap company — far more than the public order book could absorb without crashing the price.","Instead of dumping it on the exchange, the fund's broker quietly finds a single large buyer willing to take the whole block.","The two sides negotiate a price privately, slightly below the current market price to compensate the buyer for taking size.","The trade is agreed off-exchange and then reported to the market afterward, as required."],
+  exampleHead:"2 million shares change hands, off the public book.",
+  exampleCallout:"Negotiated privately, reported after",
+  mistakes:[
+    {think:"Block trades are illegal or hidden from regulators.", reality:"They're a legitimate, regulated way to trade large size — they just happen away from the public order book first, then get reported afterward, as the rules require."},
+    {think:"A block trade always happens at the current market price.", reality:"It's usually priced at a discount (for a sale) or premium (for a purchase) to compensate the counterparty for taking on a large, hard-to-offload position."}
+  ],
+  related:["Order Book","Liquidity","Slippage","Institutional Investor"],
+  quiz:{q:"Why is a large sale often done as a block trade instead of on the open order book?", options:["Because it's required by law for all large trades","Because dumping that size on the public book would move the price sharply against the seller","Because block trades are cheaper to execute in every case","Because retail investors aren't allowed to see large orders"], correct:1, explain:"A large order on the public order book can move the price against itself before it's even filled. A block trade avoids that by negotiating privately with one counterparty, then reporting after."}
+},
+"Bulge Bracket": {
+  analogyHead:"The department store that sells everything, under one roof.",
+  analogy:"Like a department store that sells electronics, clothing, and furniture all in one building, a bulge bracket bank does M&A, underwriting, trading, and research across every sector — one giant, full-service operation.",
+  example:["A multinational conglomerate needs advice on a cross-border acquisition, a bond issue to fund it, and ongoing trading support afterward.","It hires a single bulge bracket bank that can handle all three needs at once, across multiple countries.","The bank's M&A team structures the deal, its DCM team raises the debt, and its trading desk later makes markets in the new bonds.","The conglomerate gets one relationship covering the entire lifecycle, instead of coordinating several specialist firms."],
+  exampleHead:"One bank, three services, one relationship.",
+  exampleCallout:"Full-service coverage across the deal",
+  mistakes:[
+    {think:"Bulge bracket just means 'a big bank'.", reality:"Size alone isn't the definition — it specifically means a full-service global bank offering the complete range: M&A, underwriting, sales & trading, and research, across sectors and geographies."},
+    {think:"Bulge brackets always give the most conflict-free advice.", reality:"Because they also trade, underwrite, and lend, bulge brackets can face more potential conflicts of interest than a pure-advisory elite boutique, which does nothing but advise."}
+  ],
+  related:["Elite Boutique","M&A","Underwriting","Coverage Group"],
+  quiz:{q:"What specifically defines a 'bulge bracket' bank?", options:["Being headquartered in the United States","Being a full-service global bank spanning M&A, underwriting, trading, and research","Only advising on deals over $1 billion","Being government-owned"], correct:1, explain:"The term describes scope, not just size — a bulge bracket bank offers the complete range of investment banking and trading services globally, rather than specializing in one area."}
+},
+"Elite Boutique": {
+  analogyHead:"The specialist consultant, not the one-stop shop.",
+  analogy:"Like hiring an independent architect instead of a construction company that also happens to sell you the cement, an elite boutique offers pure advice — no trading floor, no lending business, nothing else to sell you alongside it.",
+  example:["A company facing a hostile takeover attempt wants advice it can fully trust, with zero conflicts of interest.","It hires an elite boutique instead of a bulge bracket bank, specifically because the boutique has no trading desk that could be on the other side of related trades.","The boutique's senior bankers, who don't juggle underwriting or lending relationships, focus purely on defending the company.","The company pays a premium for that singular focus and independence."],
+  exampleHead:"A company chooses pure advice over a full-service bank.",
+  exampleCallout:"No trading floor, no conflicts, one focus",
+  mistakes:[
+    {think:"Elite boutiques are smaller, less serious versions of big banks.", reality:"They're often staffed by the most senior, experienced dealmakers in the industry — smaller in headcount, but not necessarily less capable or prestigious for advisory work specifically."},
+    {think:"Boutiques can do everything a bulge bracket can, just on a smaller scale.", reality:"They deliberately don't underwrite securities or run trading desks — that narrow focus is the whole selling point, not a limitation to work around."}
+  ],
+  related:["Bulge Bracket","M&A","Financial Sponsor","Pitch Book"],
+  quiz:{q:"Why might a company specifically choose an elite boutique over a bulge bracket bank?", options:["Boutiques are always cheaper","Boutiques offer pure advisory work with no trading or lending business to create potential conflicts of interest","Boutiques can underwrite larger deals","Boutiques are required by regulators for certain deals"], correct:1, explain:"Because elite boutiques don't trade, underwrite, or lend, they avoid the potential conflicts of interest that can arise at a full-service bulge bracket bank — a meaningful selling point for sensitive advisory work."}
+},
+"Synergies": {
+  analogyHead:"1 + 1 = 3 — on paper, at least.",
+  analogy:"Like two friends realizing that sharing one apartment costs less than two separate ones, plus they can now split a car, synergies are the extra value companies claim they'll unlock together that neither could unlock alone.",
+  example:["Two competing food delivery companies announce a merger, promising ₹200 crore in annual synergies.","Cost synergies come from shutting down duplicate warehouses and combining customer service teams.","Revenue synergies are projected from cross-selling each other's restaurant partnerships to a combined user base.","A year later, the cost synergies mostly materialize — the revenue synergies fall well short of the original promise."],
+  exampleHead:"A merger promises ₹200 crore in synergies.",
+  exampleCallout:"Cost savings hit target; revenue gains don't",
+  mistakes:[
+    {think:"Synergies are a guaranteed outcome once a deal closes.", reality:"They're a projection used to help justify a deal's price — actual delivery, especially of revenue synergies, falls short far more often than deal announcements suggest."},
+    {think:"All synergies are the same kind of benefit.", reality:"Cost synergies (cutting overlapping expenses) are generally far more reliable and achievable than revenue synergies (growing sales together), which depend on customer behavior actually changing."}
+  ],
+  related:["M&A","Divestiture","Financial Sponsor","Coverage Group"],
+  quiz:{q:"Which type of synergy is generally more reliable and easier to deliver?", options:["Revenue synergies, because sales always grow after a merger","Cost synergies, because cutting duplicate expenses is more directly controllable than growing combined sales","They're equally reliable in almost every deal","Neither type is ever realistic"], correct:1, explain:"Cost synergies — eliminating overlapping expenses — are largely within management's direct control. Revenue synergies depend on customers actually behaving differently, which is far less predictable."}
+},
+"Financial Sponsor": {
+  analogyHead:"A landlord, not a homeowner.",
+  analogy:"A strategic buyer purchases a company to live in it, like a homeowner. A financial sponsor buys it like a landlord buying a rental property — planning to improve it, extract value, and sell it on a few years later.",
+  example:["A private equity firm buys a struggling regional retail chain for ₹800 crore.","As the financial sponsor, it installs new management, cuts costs, and expands into two new states.","Four years later, the company's profits have roughly doubled.","The sponsor sells the company to a larger strategic buyer for ₹1,600 crore, exiting the investment."],
+  exampleHead:"A PE firm buys, improves, and exits.",
+  exampleCallout:"Bought at ₹800 crore, sold at ₹1,600 crore",
+  mistakes:[
+    {think:"'Financial sponsor' is just a fancier word for 'investor'.", reality:"It specifically refers to a private equity firm buying a company as part of its investment strategy — with a defined plan to eventually sell, unlike a passive shareholder."},
+    {think:"Financial sponsors and strategic buyers want the same thing from an acquisition.", reality:"A strategic buyer usually wants to integrate the target permanently into its own operations; a financial sponsor plans an eventual exit from day one — the whole deal structure reflects that difference."}
+  ],
+  related:["M&A","LBO","Coverage Group","Synergies"],
+  quiz:{q:"What distinguishes a financial sponsor from a 'strategic' buyer in M&A?", options:["Financial sponsors never pay in cash","A financial sponsor is a private equity firm planning an eventual exit; a strategic is an operating company planning to integrate and keep the target","Strategic buyers are always larger companies","There's no real difference between the two"], correct:1, explain:"A financial sponsor (private equity) buys with an exit plan built in from the start. A strategic buyer is typically an operating company acquiring the target to keep and integrate permanently."}
+},
+"Secondary Offering": {
+  analogyHead:"Round two of ticket sales, after opening night already happened.",
+  analogy:"An IPO is opening night — the first time tickets go on sale. A secondary offering is a later round of ticket sales for the same show, after it's already been running for a while.",
+  example:["A company went public two years ago and now wants to raise more capital to fund an expansion.","Rather than borrowing, it issues new shares to the public — a secondary (or follow-on) offering.","The extra shares slightly dilute existing shareholders' ownership percentage.","But the fresh capital funds the expansion without adding any new debt to the balance sheet."],
+  exampleHead:"An already-public company raises more capital.",
+  exampleCallout:"New shares issued, no new debt",
+  mistakes:[
+    {think:"A secondary offering means existing shareholders are selling out.", reality:"It can mean that — existing holders selling their shares — but it often instead means the company itself issuing brand-new shares to raise fresh capital, which is a different transaction with different effects."},
+    {think:"Secondary offerings only happen when a company is in trouble.", reality:"Healthy, growing companies routinely use them to fund expansion or acquisitions without taking on debt — it's a standard financing tool, not a red flag by default."}
+  ],
+  related:["ECM","IPO","Direct Listing","Underwriting"],
+  quiz:{q:"What's one key difference between an IPO and a secondary offering?", options:["Secondary offerings are always illegal","A secondary offering happens after a company is already publicly listed, unlike an IPO which is the first listing","Secondary offerings never raise real money","IPOs can only happen once in a company's history, same as secondary offerings"], correct:1, explain:"An IPO is a company's first-ever public share sale. A secondary offering happens afterward, once the company is already listed — raising more capital or letting existing holders sell."}
+},
+"Direct Listing": {
+  analogyHead:"Opening the doors without a doorman deciding who gets in first.",
+  analogy:"A traditional IPO is like a nightclub with a bouncer — the underwriter — controlling exactly who gets in and at what cover charge. A direct listing just opens the doors and lets the market decide the price on its own.",
+  example:["A well-known consumer tech company with strong brand recognition decides it doesn't need underwriters to build investor demand — the market already knows it.","It chooses a direct listing: existing shareholders' shares simply start trading on the exchange.","No new shares are created and no roadshow sets a price in advance.","The opening price is discovered live, purely from real buy and sell orders on listing day."],
+  exampleHead:"A well-known company skips the roadshow entirely.",
+  exampleCallout:"Price discovered live, on the exchange",
+  mistakes:[
+    {think:"A direct listing raises money for the company, just like an IPO.", reality:"In its classic form, no new shares are issued and no capital is raised — it simply lets existing shares begin trading. Some direct listings have since added an option to raise capital too."},
+    {think:"Any company can do a direct listing just as easily as an IPO.", reality:"It generally suits companies that are already well known and don't need underwriters to build investor demand from scratch — a less famous company may struggle without that support."}
+  ],
+  related:["IPO","ECM","Underwriting","Secondary Offering"],
+  quiz:{q:"What's different about how a direct listing sets its opening price, compared to a traditional IPO?", options:["There is no difference","The price is discovered live through actual market orders, rather than being set in advance by underwriters after a roadshow","The government sets the price","The price is fixed for the first year of trading"], correct:1, explain:"A traditional IPO sets its price in advance through underwriter-led investor demand (a roadshow). A direct listing skips that process, letting the opening price emerge from live market orders instead."}
+},
+"Divestiture": {
+  analogyHead:"Selling the guest room you never use.",
+  analogy:"Like a homeowner selling off part of their property they don't need, a divestiture is a company selling a division or unit to focus on what's actually working — turning an unwanted asset into cash.",
+  example:["A large conglomerate owns a struggling consumer electronics division that's been losing money for years, distracting from its profitable core business.","It hires bankers to run a divestiture process, marketing the division to potential buyers.","A smaller, focused electronics company buys the division for ₹300 crore, seeing an opportunity the conglomerate didn't have the focus to pursue.","The conglomerate uses the proceeds to invest in its stronger core business, and its stock rises on the news."],
+  exampleHead:"A conglomerate sheds its weakest division.",
+  exampleCallout:"₹300 crore raised, focus restored",
+  mistakes:[
+    {think:"A divestiture always means a company is in financial distress.", reality:"It's often a proactive strategic choice — even healthy companies divest units that no longer fit their strategy, to sharpen focus rather than to survive."},
+    {think:"Divestiture and M&A are unrelated deal types.", reality:"A divestiture is simply M&A from the seller's side — the buyer on the other end of that same transaction is doing an acquisition. Same deal, opposite perspective."}
+  ],
+  related:["M&A","Coverage Group","Synergies","Financial Sponsor"],
+  quiz:{q:"Is a divestiture always a sign a company is struggling?", options:["Yes, companies only divest when forced to by financial distress","No — healthy companies often divest units that no longer fit their strategy, purely to sharpen focus","Yes, but only for companies outside the top 500","No, divestitures never involve selling anything of value"], correct:1, explain:"Divestitures are frequently proactive strategic moves by healthy companies shedding a non-core unit to focus resources — not necessarily a distress signal."}
+},
+"Coverage Group": {
+  analogyHead:"The relationship manager who owns the client, not the deal.",
+  analogy:"Like a family doctor who knows a patient's whole history and refers them to specialists as needed, a coverage group knows one industry and its companies deeply — and brings in the M&A or DCM 'specialists' whenever a specific deal comes up.",
+  example:["A banker in the Healthcare coverage group has known a hospital chain's CFO for eight years, through routine check-ins and market updates.","When the hospital chain finally decides to pursue an acquisition, it calls that trusted coverage banker first.","The coverage banker loops in the M&A product team to actually execute the deal.","The coverage relationship is what opened the door — the product specialists are what got the deal done."],
+  exampleHead:"A years-long relationship turns into a deal mandate.",
+  exampleCallout:"Coverage opens the door; product executes",
+  mistakes:[
+    {think:"Coverage bankers execute the deals themselves.", reality:"They typically own the client relationship and bring in product specialists — M&A, ECM, DCM teams — to actually structure and execute the transaction."},
+    {think:"Coverage groups and product groups are competitors inside the bank.", reality:"They're meant to work together — coverage owns the relationship and industry knowledge, product groups bring the deal-specific technical expertise. Friction happens, but the model depends on collaboration."}
+  ],
+  related:["IBD","Pitch Book","M&A","Bulge Bracket"],
+  quiz:{q:"What's the typical division of labor between a coverage group and a product group like M&A?", options:["They do identical work and overlap entirely","Coverage owns the client relationship and industry knowledge; the product group executes the specific deal","Product groups own client relationships; coverage groups just do paperwork","Coverage groups only exist at elite boutiques"], correct:1, explain:"Banks typically organize on two axes: coverage groups build deep, long-term relationships within an industry, while product groups (M&A, ECM, DCM) bring the technical expertise to execute a specific deal type."}
+},
 };
 
 const DIAG = {
@@ -2120,10 +2526,265 @@ const DIAG = {
 <rect x="190" y="40" width="100" height="50" rx="7" class="vg"/>
 <text class="vgt" x="240" y="70" text-anchor="middle" style="font-size:9px">Electronic entry</text>
 <text class="vs" x="160" y="112" text-anchor="middle" fill="var(--muted)">Held at a depository. No paper, no forgery, no loss.</text>
-</svg>`
+</svg>`,
+  "IBD": `<svg viewBox="0 0 320 120" aria-label="IBD advises on M and A and raising capital">
+<rect x="90" y="30" width="140" height="50" rx="8" class="vg"/>
+<text class="vgt" x="160" y="52" text-anchor="middle" style="font-size:9px">M&amp;A advice</text>
+<text class="vgt" x="160" y="66" text-anchor="middle" style="font-size:9px">Capital raising</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="var(--muted)">The division that helps companies grow or combine.</text>
+</svg>`,
+  "M&A": `<svg viewBox="0 0 320 120" aria-label="M and A is one company buying or combining with another">
+<rect x="30" y="40" width="90" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="75" y="61" text-anchor="middle">Company A</text>
+<rect x="190" y="40" width="90" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="235" y="61" text-anchor="middle">Company B</text>
+<circle cx="160" cy="57" r="16" class="vg"/>
+<text class="vgt" x="160" y="61" text-anchor="middle" style="font-size:8px">deal</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="var(--muted)">Priced and negotiated by bankers on both sides.</text>
+</svg>`,
+  "ECM": `<svg viewBox="0 0 320 110" aria-label="ECM takes companies to the equity market">
+<rect x="30" y="40" width="100" height="30" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="80" y="59" text-anchor="middle" style="font-size:9px">Company</text>
+<line x1="132" y1="55" x2="188" y2="55" stroke="var(--accent)" stroke-width="1.6"/>
+<rect x="190" y="40" width="100" height="30" rx="7" class="vg"/>
+<text class="vgt" x="240" y="59" text-anchor="middle" style="font-size:9px">Equity market</text>
+<text class="vs" x="160" y="94" text-anchor="middle" fill="var(--muted)">IPOs and follow-on offerings — everything equity.</text>
+</svg>`,
+  "DCM": `<svg viewBox="0 0 320 110" aria-label="DCM helps issue bonds instead of taking a bank loan">
+<rect x="30" y="40" width="100" height="30" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="80" y="59" text-anchor="middle" style="font-size:9px">Company / govt</text>
+<line x1="132" y1="55" x2="188" y2="55" stroke="var(--accent)" stroke-width="1.6"/>
+<rect x="190" y="40" width="100" height="30" rx="7" class="vg"/>
+<text class="vgt" x="240" y="59" text-anchor="middle" style="font-size:9px">Bond market</text>
+<text class="vs" x="160" y="94" text-anchor="middle" fill="var(--muted)">Borrowing from the market instead of a bank.</text>
+</svg>`,
+  "Sales & Trading": `<svg viewBox="0 0 320 120" aria-label="Sales and trading sells securities and trades some on the bank's account">
+<rect x="30" y="40" width="100" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="80" y="61" text-anchor="middle" style="font-size:9px">Institutional client</text>
+<line x1="132" y1="57" x2="188" y2="57" stroke="var(--accent)" stroke-width="1.6"/>
+<rect x="190" y="40" width="100" height="34" rx="7" class="vg"/>
+<text class="vgt" x="240" y="61" text-anchor="middle" style="font-size:9px">Bank's desk</text>
+<text class="vs" x="160" y="102" text-anchor="middle" fill="var(--muted)">Sells to clients, and trades some on its own book too.</text>
+</svg>`,
+  "Research": `<svg viewBox="0 0 320 110" aria-label="Research analysts publish opinions on what to buy, hold, or sell">
+<rect x="90" y="30" width="140" height="40" rx="8" class="vg"/>
+<text class="vgt" x="160" y="55" text-anchor="middle">Buy · Hold · Sell</text>
+<text class="vs" x="160" y="92" text-anchor="middle" fill="var(--muted)">An analyst's studied opinion, published for clients.</text>
+</svg>`,
+  "Risk Management": `<svg viewBox="0 0 320 110" aria-label="Risk management knows exactly how much the bank could lose">
+<rect x="90" y="30" width="140" height="40" rx="8" class="vg"/>
+<text class="vgt" x="160" y="55" text-anchor="middle">Max possible loss?</text>
+<text class="vs" x="160" y="92" text-anchor="middle" fill="var(--muted)">Knowing the number before it happens, not after.</text>
+</svg>`,
+  "Compliance": `<svg viewBox="0 0 320 110" aria-label="Compliance ensures rules are followed, not just the convenient ones">
+<rect x="90" y="30" width="140" height="40" rx="8" class="vg"/>
+<text class="vgt" x="160" y="55" text-anchor="middle">Rules, actually followed</text>
+<text class="vs" x="160" y="92" text-anchor="middle" fill="var(--muted)">Not just the ones that are convenient.</text>
+</svg>`,
+  "IPO": `<svg viewBox="0 0 320 140" aria-label="A private company going public">
+<rect x="20" y="46" width="110" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="75" y="67" text-anchor="middle">Private company</text>
+<line x1="132" y1="63" x2="188" y2="63" stroke="var(--accent)" stroke-width="1.6"/>
+<text class="vs" x="160" y="52" text-anchor="middle" fill="var(--muted)">underwritten, priced</text>
+<rect x="190" y="46" width="110" height="34" rx="7" class="vg"/>
+<text class="vgt" x="245" y="67" text-anchor="middle">Listed on exchange</text>
+<text class="vs" x="160" y="108" text-anchor="middle" fill="var(--muted)">Founders and early investors sell shares to the public for the first time.</text>
+</svg>`,
+  "Pitch Book": `<svg viewBox="0 0 320 110" aria-label="A pitch book is a polished deck to win a client's deal">
+<rect x="100" y="24" width="120" height="56" rx="6" fill="var(--bg)" stroke="var(--accent)"/>
+<line x1="112" y1="38" x2="208" y2="38" stroke="var(--muted)" stroke-width="1"/>
+<line x1="112" y1="50" x2="208" y2="50" stroke="var(--muted)" stroke-width="1"/>
+<line x1="112" y1="62" x2="180" y2="62" stroke="var(--muted)" stroke-width="1"/>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="var(--muted)">The polished case for why this bank should get the deal.</text>
+</svg>`,
+  "Underwriting": `<svg viewBox="0 0 320 120" aria-label="Underwriting is a bank guaranteeing to buy an entire offering">
+<rect x="30" y="40" width="90" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="75" y="61" text-anchor="middle">Issuer</text>
+<rect x="130" y="40" width="80" height="34" rx="7" class="vg"/>
+<text class="vgt" x="170" y="61" text-anchor="middle" style="font-size:9px">Bank buys all</text>
+<rect x="230" y="40" width="70" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="265" y="61" text-anchor="middle" style="font-size:9px">Investors</text>
+<text class="vs" x="160" y="102" text-anchor="middle" fill="var(--muted)">The risk moves off the issuer, onto the bank.</text>
+</svg>`,
+  "LBO": `<svg viewBox="0 0 320 110" aria-label="An LBO buys a company mostly with borrowed money">
+<rect x="30" y="30" width="120" height="30" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<rect x="30" y="30" width="90" height="30" rx="6" class="vg"/>
+<text class="vgt" x="75" y="49" text-anchor="middle" style="font-size:9px">Borrowed: 80%</text>
+<text class="vs" x="135" y="49" text-anchor="middle" style="font-size:8px">equity: 20%</text>
+<text class="vs" x="160" y="90" text-anchor="middle" fill="var(--muted)">The target's own future cash flows are expected to pay it off.</text>
+</svg>`,
+  "FICC": `<svg viewBox="0 0 320 110" aria-label="FICC trades fixed income, currencies, and commodities">
+<rect x="40" y="34" width="240" height="34" rx="7" class="vg"/>
+<text class="vgt" x="160" y="56" text-anchor="middle" style="font-size:9px">Bonds · FX · Commodities</text>
+<text class="vs" x="160" y="94" text-anchor="middle" fill="var(--muted)">One of the two big trading floors — the other is equities.</text>
+</svg>`,
+  "Hedge": `<svg viewBox="0 0 320 120" aria-label="A hedge is a second position that cancels out the first">
+<rect x="30" y="40" width="100" height="30" rx="7" fill="var(--bg)" stroke="var(--accent)"/>
+<text class="vs" x="80" y="59" text-anchor="middle" style="font-size:9px">Position A: risk</text>
+<rect x="190" y="40" width="100" height="30" rx="7" class="vg"/>
+<text class="vgt" x="240" y="59" text-anchor="middle" style="font-size:9px">Position B: opposite</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="var(--muted)">Two bets, structured so one offsets the other.</text>
+</svg>`,
+  "Long / Short": `<svg viewBox="0 0 320 150" aria-label="Long profits when price rises, short profits when price falls">
+<defs>
+<marker id="arrLO" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker>
+<marker id="arrG" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--ask)"/></marker>
+</defs>
+<line x1="60" y1="90" x2="60" y2="20" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrLO)"/>
+<text class="vs" x="60" y="110" text-anchor="middle">Long</text>
+<text class="vs" x="60" y="124" text-anchor="middle" style="font-size:9px">profits if price rises</text>
+<line x1="260" y1="20" x2="260" y2="90" stroke="var(--ask)" stroke-width="2" marker-end="url(#arrG)"/>
+<text class="vs" x="260" y="110" text-anchor="middle">Short</text>
+<text class="vs" x="260" y="124" text-anchor="middle" style="font-size:9px">profits if price falls</text>
+<text class="vs" x="160" y="146" text-anchor="middle" fill="var(--muted)">Two bets on the same asset, in opposite directions.</text>
+</svg>`,
+  "Repo": `<svg viewBox="0 0 320 150" aria-label="A repurchase agreement: cash now, reversed later">
+<rect x="20" y="40" width="80" height="32" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="60" y="60" text-anchor="middle">Party A</text>
+<rect x="220" y="40" width="80" height="32" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="260" y="60" text-anchor="middle">Party B</text>
+<line x1="102" y1="48" x2="218" y2="48" stroke="var(--accent)" stroke-width="1.4"/>
+<text class="vs" x="160" y="42" text-anchor="middle" fill="var(--muted)">bonds today →</text>
+<line x1="218" y1="64" x2="102" y2="64" stroke="var(--accent)" stroke-width="1.4"/>
+<text class="vs" x="160" y="82" text-anchor="middle" fill="var(--muted)">← cash today</text>
+<line x1="60" y1="90" x2="260" y2="90" stroke="var(--ask)" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text class="vs" x="160" y="104" text-anchor="middle" fill="var(--ask)">reversed tomorrow, plus interest</text>
+<text class="vs" x="160" y="130" text-anchor="middle" fill="var(--muted)">A short-term loan disguised as a sale and buy-back.</text>
+</svg>`,
+  "Trading Book": `<svg viewBox="0 0 320 110" aria-label="A trading book is a trader's running list of current positions">
+<rect x="100" y="30" width="120" height="46" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="160" y="50" text-anchor="middle" style="font-size:9px">Long 500 X</text>
+<text class="vs" x="160" y="64" text-anchor="middle" style="font-size:9px">Short 200 Y</text>
+<text class="vs" x="160" y="94" text-anchor="middle" fill="var(--muted)">What's actually held right now — not the public book.</text>
+</svg>`,
+  "P&L": `<svg viewBox="0 0 320 110" aria-label="P and L is the profit or loss a desk made today">
+<line x1="40" y1="60" x2="280" y2="60" stroke="var(--line)" stroke-width="1"/>
+<rect x="90" y="30" width="30" height="30" class="vg"/>
+<rect x="200" y="60" width="30" height="24" fill="var(--muted)"/>
+<text class="vs" x="105" y="24" text-anchor="middle">Profit</text>
+<text class="vs" x="215" y="98" text-anchor="middle">Loss</text>
+</svg>`,
+  "Market Colour": `<svg viewBox="0 0 320 110" aria-label="Market colour is an informal read beneath the price">
+<rect x="30" y="34" width="90" height="30" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="75" y="53" text-anchor="middle" style="font-size:9px">Price: ₹100</text>
+<rect x="150" y="34" width="140" height="30" rx="7" class="vg"/>
+<text class="vgt" x="220" y="53" text-anchor="middle" style="font-size:8.5px">"...but flow is one-sided"</text>
+<text class="vs" x="160" y="92" text-anchor="middle" fill="var(--muted)">Not just the number — what's actually happening beneath it.</text>
+</svg>`,
+  "Axe": `<svg viewBox="0 0 320 100" aria-label="An axe is a trader's current bias to buy or sell">
+<rect x="90" y="26" width="140" height="36" rx="8" class="vg"/>
+<text class="vgt" x="160" y="49" text-anchor="middle">"Keen to sell X"</text>
+<text class="vs" x="160" y="86" text-anchor="middle" fill="var(--muted)">The not-so-secret bias behind a quote.</text>
+</svg>`,
+  "Block Trade": `<svg viewBox="0 0 320 120" aria-label="A block trade is negotiated privately and reported after">
+<rect x="30" y="40" width="90" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="75" y="61" text-anchor="middle">Party A</text>
+<rect x="190" y="40" width="90" height="34" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="235" y="61" text-anchor="middle">Party B</text>
+<line x1="122" y1="57" x2="188" y2="57" stroke="var(--ask)" stroke-width="1.6" stroke-dasharray="4 3"/>
+<text class="vs" x="155" y="47" text-anchor="middle" fill="var(--muted)">negotiated privately</text>
+<text class="vs" x="160" y="100" text-anchor="middle" fill="var(--muted)">Large, off the public book — reported to the tape afterward.</text>
+</svg>`,
+  "Bulge Bracket": `<svg viewBox="0 0 320 150" aria-label="A bulge bracket bank offers every service under one roof">
+<rect x="20" y="20" width="280" height="58" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="160" y="36" text-anchor="middle" fill="var(--muted)">one bank, every service</text>
+<rect x="35" y="44" width="55" height="26" rx="6" class="vg"/>
+<text class="vgt" x="62" y="61" text-anchor="middle" style="font-size:9px">M&amp;A</text>
+<rect x="100" y="44" width="55" height="26" rx="6" class="vg"/>
+<text class="vgt" x="127" y="61" text-anchor="middle" style="font-size:9px">ECM</text>
+<rect x="165" y="44" width="55" height="26" rx="6" class="vg"/>
+<text class="vgt" x="192" y="61" text-anchor="middle" style="font-size:9px">DCM</text>
+<rect x="230" y="44" width="55" height="26" rx="6" class="vg"/>
+<text class="vgt" x="257" y="61" text-anchor="middle" style="font-size:8px">Trading</text>
+<text class="vs" x="160" y="98" text-anchor="middle" fill="var(--muted)">Size is the whole point.</text>
+<text class="vs" x="160" y="118" text-anchor="middle" fill="var(--muted)">Goldman, JPMorgan, Morgan Stanley —</text>
+<text class="vs" x="160" y="134" text-anchor="middle" fill="var(--muted)">full-service, global.</text>
+</svg>`,
+  "Elite Boutique": `<svg viewBox="0 0 320 145" aria-label="An elite boutique does M&A advice only, with no trading floor">
+<rect x="90" y="24" width="140" height="50" rx="10" fill="var(--bg)" stroke="var(--ask)" stroke-width="1.4"/>
+<text class="vs" x="160" y="42" text-anchor="middle" fill="var(--muted)">just one thing</text>
+<rect x="110" y="50" width="100" height="26" rx="6" class="vg"/>
+<text class="vgt" x="160" y="67" text-anchor="middle">M&amp;A advice</text>
+<text class="vs" x="160" y="96" text-anchor="middle" fill="var(--muted)">No trading floor. No balance sheet.</text>
+<text class="vs" x="160" y="112" text-anchor="middle" fill="var(--muted)">No conflicts of interest.</text>
+<text class="vs" x="160" y="130" text-anchor="middle" fill="var(--muted)">Evercore, Lazard, Moelis — advice only.</text>
+</svg>`,
+  "Synergies": `<svg viewBox="0 0 320 140" aria-label="Two companies combine to create more value together than apart">
+<circle cx="95" cy="55" r="38" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="95" y="59" text-anchor="middle" style="font-size:9px">Company A</text>
+<text class="vt" x="160" y="60" text-anchor="middle" fill="var(--ask)">+</text>
+<circle cx="225" cy="55" r="38" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="225" y="59" text-anchor="middle" style="font-size:9px">Company B</text>
+<text class="vs" x="160" y="115" text-anchor="middle" fill="var(--muted)">1 + 1 is supposed to equal 3.</text>
+<text class="vs" x="160" y="130" text-anchor="middle" fill="var(--muted)">Promised often. Delivered less often.</text>
+</svg>`,
+  "Financial Sponsor": `<svg viewBox="0 0 320 150" aria-label="A financial sponsor buys to sell later, unlike a strategic buyer">
+<text class="vs" x="30" y="24" fill="var(--muted)">Sponsor (PE firm)</text>
+<rect x="30" y="34" width="70" height="28" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="65" y="52" text-anchor="middle" style="font-size:9px">Buys</text>
+<line x1="102" y1="48" x2="150" y2="48" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text class="vs" x="126" y="41" text-anchor="middle" style="font-size:7.5px" fill="var(--muted)">holds a few years</text>
+<rect x="152" y="34" width="70" height="28" rx="6" class="vg"/>
+<text class="vgt" x="187" y="52" text-anchor="middle" style="font-size:9px">Sells</text>
+<text class="vs" x="30" y="94" fill="var(--muted)">Strategic (operating co.)</text>
+<rect x="30" y="104" width="70" height="28" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="65" y="122" text-anchor="middle" style="font-size:9px">Buys</text>
+<line x1="102" y1="118" x2="222" y2="118" stroke="var(--muted)" stroke-width="1.2"/>
+<text class="vs" x="255" y="122" text-anchor="middle" style="font-size:9px" fill="var(--muted)">keeps</text>
+</svg>`,
+  "Secondary Offering": `<svg viewBox="0 0 320 130" aria-label="A secondary offering issues more shares after the IPO">
+<line x1="30" y1="55" x2="290" y2="55" stroke="var(--line)" stroke-width="1.4"/>
+<circle cx="70" cy="55" r="6" fill="var(--accent)"/>
+<text class="vt" x="70" y="36" text-anchor="middle" style="font-size:10px">IPO</text>
+<text class="vs" x="70" y="80" text-anchor="middle" fill="var(--muted)">first shares sold</text>
+<circle cx="250" cy="55" r="6" fill="var(--ask)"/>
+<text class="vt" x="250" y="36" text-anchor="middle" style="font-size:10px">Secondary</text>
+<text class="vs" x="250" y="80" text-anchor="middle" fill="var(--muted)">more shares, later</text>
+<text class="vs" x="160" y="104" text-anchor="middle" fill="var(--muted)">Same company, already public —</text>
+<text class="vs" x="160" y="120" text-anchor="middle" fill="var(--muted)">just raising again.</text>
+</svg>`,
+  "Direct Listing": `<svg viewBox="0 0 320 150" aria-label="A direct listing skips underwriters, unlike a traditional IPO">
+<text class="vs" x="30" y="22" fill="var(--muted)">Traditional IPO</text>
+<rect x="30" y="30" width="60" height="28" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="60" y="48" text-anchor="middle" style="font-size:8px">Company</text>
+<line x1="92" y1="44" x2="118" y2="44" stroke="var(--muted)" stroke-width="1.2"/>
+<rect x="120" y="30" width="80" height="28" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="160" y="48" text-anchor="middle" style="font-size:8px">Underwriters</text>
+<line x1="202" y1="44" x2="228" y2="44" stroke="var(--muted)" stroke-width="1.2"/>
+<rect x="230" y="30" width="60" height="28" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="260" y="48" text-anchor="middle" style="font-size:8px">Investors</text>
+<text class="vs" x="30" y="92" fill="var(--muted)">Direct Listing</text>
+<rect x="30" y="100" width="60" height="28" rx="6" class="vg"/>
+<text class="vgt" x="60" y="118" text-anchor="middle" style="font-size:8px">Company</text>
+<line x1="92" y1="114" x2="228" y2="114" stroke="var(--ask)" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text class="vs" x="160" y="106" text-anchor="middle" fill="var(--muted)" style="font-size:8px">no middleman</text>
+<rect x="230" y="100" width="60" height="28" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="260" y="118" text-anchor="middle" style="font-size:8px">Investors</text>
+</svg>`,
+  "Divestiture": `<svg viewBox="0 0 320 140" aria-label="A divestiture is a company selling off a division it no longer wants">
+<rect x="40" y="30" width="120" height="70" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="100" y="55" text-anchor="middle">Company</text>
+<rect x="60" y="68" width="80" height="24" rx="6" class="vg" opacity="0.9"/>
+<text class="vgt" x="100" y="84" text-anchor="middle" style="font-size:8.5px">Division</text>
+<line x1="160" y1="80" x2="200" y2="80" stroke="var(--ask)" stroke-width="1.4"/>
+<rect x="205" y="66" width="90" height="28" rx="6" class="vg"/>
+<text class="vgt" x="250" y="84" text-anchor="middle" style="font-size:9px">Sold off</text>
+<text class="vs" x="160" y="114" text-anchor="middle" fill="var(--muted)">Sell to focus, raise cash,</text>
+<text class="vs" x="160" y="130" text-anchor="middle" fill="var(--muted)">or shed the unprofitable.</text>
+</svg>`,
+  "Coverage Group": `<svg viewBox="0 0 320 140" aria-label="Banks organize by industry coverage groups and product groups">
+<rect x="40" y="30" width="110" height="30" rx="7" fill="var(--bg)" stroke="var(--line)"/>
+<text class="vs" x="95" y="49" text-anchor="middle" style="font-size:9px">Coverage: Healthcare</text>
+<text class="vt" x="160" y="52" text-anchor="middle" fill="var(--ask)" style="font-size:13px">×</text>
+<rect x="170" y="30" width="110" height="30" rx="7" class="vg"/>
+<text class="vgt" x="225" y="49" text-anchor="middle" style="font-size:9px">Product: M&amp;A</text>
+<text class="vs" x="160" y="88" text-anchor="middle" fill="var(--muted)">Coverage owns the client</text>
+<text class="vs" x="160" y="104" text-anchor="middle" fill="var(--muted)">relationship by sector.</text>
+<text class="vs" x="160" y="124" text-anchor="middle" fill="var(--muted)">Product groups execute the actual deal.</text>
+</svg>`,
 };
 
-const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split","KYC","AML","Surveillance","Front Running","Insider Trading","Wash Trade","Circuit Breaker","Basis Point","VaR","Collateral","Liquidity","Slippage","Bid-Ask Spread","Counterparty","Counterparty Risk","Default","Exposure","Short Selling","Margin Call","Black Swan Event","Buy-side","Sell-side","Market Maker","Broker","OTC","Exchange","Prime Broker","Regulator","Dark Pool","Algorithmic Trading","HFT","Depository Participant","Foreign Portfolio Investor","Retail Investor","Institutional Investor","Proprietary Trading","Free Float","ISDA","Short Squeeze","Activist Investor","S&P 500","Dow Jones","FIX Protocol","OMS","EMS","Matching Engine","Market Data Feed","Reference Data","Golden Source","Audit Trail","API","Bloomberg Terminal","Capital IQ","FactSet","Refinitiv Eikon","Comps","Non-GAAP","Soft Dollar","Data Scrubbing"];
+const ORDER = ["Order Book","Limit Order","Market Order","Execution","Allocation","Confirmation","Trade Enrichment","STP","Reconciliation","Break","Failed Trade","Corporate Action","Record Date","Ex-Date","ISIN","Demat","Novation","CCP","Netting","Margin","Mark-to-Market","DvP","T+1","Settlement","Custodian","Depository","Haircut","Buy-in","Bilateral","Equity","Bond","Coupon","Yield","Derivative","Future","Option","Strike Price","Premium","Underlying","ETF","NAV","Face Value","Mutual Fund","Preference Shares","Convertible Bond","REIT","ADR/GDR","Market Capitalization","P/E Ratio","Index Fund","Debenture","Maturity","Zero-Coupon Bond","Callable Bond","Credit Rating","Hedge Fund","Green Bonds","Stock Buyback","Stock Split","Reverse Stock Split","KYC","AML","Surveillance","Front Running","Insider Trading","Wash Trade","Circuit Breaker","Basis Point","VaR","Collateral","Liquidity","Slippage","Bid-Ask Spread","Counterparty","Counterparty Risk","Default","Exposure","Short Selling","Margin Call","Black Swan Event","Buy-side","Sell-side","Market Maker","Broker","OTC","Exchange","Prime Broker","Regulator","Dark Pool","Algorithmic Trading","HFT","Depository Participant","Foreign Portfolio Investor","Retail Investor","Institutional Investor","Proprietary Trading","Free Float","ISDA","Short Squeeze","Activist Investor","S&P 500","Dow Jones","FIX Protocol","OMS","EMS","Matching Engine","Market Data Feed","Reference Data","Golden Source","Audit Trail","API","Bloomberg Terminal","Capital IQ","FactSet","Refinitiv Eikon","Comps","Non-GAAP","Soft Dollar","Data Scrubbing","IBD","M&A","ECM","DCM","Sales & Trading","Research","Risk Management","Compliance","IPO","Pitch Book","Underwriting","LBO","FICC","Hedge","Long / Short","Repo","Trading Book","P&L","Market Colour","Axe","Block Trade","Bulge Bracket","Elite Boutique","Synergies","Financial Sponsor","Secondary Offering","Direct Listing","Divestiture","Coverage Group"];
 
 /* Order Book's bespoke illustrated analogy scene (kept special — the flagship example) */
 const ORDER_BOOK_ILLO = `<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
